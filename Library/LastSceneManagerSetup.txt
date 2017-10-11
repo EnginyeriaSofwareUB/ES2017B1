@@ -1,0 +1,7 @@
+sceneSetups:
+- path: Assets/scenary.unity
+  isLoaded: 1
+  isActive: 1
+- path: Assets/objetos.unity
+  isLoaded: 1
+  isActive: 0
