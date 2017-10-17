@@ -28,9 +28,9 @@ public class BotonesMenu : MonoBehaviour {
     public void OnMouseUpAsButton()
     {
         if (Jugar)
-            SceneManager.LoadScene("Numero de la escene");
+            SceneManager.LoadScene(1);
         if (Opciones)
-            SceneManager.LoadScene("Numero de la escene");
+            SceneManager.LoadScene(2);
         if (Salir)
             Application.Quit();
     }
