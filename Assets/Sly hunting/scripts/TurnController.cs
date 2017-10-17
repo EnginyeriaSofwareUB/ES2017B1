@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class TurnController : MonoBehaviour {
 	public bool pl1;
 	public bool pl2;
-	public float timer = 0.0;
-	public float startTime = 30.0;
+	public float timer = 0.0f;
+	public float startTime = 30.0f;
 	public bool estatTimer = true;
 	public Button button;
+	private Text txt;
 
 	// Use this for initialization
 	void init () {
@@ -50,7 +51,7 @@ public class TurnController : MonoBehaviour {
 		int displaySeconds;
 		displaySeconds = (int) timer % 60;
 		string text = string.Format ("{1:00}", displaySeconds);
-		GUI.Label (Rect (400, 25, 100, 30), text);
+		txt.text = text;
 
 
 	}
