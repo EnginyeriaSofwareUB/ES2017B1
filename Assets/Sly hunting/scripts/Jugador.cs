@@ -3,22 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Jugador : MonoBehaviour {
-    public float Velocidad;
+
     public Rigidbody rb;
+	public float speed = 1.0f;
+	public float FPS = 60f;
+	private SpriteRenderer mySpriteRenderer;
+	private bool toRight = true;
     // Use this for initialization
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+		mySpriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update () {
-        float MoverHorizontal = Input.GetAxis("Horizontal");
-        float MoverVertical = Input.GetAxis("Vertical");
+		Vector3 pos = transform.position;
 
-        Vector3 movimiento = new Vector3(MoverHorizontal,0.0f,MoverVertical);
-        
-        rb.AddForce(movimiento * Velocidad * Time.deltaTime);
-        
+		if (Input.GetKey(KeyCode.LeftArrow))
+		{
+			if (toRight) {
+				mySpriteRenderer.flipX = true;
+
+				toRight = false;
+			}
+			pos.x -=  speed * Time.deltaTime * FPS;
+		}
+		if (Input.GetKey(KeyCode.RightArrow))
+		{
+			if (!toRight) {
+				mySpriteRenderer.flipX = false;
+				toRight = true;
+			}
+			pos.x +=  speed * Time.deltaTime * FPS;
+		}
+
+		if (Input.GetKey(KeyCode.Space))
+		{
+			pos.y += speed * Time.deltaTime * FPS;
+		}
+		transform.position = pos;
     }
 }
