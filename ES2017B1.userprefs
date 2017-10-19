@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sly hunting\scripts\Jugador.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sly hunting\scripts\BotonesMenu.cs">
     <Files>
-      <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="15" Column="9" />
-      <File FileName="Assets\Sly hunting\scripts\TurnController.cs" Line="60" Column="1" />
+      <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="95" Column="17" />
+      <File FileName="..\..\..\..\Public\Documents\Unity Projects\Prova\Assets\Sly hunting\scripts\TurnController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sly hunting\scripts\BotonesMenu.cs" Line="37" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

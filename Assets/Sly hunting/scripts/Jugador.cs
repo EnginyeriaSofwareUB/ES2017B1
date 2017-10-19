@@ -91,6 +91,10 @@ public class Jugador : MonoBehaviour {
 			
 	}
 
+	public void onClick(){
+		changeTurn ();
+	}
+
 	void changeTurn(){
 		playerControl = !playerControl;
 		timer = startTime;

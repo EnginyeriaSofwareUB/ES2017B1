@@ -8,14 +8,12 @@ public class BotonesMenu : MonoBehaviour {
     public bool Opciones = false;
     public bool Salir = false;
     // Use this for initialization
-    void Start () {
-        Cursor.visible = true;
-        
-		
-	}
+    /*void Start () {
+        Cursor.visible = true;		
+	}*/
 
     // Update is called once per frame
-    public void OnMouseEnter()
+    /*public void OnMouseEnter()
     {
         GetComponent<Renderer>().material.color = Color.blue;
         
@@ -33,5 +31,21 @@ public class BotonesMenu : MonoBehaviour {
             SceneManager.LoadScene(2);
         if (Salir)
             Application.Quit();
-    }
+    }*/
+
+	public void MenuScene(){
+		SceneManager.LoadScene ("menu");
+	}
+	public void MapaScene(){
+		SceneManager.LoadScene ("scenary");
+	}
+
+	public void OpcionsScene(){
+		SceneManager.LoadScene ("options");
+	}
+
+	public void Close(){
+		Application.Quit ();
+	}
+
 }
