@@ -2478,7 +2478,7 @@ GameObject:
   - component: {fileID: 475029810}
   m_Layer: 0
   m_Name: per1
-  m_TagString: Player
+  m_TagString: Hunter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7821,7 +7821,7 @@ GameObject:
   - component: {fileID: 1388888140}
   m_Layer: 0
   m_Name: per2
-  m_TagString: Player
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9862,10 +9862,6 @@ MonoBehaviour:
   FPS: 60
   toRight: 1
   playerControl: 0
-  timer: 0
-  startTime: 5
-  estatTimer: 0
-  txtTimer: {fileID: 1291069353}
 --- !u!4 &1774236217
 Transform:
   m_ObjectHideFlags: 0
@@ -11035,6 +11031,7 @@ GameObject:
   - component: {fileID: 2032517032}
   - component: {fileID: 2032517030}
   - component: {fileID: 2032517031}
+  - component: {fileID: 2032517033}
   m_Layer: 0
   m_Name: background
   m_TagString: Untagged
@@ -11106,6 +11103,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2032517028}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2032517033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032517028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7199cb74ff8afd546b555ce38bf3a643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  startTime: 5
+  estatTimer: 0
+  txtTimer: {fileID: 0}
 --- !u!1 &2057078157
 GameObject:
   m_ObjectHideFlags: 0
