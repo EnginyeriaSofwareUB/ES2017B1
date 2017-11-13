@@ -2712,7 +2712,7 @@ GameObject:
   - component: {fileID: 475029810}
   m_Layer: 0
   m_Name: per1
-  m_TagString: Player
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8201,7 +8201,7 @@ GameObject:
   - component: {fileID: 1388888140}
   m_Layer: 0
   m_Name: per2
-  m_TagString: Player
+  m_TagString: Hunter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10435,10 +10435,6 @@ MonoBehaviour:
   FPS: 60
   toRight: 1
   playerControl: 0
-  timer: 0
-  startTime: 5
-  estatTimer: 0
-  txtTimer: {fileID: 0}
 --- !u!4 &1788608954 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4217796737330278, guid: bc0e3b51261a98544834e60056a01d79,

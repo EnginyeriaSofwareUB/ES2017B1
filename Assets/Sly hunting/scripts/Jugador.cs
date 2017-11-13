@@ -35,7 +35,6 @@ public class Jugador : MonoBehaviour {
 					mySpriteRenderer.flipX = true;
 					toRight = false;
 				}
-				float move = Input.GetAxis ("Horizontal");
 				rb.velocity = new Vector2 ((-1)*speed * Time.deltaTime * FPS, rb.velocity.y);
 				//rb.transform.Translate (Vector3.left * speed * Time.deltaTime * FPS);
 			}
@@ -47,7 +46,6 @@ public class Jugador : MonoBehaviour {
 					mySpriteRenderer.flipX = false;
 					toRight = true;
 				}
-				float move = Input.GetAxis ("Horizontal");
 				rb.velocity = new Vector2 (speed * Time.deltaTime * FPS, rb.velocity.y);
 				//rb.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
 			} 
