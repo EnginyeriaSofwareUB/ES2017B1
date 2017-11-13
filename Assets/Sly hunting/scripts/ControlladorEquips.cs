@@ -10,7 +10,7 @@ public class ControlladorEquips : MonoBehaviour
 	Equipo animals;
 
 	public float timer = 0.0f;
-	public float startTime = 5.0f;
+	public float startTime = 255.0f;
 	public bool estatTimer;
 	public Text txtTimer;
 	private GameObject hunter;

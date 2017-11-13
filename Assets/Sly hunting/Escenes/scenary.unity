@@ -839,6 +839,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1787290995976264, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
+      propertyPath: m_TagString
+      value: Hunter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
   m_IsPrefabParent: 0
@@ -2712,7 +2716,7 @@ GameObject:
   - component: {fileID: 475029810}
   m_Layer: 0
   m_Name: per1
-  m_TagString: Animal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10721,6 +10725,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1668458987960902, guid: 99ee2e5726511c8479d967fa039d15ab, type: 2}
+      propertyPath: m_TagString
+      value: Animal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99ee2e5726511c8479d967fa039d15ab, type: 2}
   m_IsPrefabParent: 0
@@ -11667,6 +11675,7 @@ GameObject:
   - component: {fileID: 2032517029}
   - component: {fileID: 2032517032}
   - component: {fileID: 2032517030}
+  - component: {fileID: 2032517031}
   m_Layer: 0
   m_Name: fondo
   m_TagString: background
@@ -11719,6 +11728,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2032517031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032517028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7199cb74ff8afd546b555ce38bf3a643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  startTime: 5
+  estatTimer: 0
+  txtTimer: {fileID: 0}
 --- !u!33 &2032517032
 MeshFilter:
   m_ObjectHideFlags: 0

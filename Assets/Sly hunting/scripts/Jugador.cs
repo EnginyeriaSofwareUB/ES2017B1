@@ -32,7 +32,9 @@ public class Jugador : MonoBehaviour {
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			if (playerControl) {
 				if (toRight) {
-					mySpriteRenderer.flipX = true;
+					Vector3 newScale = this.transform.localScale;
+					newScale.x *= -1;
+					this.transform.localScale = newScale;
 					toRight = false;
 				}
 				rb.velocity = new Vector2 ((-1)*speed * Time.deltaTime * FPS, rb.velocity.y);
@@ -43,7 +45,9 @@ public class Jugador : MonoBehaviour {
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			if (playerControl) {
 				if (!toRight) {
-					mySpriteRenderer.flipX = false;
+					Vector3 newScale = this.transform.localScale;
+					newScale.x *= -1;
+					this.transform.localScale = newScale;					
 					toRight = true;
 				}
 				rb.velocity = new Vector2 (speed * Time.deltaTime * FPS, rb.velocity.y);
