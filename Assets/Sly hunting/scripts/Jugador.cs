@@ -17,7 +17,8 @@ public class Jugador : MonoBehaviour {
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
-		rb.mass = 500f;
+		rb.mass = 15000f;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		mySpriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 	void Awake () {
