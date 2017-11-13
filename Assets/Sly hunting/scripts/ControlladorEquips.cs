@@ -13,20 +13,29 @@ public class ControlladorEquips : MonoBehaviour
 	public float startTime = 5.0f;
 	public bool estatTimer;
 	public Text txtTimer;
+	private GameObject hunter;
+	private GameObject animal;
+	private GameObject actual;
+	private Camera camera;
 
 	private Equipo actualEquipo;
-
+	void Start ()
+	{
+		camera = Camera.main;
+		actualEquipo = hunters;
+		actual = actualEquipo.pickPlayerToPlay().gameObject;
+	}
 	void Awake ()
 	{
+
 		hunters = new Equipo ("Hunter");
 		animals = new Equipo ("Animal");
-		actualEquipo = hunters;
-		actualEquipo.pickPlayerToPlay ();
+
 		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
 		timer = startTime;
 		estatTimer = true;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -42,18 +51,19 @@ public class ControlladorEquips : MonoBehaviour
 				changeTurn ();
 			}
 		}
+		camera.transform.position = new Vector3(actual.transform.position.x, 0, -10);
 	}
 
 	public void changeTurn(){
 		actualEquipo.dismissPlayer ();
 		if (actualEquipo.Equals (animals)) {
 			actualEquipo = hunters;
-		} else {
+
+		}else{
 			actualEquipo = animals;
 		}
-		actualEquipo.pickPlayerToPlay ();
+		actual = actualEquipo.pickPlayerToPlay ().gameObject;
 		timer = startTime;
 	}
 
 }
-

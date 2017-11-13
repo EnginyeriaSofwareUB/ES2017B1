@@ -18,9 +18,10 @@ public class Equipo {
 		}
 	}
 
-	public void pickPlayerToPlay(){
+	public Jugador pickPlayerToPlay(){
 		actualplayer = players[rnd.Next(players.Count)];
 		actualplayer.setPlayerControl(true);
+		return actualplayer;
 	}
 
 	public void dismissPlayer(){
