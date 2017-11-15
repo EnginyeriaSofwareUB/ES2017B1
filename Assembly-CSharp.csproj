@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Sly hunting\scripts\AspectUtility.cs" />
      <Compile Include="Assets\Sly hunting\scripts\BotonesMenu.cs" />
+     <Compile Include="Assets\Sly hunting\scripts\ControladorOpcions.cs" />
      <Compile Include="Assets\Sly hunting\scripts\ControlladorEquips.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Equipo.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Jugador.cs" />
@@ -71,6 +72,9 @@
  </Reference>
  <Reference Include="UnityEngine.Timeline">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
