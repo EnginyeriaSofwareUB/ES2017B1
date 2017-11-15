@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 434, y: 271}
   m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
-  controlID: 74
+  controlID: 122
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,10 +434,10 @@ MonoBehaviour:
   m_LastProjectPath: C:\Users\Stask\Documents\GitHub\ES2017B1
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6e260000
-    m_LastClickedID: 9838
-    m_ExpandedIDs: 0000000006260000102600006c260000ca2c0000cc2c0000ce2c0000d02c0000d22c0000d42c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 30}
+    m_SelectedIDs: 70260000
+    m_LastClickedID: 9840
+    m_ExpandedIDs: 000000000826000012260000682600006e260000c4260000ca2c0000cc2c0000ce2c0000d02c0000d22c0000d42c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -465,7 +465,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000006260000102600006c260000ca2c0000cc2c0000ce2c0000d02c0000d22c0000d42c0000
+    m_ExpandedIDs: 0000000008260000122600006e260000ca2c0000cc2c0000ce2c0000d02c0000d22c0000d42c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -623,14 +623,14 @@ MonoBehaviour:
     width: 1150
     height: 549
   m_SceneLighting: 1
-  lastFramingTime: 646.5956665855646
+  lastFramingTime: 1777.1208330157651
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 52.341553, y: 9.356007, z: 0.703125}
+    m_Target: {x: 65.927666, y: 9.667031, z: -393}
     speed: 2
-    m_Value: {x: 52.341553, y: 9.356007, z: 0.703125}
+    m_Value: {x: 65.927666, y: 9.667031, z: -393}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -657,9 +657,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 73.91019
+    m_Target: 237.16388
     speed: 2
-    m_Value: 73.91019
+    m_Value: 237.16388
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -698,23 +698,23 @@ MonoBehaviour:
     height: 549
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16fcffff
-    m_LastClickedID: -1002
-    m_ExpandedIDs: e6fbffffe8fbffff18fcffff1afcffff000000002a2b0000
+    m_SelectedIDs: e2380000
+    m_LastClickedID: 14562
+    m_ExpandedIDs: 92caffffc2caffffc6caffffbccbffffb0ccffffd6cdfffff6ceffff70ddffff74e6ffff98ebffff32f1ffff7cf6ffff1afcffff00000000c8390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Cazador
+      m_OriginalName: Cazador
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -13628
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
