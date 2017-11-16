@@ -1,5 +1,5 @@
 WindowsStandalone
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ControladorOpcions
+9e9ff7cd27d548b76fe0e349db9c0bd4 Assembly-CSharp.dll:.ControladorOpcions
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 9f07aaefd0255462bb6e4f9e5da6b2d4 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
