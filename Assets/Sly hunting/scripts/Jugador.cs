@@ -22,6 +22,12 @@ public class Jugador : MonoBehaviour {
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		mySpriteRenderer = GetComponent<SpriteRenderer> ();
+		List<GameObject> characters = new List<GameObject> ();
+
+		characters.AddRange(GameObject.FindGameObjectsWithTag ("Hunter"));
+		characters.AddRange (GameObject.FindGameObjectsWithTag("Animal"));
+		setRandomPositions (characters);
+
 	}
 	void Awake () {
 		playerControl = false;
@@ -43,6 +49,27 @@ public class Jugador : MonoBehaviour {
 		playerControl = what;
 	}
 
+	private bool checkIfPosEmpty(Vector3 targetPos) {
+		GameObject[] allTerrain = GameObject.FindGameObjectsWithTag ("floor");
+		foreach (GameObject current in allTerrain) {
+			if (current.transform.position == targetPos)
+				return false;
+		}
+		return true;
+	}
+
+	private void setRandomPositions (List<GameObject> objects) {
+		GameObject[] terrain;
+		terrain = GameObject.FindGameObjectsWithTag ("floor");
+		objects.ForEach (obj => {
+			Vector3 newPos = terrain[UnityEngine.Random.Range(0,terrain.Length)].transform.position;
+			newPos.y += 5;
+			while (!checkIfPosEmpty (newPos)) {
+				newPos.y += 5;
+			}
+			obj.transform.position = newPos;
+		});
+	}
 
     // Update is called once per frame
     void Update () {

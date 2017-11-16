@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 557373}
   m_Layer: 0
   m_Name: suelo3level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 2600390}
   m_Layer: 0
   m_Name: vert1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 42799494}
   m_Layer: 0
   m_Name: suelo2level3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 54992494}
   m_Layer: 0
   m_Name: s251
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 82883231}
   m_Layer: 0
   m_Name: s021
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 107685116}
   m_Layer: 0
   m_Name: vert3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 126238756}
   m_Layer: 0
   m_Name: s028
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 143796199}
   m_Layer: 0
   m_Name: suelo1level3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 215673131}
   m_Layer: 0
   m_Name: s016
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 227164871}
   m_Layer: 0
   m_Name: s310
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,7 +1265,7 @@ GameObject:
   - component: {fileID: 247968275}
   m_Layer: 0
   m_Name: s0310
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 273624602}
   m_Layer: 0
   m_Name: s025
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 290783259}
   m_Layer: 0
   m_Name: s045
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 321503455}
   m_Layer: 0
   m_Name: s037
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 332664460}
   m_Layer: 0
   m_Name: suelo1level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,7 +1799,7 @@ GameObject:
   - component: {fileID: 347339555}
   m_Layer: 0
   m_Name: s017
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 350632095}
   m_Layer: 0
   m_Name: s213
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1937,7 +1937,7 @@ GameObject:
   - component: {fileID: 359352552}
   m_Layer: 0
   m_Name: s038
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2199,7 +2199,7 @@ GameObject:
   - component: {fileID: 401534837}
   m_Layer: 0
   m_Name: horiBajo1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2268,7 +2268,7 @@ GameObject:
   - component: {fileID: 419417827}
   m_Layer: 0
   m_Name: s321
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2413,7 +2413,7 @@ GameObject:
   - component: {fileID: 422440200}
   m_Layer: 0
   m_Name: vert2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2482,7 +2482,7 @@ GameObject:
   - component: {fileID: 431069133}
   m_Layer: 0
   m_Name: s051
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2650,7 +2650,7 @@ GameObject:
   - component: {fileID: 463790524}
   m_Layer: 0
   m_Name: s041
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2934,7 +2934,7 @@ GameObject:
   - component: {fileID: 493756582}
   m_Layer: 0
   m_Name: s029
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3004,7 +3004,7 @@ GameObject:
   - component: {fileID: 500471485}
   m_Layer: 0
   m_Name: suelo2level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3103,7 +3103,7 @@ GameObject:
   - component: {fileID: 528086940}
   m_Layer: 0
   m_Name: s323
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3336,7 +3336,7 @@ GameObject:
   - component: {fileID: 550350741}
   m_Layer: 0
   m_Name: s036
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3406,7 +3406,7 @@ GameObject:
   - component: {fileID: 564036734}
   m_Layer: 0
   m_Name: s265
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3500,7 +3500,7 @@ GameObject:
   - component: {fileID: 575172385}
   m_Layer: 0
   m_Name: s044
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3569,7 +3569,7 @@ GameObject:
   - component: {fileID: 588124990}
   m_Layer: 0
   m_Name: s261
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3638,7 +3638,7 @@ GameObject:
   - component: {fileID: 596355325}
   m_Layer: 0
   m_Name: s027
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3707,7 +3707,7 @@ GameObject:
   - component: {fileID: 607937671}
   m_Layer: 0
   m_Name: s012
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3776,7 +3776,7 @@ GameObject:
   - component: {fileID: 614264499}
   m_Layer: 0
   m_Name: s162
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3940,7 +3940,7 @@ GameObject:
   - component: {fileID: 635083245}
   m_Layer: 0
   m_Name: s023
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4009,7 +4009,7 @@ GameObject:
   - component: {fileID: 637397861}
   m_Layer: 0
   m_Name: s024
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4175,7 +4175,7 @@ GameObject:
   - component: {fileID: 706357705}
   m_Layer: 0
   m_Name: horiBajo4
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4244,7 +4244,7 @@ GameObject:
   - component: {fileID: 717202572}
   m_Layer: 0
   m_Name: s0110
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4313,7 +4313,7 @@ GameObject:
   - component: {fileID: 718698665}
   m_Layer: 0
   m_Name: vert5
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4382,7 +4382,7 @@ GameObject:
   - component: {fileID: 727701511}
   m_Layer: 0
   m_Name: horiAlto3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4451,7 +4451,7 @@ GameObject:
   - component: {fileID: 745712767}
   m_Layer: 0
   m_Name: s033
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4520,7 +4520,7 @@ GameObject:
   - component: {fileID: 746709705}
   m_Layer: 0
   m_Name: s151
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4589,7 +4589,7 @@ GameObject:
   - component: {fileID: 757231276}
   m_Layer: 0
   m_Name: vert4
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4727,7 +4727,7 @@ GameObject:
   - component: {fileID: 762999063}
   m_Layer: 0
   m_Name: s052
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4797,7 +4797,7 @@ GameObject:
   - component: {fileID: 781029375}
   m_Layer: 0
   m_Name: suelo2level4
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4962,7 +4962,7 @@ GameObject:
   - component: {fileID: 834062505}
   m_Layer: 0
   m_Name: horiAlto2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5153,7 +5153,7 @@ GameObject:
   - component: {fileID: 863806622}
   m_Layer: 0
   m_Name: s0114
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5223,7 +5223,7 @@ GameObject:
   - component: {fileID: 875509362}
   m_Layer: 0
   m_Name: suelo6level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5323,7 +5323,7 @@ GameObject:
   - component: {fileID: 883032427}
   m_Layer: 0
   m_Name: suelo3level0
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5428,7 +5428,7 @@ GameObject:
   - component: {fileID: 898250825}
   m_Layer: 0
   m_Name: s264
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5522,7 +5522,7 @@ GameObject:
   - component: {fileID: 919859719}
   m_Layer: 0
   m_Name: s214
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5591,7 +5591,7 @@ GameObject:
   - component: {fileID: 931068294}
   m_Layer: 0
   m_Name: s221
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5660,7 +5660,7 @@ GameObject:
   - component: {fileID: 951902902}
   m_Layer: 0
   m_Name: s222
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5730,7 +5730,7 @@ GameObject:
   - component: {fileID: 984956843}
   m_Layer: 0
   m_Name: suelo1level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5826,7 +5826,7 @@ GameObject:
   - component: {fileID: 990681472}
   m_Layer: 0
   m_Name: suelo4level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5922,7 +5922,7 @@ GameObject:
   - component: {fileID: 991759750}
   m_Layer: 0
   m_Name: f35
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5991,7 +5991,7 @@ GameObject:
   - component: {fileID: 1011157176}
   m_Layer: 0
   m_Name: s161
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6129,7 +6129,7 @@ GameObject:
   - component: {fileID: 1028088667}
   m_Layer: 0
   m_Name: s053
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6198,7 +6198,7 @@ GameObject:
   - component: {fileID: 1049041437}
   m_Layer: 0
   m_Name: s019
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6267,7 +6267,7 @@ GameObject:
   - component: {fileID: 1053742166}
   m_Layer: 0
   m_Name: horiBajo3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6336,7 +6336,7 @@ GameObject:
   - component: {fileID: 1055123180}
   m_Layer: 0
   m_Name: s035
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6406,7 +6406,7 @@ GameObject:
   - component: {fileID: 1055570304}
   m_Layer: 0
   m_Name: suelo4level0
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6506,7 +6506,7 @@ GameObject:
   - component: {fileID: 1077920948}
   m_Layer: 0
   m_Name: suelo2level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6602,7 +6602,7 @@ GameObject:
   - component: {fileID: 1079288844}
   m_Layer: 0
   m_Name: s0111
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6671,7 +6671,7 @@ GameObject:
   - component: {fileID: 1088510348}
   m_Layer: 0
   m_Name: s325
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6740,7 +6740,7 @@ GameObject:
   - component: {fileID: 1090212140}
   m_Layer: 0
   m_Name: s031
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6809,7 +6809,7 @@ GameObject:
   - component: {fileID: 1111952440}
   m_Layer: 0
   m_Name: s122
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6879,7 +6879,7 @@ GameObject:
   - component: {fileID: 1124554148}
   m_Layer: 0
   m_Name: s111
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6973,7 +6973,7 @@ GameObject:
   - component: {fileID: 1184870816}
   m_Layer: 0
   m_Name: s422
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7042,7 +7042,7 @@ GameObject:
   - component: {fileID: 1221359051}
   m_Layer: 0
   m_Name: horiAlto5
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7112,7 +7112,7 @@ GameObject:
   - component: {fileID: 1253143123}
   m_Layer: 0
   m_Name: s331
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7315,7 +7315,7 @@ GameObject:
   - component: {fileID: 1275555085}
   m_Layer: 0
   m_Name: s141
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7384,7 +7384,7 @@ GameObject:
   - component: {fileID: 1280543257}
   m_Layer: 0
   m_Name: s212
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7655,7 +7655,7 @@ GameObject:
   - component: {fileID: 1333517121}
   m_Layer: 0
   m_Name: s013
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7812,7 +7812,7 @@ GameObject:
   - component: {fileID: 1342402727}
   m_Layer: 0
   m_Name: s252
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7907,7 +7907,7 @@ GameObject:
   - component: {fileID: 1355214387}
   m_Layer: 0
   m_Name: s131
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8070,7 +8070,7 @@ GameObject:
   - component: {fileID: 1377364351}
   m_Layer: 0
   m_Name: s324
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8139,7 +8139,7 @@ GameObject:
   - component: {fileID: 1381309258}
   m_Layer: 0
   m_Name: s231
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8326,7 +8326,7 @@ GameObject:
   - component: {fileID: 1400669044}
   m_Layer: 0
   m_Name: horiAlto4
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8395,7 +8395,7 @@ GameObject:
   - component: {fileID: 1411105389}
   m_Layer: 0
   m_Name: horiBajo5
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8464,7 +8464,7 @@ GameObject:
   - component: {fileID: 1411835830}
   m_Layer: 0
   m_Name: s055
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8533,7 +8533,7 @@ GameObject:
   - component: {fileID: 1425261924}
   m_Layer: 0
   m_Name: s421
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8602,7 +8602,7 @@ GameObject:
   - component: {fileID: 1427307734}
   m_Layer: 0
   m_Name: s0112
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8672,7 +8672,7 @@ GameObject:
   - component: {fileID: 1487569665}
   m_Layer: 0
   m_Name: suelo4level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8768,7 +8768,7 @@ GameObject:
   - component: {fileID: 1503641212}
   m_Layer: 0
   m_Name: s011
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8837,7 +8837,7 @@ GameObject:
   - component: {fileID: 1516058048}
   m_Layer: 0
   m_Name: s241
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8906,7 +8906,7 @@ GameObject:
   - component: {fileID: 1519965385}
   m_Layer: 0
   m_Name: s043
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8975,7 +8975,7 @@ GameObject:
   - component: {fileID: 1528208695}
   m_Layer: 0
   m_Name: s018
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9045,7 +9045,7 @@ GameObject:
   - component: {fileID: 1552210347}
   m_Layer: 0
   m_Name: suelo5level2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9364,7 +9364,7 @@ GameObject:
   - component: {fileID: 1616401553}
   m_Layer: 0
   m_Name: s233
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9433,7 +9433,7 @@ GameObject:
   - component: {fileID: 1628323673}
   m_Layer: 0
   m_Name: s032
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9517,7 +9517,7 @@ GameObject:
   - component: {fileID: 1632095074}
   m_Layer: 0
   m_Name: s262
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9586,7 +9586,7 @@ GameObject:
   - component: {fileID: 1633512325}
   m_Layer: 0
   m_Name: horiBajo2
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9655,7 +9655,7 @@ GameObject:
   - component: {fileID: 1637297595}
   m_Layer: 0
   m_Name: s042
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9725,7 +9725,7 @@ GameObject:
   - component: {fileID: 1648239783}
   m_Layer: 0
   m_Name: formaClevel4
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9836,7 +9836,7 @@ GameObject:
   - component: {fileID: 1655969789}
   m_Layer: 0
   m_Name: s263
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9931,7 +9931,7 @@ GameObject:
   - component: {fileID: 1702368954}
   m_Layer: 0
   m_Name: s224
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10026,7 +10026,7 @@ GameObject:
   - component: {fileID: 1712142370}
   m_Layer: 0
   m_Name: s224
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10120,7 +10120,7 @@ GameObject:
   - component: {fileID: 1716040190}
   m_Layer: 0
   m_Name: s242
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10189,7 +10189,7 @@ GameObject:
   - component: {fileID: 1720174894}
   m_Layer: 0
   m_Name: s142
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10259,7 +10259,7 @@ GameObject:
   - component: {fileID: 1741660881}
   m_Layer: 0
   m_Name: suelo2level0
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10458,7 +10458,7 @@ GameObject:
   - component: {fileID: 1808458790}
   m_Layer: 0
   m_Name: Suelo
-  m_TagString: floor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10513,7 +10513,7 @@ GameObject:
   - component: {fileID: 1826111582}
   m_Layer: 0
   m_Name: s223
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10608,7 +10608,7 @@ GameObject:
   - component: {fileID: 1839391943}
   m_Layer: 0
   m_Name: s311
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10753,7 +10753,7 @@ GameObject:
   - component: {fileID: 1867538351}
   m_Layer: 0
   m_Name: s232
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10822,7 +10822,7 @@ GameObject:
   - component: {fileID: 1879774754}
   m_Layer: 0
   m_Name: s152
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10891,7 +10891,7 @@ GameObject:
   - component: {fileID: 1887516995}
   m_Layer: 0
   m_Name: s211
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10960,7 +10960,7 @@ GameObject:
   - component: {fileID: 1895871914}
   m_Layer: 0
   m_Name: s034
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11128,7 +11128,7 @@ GameObject:
   - component: {fileID: 1905670441}
   m_Layer: 0
   m_Name: s121
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11260,7 +11260,7 @@ GameObject:
   - component: {fileID: 1940021896}
   m_Layer: 0
   m_Name: suelo3level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11355,7 +11355,7 @@ GameObject:
   - component: {fileID: 1940305733}
   m_Layer: 0
   m_Name: s022
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11521,7 +11521,7 @@ GameObject:
   - component: {fileID: 1956374572}
   m_Layer: 0
   m_Name: suelo5level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11617,7 +11617,7 @@ GameObject:
   - component: {fileID: 2015968557}
   m_Layer: 0
   m_Name: s322
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11771,7 +11771,7 @@ GameObject:
   - component: {fileID: 2057078159}
   m_Layer: 0
   m_Name: s039
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11840,7 +11840,7 @@ GameObject:
   - component: {fileID: 2060048400}
   m_Layer: 0
   m_Name: s054
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11910,7 +11910,7 @@ GameObject:
   - component: {fileID: 2062393335}
   m_Layer: 0
   m_Name: suelo6level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12006,7 +12006,7 @@ GameObject:
   - component: {fileID: 2065903175}
   m_Layer: 0
   m_Name: s014
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12076,7 +12076,7 @@ GameObject:
   - component: {fileID: 2081567144}
   m_Layer: 0
   m_Name: suelo5level0
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12175,7 +12175,7 @@ GameObject:
   - component: {fileID: 2092018951}
   m_Layer: 0
   m_Name: s0113
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12245,7 +12245,7 @@ GameObject:
   - component: {fileID: 2093000819}
   m_Layer: 0
   m_Name: vert6
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12339,7 +12339,7 @@ GameObject:
   - component: {fileID: 2093500967}
   m_Layer: 0
   m_Name: s026
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12409,7 +12409,7 @@ GameObject:
   - component: {fileID: 2102402760}
   m_Layer: 0
   m_Name: suelo3level3
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12504,7 +12504,7 @@ GameObject:
   - component: {fileID: 2104665140}
   m_Layer: 0
   m_Name: s015
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12574,7 +12574,7 @@ GameObject:
   - component: {fileID: 2132543668}
   m_Layer: 0
   m_Name: horiAlto1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
