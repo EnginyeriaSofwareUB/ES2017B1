@@ -4,47 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BotonesMenu : MonoBehaviour {
-    public bool Jugar = false;
-    public bool Opciones = false;
-    public bool Salir = false;
-    // Use this for initialization
-    /*void Start () {
-        Cursor.visible = true;		
-	}*/
-
-    // Update is called once per frame
-    /*public void OnMouseEnter()
-    {
-        GetComponent<Renderer>().material.color = Color.blue;
-        
-    }
-    public void OnMouseExit()
-    {
-        GetComponent<Renderer>().material.color = Color.white;
-
-    }
-    public void OnMouseUpAsButton()
-    {
-        if (Jugar)
-            SceneManager.LoadScene(1);
-        if (Opciones)
-            SceneManager.LoadScene(2);
-        if (Salir)
-            Application.Quit();
-    }*/
-
-	public void MenuScene(){
-		SceneManager.LoadScene ("menu");
-	}
+	
 	public void MapaScene(){
 		SceneManager.LoadScene ("scenary");
+
 	}
 
-	public void OpcionsScene(){
+	public void OptionsScene(){
 		SceneManager.LoadScene ("options");
 	}
 
-	public void Close(){
+	public void QuitGame(){
 		Application.Quit ();
 	}
 
