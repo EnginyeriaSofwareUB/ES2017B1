@@ -2,10 +2,18 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sly hunting\scripts\ControladorOpcions.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="1" Column="1" />
       <File FileName="Assets\Sly hunting\scripts\Equipo.cs" Line="1" Column="1" />
       <File FileName="Assets\Sly hunting\scripts\ControlladorEquips.cs" Line="1" Column="1" />
       <File FileName="Assets\Sly hunting\scripts\ControladorOpcions.cs" Line="25" Column="1" />
+=======
+      <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="22" Column="16" />
+      <File FileName="Assets\Sly hunting\scripts\Equipo.cs" Line="24" Column="1" />
+      <File FileName="Assets\Sly hunting\scripts\ControlladorEquips.cs" Line="53" Column="62" />
+      <File FileName="Assets\Sly hunting\scripts\AspectUtility.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sly hunting\scripts\BotonesMenu.cs" Line="1" Column="1" />
+>>>>>>> master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
