@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Animal
   - Hunter
+  - Music
   layers:
   - Default
   - TransparentFX
