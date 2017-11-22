@@ -62,7 +62,7 @@ public class Jugador : MonoBehaviour {
 		}
 	}
 
-	void moveLeft(){
+	void moveRight(){
 		if (toRight) {
 			Vector3 newScale = this.transform.localScale;
 			newScale.x *= -1;
@@ -71,10 +71,10 @@ public class Jugador : MonoBehaviour {
 		}
 		animator.StopPlayback();
 		rb.velocity = new Vector2 ((-1) * speed * Time.deltaTime * FPS, rb.velocity.y);
-		animator.Play("leftRun");
+		animator.Play("rightRun");
 	}
 
-	void moveRight(){
+	void moveLeft(){
 		if (!toRight) {
 			Vector3 newScale = this.transform.localScale;
 			newScale.x *= -1;
@@ -83,7 +83,7 @@ public class Jugador : MonoBehaviour {
 		}
 		animator.StopPlayback();
 		rb.velocity = new Vector2 (speed * Time.deltaTime * FPS, rb.velocity.y);
-		animator.Play("rightRun");
+		animator.Play("leftRun");
 	}
 
 

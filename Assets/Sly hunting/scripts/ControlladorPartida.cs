@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,13 +17,14 @@ public class ControlladorPartida : MonoBehaviour
 	private GameObject actual;
 	private Camera camera;
 	public int numero_jugadores = 3;
-
 	private Equipo actualEquipo;
+
 	void Start ()
 	{
 		camera = Camera.main;
 		actualEquipo = hunters;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
+
 	}
 	void Awake ()
 	{
@@ -51,14 +52,13 @@ public class ControlladorPartida : MonoBehaviour
 				changeTurn ();
 			}
 		}
-		camera.transform.position = new Vector3(actual.transform.position.x, 0, -10);
+			camera.transform.position = new Vector3(actual.transform.position.x, 0, -10);
 	}
 
 	public void changeTurn(){
 		actualEquipo.dismissPlayer ();
-		if (actualEquipo.Equals (animals)) {
+		if (actualEquipo.getTyo() == "Mono") {
 			actualEquipo = hunters;
-
 		}else{
 			actualEquipo = animals;
 		}
