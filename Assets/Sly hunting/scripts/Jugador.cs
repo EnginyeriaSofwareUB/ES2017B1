@@ -9,19 +9,20 @@ public class Jugador : MonoBehaviour {
 	public Rigidbody2D rb;
 	public float speed = 10.0f;
 	public float FPS = 60f;
-	private SpriteRenderer mySpriteRenderer;
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
 	private float estamina = 100;
 	private float vida = 100;
+	private Animator animator;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
+		animator = GetComponent<Animator>();
+
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		mySpriteRenderer = GetComponent<SpriteRenderer> ();
 
 	}
 	void Awake () {
@@ -48,14 +49,14 @@ public class Jugador : MonoBehaviour {
     void Update () {
 		float stam = estamina - (estamina/5); //cada acción resta un 1/5 = 20%
 		if (playerControl && stam > 0) {
-			if (Input.GetKey (KeyCode.LeftArrow) ) {
-					moveRight ();
-			}
-			if (Input.GetKey (KeyCode.RightArrow)) {
-					moveLeft ();
-			}
-			if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				moveRight ();
+			} else if (Input.GetKey (KeyCode.RightArrow)) {
+				moveLeft ();
+			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
 				jump ();
+			} else {
+				idle ();
 			}
 			
 		}
@@ -68,7 +69,9 @@ public class Jugador : MonoBehaviour {
 			this.transform.localScale = newScale;
 			toRight = false;
 		}
+		animator.StopPlayback();
 		rb.velocity = new Vector2 ((-1) * speed * Time.deltaTime * FPS, rb.velocity.y);
+		animator.Play("leftRun");
 	}
 
 	void moveRight(){
@@ -78,13 +81,18 @@ public class Jugador : MonoBehaviour {
 			this.transform.localScale = newScale;					
 			toRight = true;
 		}
+		animator.StopPlayback();
 		rb.velocity = new Vector2 (speed * Time.deltaTime * FPS, rb.velocity.y);
+		animator.Play("rightRun");
 	}
 
 
 	void jump(){
 		if (!jumping) {
 			jumping = true;
+			animator.StopPlayback();
+			animator.Play("saltar");
+
 			float startGravity = rb.gravityScale;
 			rb.gravityScale = 0;
 			rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
@@ -96,5 +104,9 @@ public class Jugador : MonoBehaviour {
 			rb.gravityScale = startGravity;
 			jumping = false;
 		}
+	}
+	void idle(){
+		animator.StopPlayback();
+		animator.Play("leftIdle");
 	}
 }
