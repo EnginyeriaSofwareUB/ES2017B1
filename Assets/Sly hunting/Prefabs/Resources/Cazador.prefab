@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4217796737330278}
   - component: {fileID: 50280494458844494}
   - component: {fileID: 95320070953915522}
+  - component: {fileID: 114511262229561978}
   m_Layer: 0
   m_Name: Cazador
   m_TagString: Player
@@ -134,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1534288380234736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -129.56, y: -61.25, z: -85}
+  m_LocalPosition: {x: 192.98166, y: 88.7, z: 0.4745819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4365829038476178}
@@ -336,6 +337,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114511262229561978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1534288380234736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5101adeaa13e93e499ee280e00fef6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  speed: 10
+  FPS: 60
+  toRight: 1
+  playerControl: 1
 --- !u!212 &212018781868375240
 SpriteRenderer:
   m_ObjectHideFlags: 1
