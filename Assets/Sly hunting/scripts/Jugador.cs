@@ -32,7 +32,9 @@ public class Jugador : MonoBehaviour {
 	}
 	void Awake () {
 		playerControl = false;
-	}
+        //animator.StopPlayback();
+        //idle();
+    }
 
 	public float getEstamina(){
 		return estamina;
