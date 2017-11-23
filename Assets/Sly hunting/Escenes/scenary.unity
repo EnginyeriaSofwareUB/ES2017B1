@@ -3527,7 +3527,7 @@ GameObject:
   - component: {fileID: 626202136}
   m_Layer: 0
   m_Name: puente1level1
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4571,11 +4571,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4217796737330278, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 340.18082
+      value: 223.3
       objectReference: {fileID: 0}
     - target: {fileID: 4217796737330278, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 74.1
+      value: 12.93
       objectReference: {fileID: 0}
     - target: {fileID: 4217796737330278, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4603,6 +4603,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1534288380234736, guid: bc0e3b51261a98544834e60056a01d79, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212018781868375240, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212855917948573830, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212845269273459986, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212326723252631334, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212147603280463722, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212826463450825138, guid: bc0e3b51261a98544834e60056a01d79,
+        type: 2}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10886,7 +10916,7 @@ GameObject:
   - component: {fileID: 1942589435}
   m_Layer: 0
   m_Name: puente1level2
-  m_TagString: bridge
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
