@@ -18,6 +18,9 @@ public class Jugador : MonoBehaviour {
     bool izquierda = true;
     bool derecha = false;
 
+
+	float forceJump = 20.0f;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
@@ -49,17 +52,19 @@ public class Jugador : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
 		float stam = estamina - (estamina/5); //cada acción resta un 1/5 = 20%
 		if (playerControl && stam > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft ();
                 
-            } else if (Input.GetKey (KeyCode.RightArrow)) {
-                moveRight ();
+			} else if (Input.GetKey (KeyCode.RightArrow)) {
+				moveRight ();
                 
 
-            } else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
+			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
 				jump ();
+			
 			} else {
 				idle ();
 			}
@@ -110,7 +115,8 @@ public class Jugador : MonoBehaviour {
 
 			float startGravity = rb.gravityScale;
 			rb.gravityScale = 0;
-			rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
+			//rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
+			this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
 			float timer = 0f;
 			while (timer < 2f) {
 				timer += Time.deltaTime;
@@ -119,6 +125,7 @@ public class Jugador : MonoBehaviour {
 			rb.gravityScale = startGravity;
 			jumping = false;
 		}
+
 	}
 	void idle(){
 		animator.StopPlayback();
