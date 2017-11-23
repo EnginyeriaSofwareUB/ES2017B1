@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +10,15 @@ public class ControlladorPartida : MonoBehaviour
 	Equipo hunters;
 	Equipo animals;
 	public float timer = 0.0f;
-	public float startTime = 255.0f;
-	public bool estatTimer;
+	//public float startTime = 255.0f;
+    float startTime = 10.0f; //se cambia a 15 para probar movimientos, inicial 255
+    public bool estatTimer;
 	public Text txtTimer;
 	private GameObject hunter;
 	private GameObject animal;
-	private GameObject actual;
+	public  GameObject actual;
 	private Camera camera;
-	public int numero_jugadores = 3;
+	private int numero_jugadores = 3; //son 3 
 	private Equipo actualEquipo;
 
 	void Start ()
