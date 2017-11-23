@@ -14,7 +14,7 @@ public class Equipo : MonoBehaviour  {
 	private String typ;
 
 	public Equipo (string type,int number,ControlladorPartida controPartida){
-		for (int i = 0; i <= number; i++) {
+		for (int i = 0; i < number; i++) { // aqui se cambió hasta < porque coge 1 jugador más
 			GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 			GameObject pl = Instantiate (player);
 			players.Add (pl);
