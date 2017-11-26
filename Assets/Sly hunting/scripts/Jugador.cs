@@ -27,7 +27,7 @@ public class Jugador : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-        ju  = new Vector3(0.0f, 10.0f);
+        ju  = new Vector3(0.0f, 5.0f);
        // rb.mass = 1f;
 		//rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -77,8 +77,18 @@ public class Jugador : MonoBehaviour {
 			
 		}
 	}
+    void OnCollisionStay2D(Collision2D col)
+    {
+        
+        //print("Collision detected with a trigger object");
+    
+            jumping = false;
+        
 
-	void moveRight(){
+
+    }
+
+    void moveRight(){
         /*
         if (toRight) {
 			Vector3 newScale = this.transform.localScale;
@@ -112,18 +122,7 @@ public class Jugador : MonoBehaviour {
         derecha = false;
     }
    
-    void OnCollisionEnter(Collision col)
-    {
-        Debug.Log(col);
-        print("Collision detected with a trigger object");
-        if (col.gameObject.name == "Suelo")
-        {
-            Debug.Log(col);
-            jumping = false;
-        }
-        
-        
-    }
+    
     void jump(){
 			animator.StopPlayback();
 			animator.Play("saltar");
