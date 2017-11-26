@@ -17,17 +17,19 @@ public class Jugador : MonoBehaviour {
 	private Animator animator;
     bool izquierda = true;
     bool derecha = false;
+    public float jumpForce = 20.0f;
+    public Vector2 ju;
 
 
-	float forceJump = 20.0f;
+    float forceJump = 20.0f;
 
-	private void Start()
+	 void Start()
 	{
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-
-		rb.mass = 15000f;
-		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        ju  = new Vector3(0.0f, 10.0f);
+       // rb.mass = 1f;
+		//rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
 	}
 	void Awake () {
@@ -64,8 +66,10 @@ public class Jugador : MonoBehaviour {
 				moveRight ();
                 
 
-			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
+			} else if (Input.GetKey (KeyCode.Space) && !jumping) {
 				jump ();
+                jumping = true;
+                
 			
 			} else {
 				idle ();
@@ -107,26 +111,33 @@ public class Jugador : MonoBehaviour {
         izquierda = true;
         derecha = false;
     }
-
-
-	void jump(){
-		if (!jumping) {
-			jumping = true;
+   
+    void OnCollisionEnter(Collision col)
+    {
+        Debug.Log(col);
+        print("Collision detected with a trigger object");
+        if (col.gameObject.name == "Suelo")
+        {
+            Debug.Log(col);
+            jumping = false;
+        }
+        
+        
+    }
+    void jump(){
 			animator.StopPlayback();
 			animator.Play("saltar");
-
-			float startGravity = rb.gravityScale;
-			rb.gravityScale = 0;
-			//rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
-			this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
-			float timer = 0f;
-			while (timer < 2f) {
-				timer += Time.deltaTime;
-			}
+            //float startGravity = rb.gravityScale;
+            //rb.gravityScale = 0;
+            //rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
+            rb.AddForce(ju, ForceMode2D.Impulse);
+            
+            //this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
+			
 			//Set gravity back to normal at the end of the jump
-			rb.gravityScale = startGravity;
-			jumping = false;
-		}
+			//rb.gravityScale = startGravity;
+            
+			
 
 	}
 	void idle(){
