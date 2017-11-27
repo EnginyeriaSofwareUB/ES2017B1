@@ -15,8 +15,6 @@ public class ControlladorPartida : MonoBehaviour
     public bool estatTimer;
 	public Text txtTimer;
 	public int MIN_X, MIN_Y, MAX_X, MAX_Y;
-	private GameObject hunter;
-	private GameObject animal;
 	public  GameObject actual;
 	private Camera camera;
 	private int numero_jugadores = 1; //son 3 

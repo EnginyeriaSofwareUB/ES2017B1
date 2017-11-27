@@ -210,6 +210,9 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void setPlayerControl (bool what){
+		if (what == false) {
+			idle ();
+		}
 		playerControl = what;
 	}
 }
