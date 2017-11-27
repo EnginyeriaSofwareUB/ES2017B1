@@ -11,7 +11,7 @@ public class ControlladorPartida : MonoBehaviour
 	Equipo animals;
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
-    float startTime = 10.0f; //se cambia a 15 para probar movimientos, inicial 255
+    float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
     public bool estatTimer;
 	public Text txtTimer;
 	public int MIN_X, MIN_Y, MAX_X, MAX_Y;
@@ -19,7 +19,7 @@ public class ControlladorPartida : MonoBehaviour
 	private GameObject animal;
 	public  GameObject actual;
 	private Camera camera;
-	private int numero_jugadores = 3; //son 3 
+	private int numero_jugadores = 1; //son 3 
 	private Equipo actualEquipo;
 
 	void Start ()
@@ -101,6 +101,10 @@ public class ControlladorPartida : MonoBehaviour
 				return false;
 		}
 		return true;
+	}
+
+	public Equipo getCurrentTeam() {
+		return actualEquipo;
 	}
 
 

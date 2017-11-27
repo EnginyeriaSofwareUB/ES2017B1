@@ -12,6 +12,8 @@ public class Equipo : MonoBehaviour  {
 	private static System.Random rnd = new System.Random ();
 	private Jugador actualplayer;
 	private String typ;
+	private List<Arma> weapons; 
+	private readonly int inventory = 6;
 
 	public Equipo (string type,int number,ControlladorPartida controPartida){
 		for (int i = 0; i < number; i++) { // aqui se cambió hasta < porque coge 1 jugador más
@@ -20,6 +22,8 @@ public class Equipo : MonoBehaviour  {
 			players.Add (pl);
 			typ = type;
 		}
+		weapons = new List<Arma> ();
+		weapons.Add (new Arma (100000));//arma inicial balas "infinitas"
 		controPartida.setRandomPositions (players);
 	}
 
@@ -27,16 +31,30 @@ public class Equipo : MonoBehaviour  {
 		GameObject playerGo = players[rnd.Next(players.Count)];
 		actualplayer = playerGo.GetComponent<Jugador> ();
 		actualplayer.setPlayerControl(true);
+		actualplayer.setWeapons (weapons);
 		return actualplayer;
 	}
-	public string getTyo(){
-		return typ;
-	}
-
+		
 	public void dismissPlayer(){
 		actualplayer.setPlayerControl(false);
 	}
 
+	public void addWeapon(List<Arma> playerWeapons, Arma weapon) {
+		if (playerWeapons.Count < 6) {
+			playerWeapons.Add (weapon);			
+		}//else full inventory
+		updateWeapons(playerWeapons);
+	}
+
+	//********* GETTERS & SETTERS **************/
+
+	public void updateWeapons(List<Arma> weapons) {
+		this.weapons = weapons;
+	}
+
+	public string getTyo(){
+		return typ;
+	}
 
 }
 
