@@ -45,6 +45,10 @@ public class ControlladorPartida : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (!actual) {
+			changeTurn ();
+		}
+
 		if (Input.GetKey ("escape")) {
 			Application.Quit ();
 		}
@@ -57,6 +61,7 @@ public class ControlladorPartida : MonoBehaviour
 				changeTurn ();
 			}
 		}
+
 		if(actual.transform.position.x > MIN_X){
 			if (actual.transform.position.y > MIN_Y){
 				if (actual.transform.position.x < MAX_X) {
@@ -106,5 +111,8 @@ public class ControlladorPartida : MonoBehaviour
 	}
 
 
-
+	public void finish(Equipo equipoPerdedor){
+		//Habría que hacer la resolución del fin del juego
+		Application.Quit ();
+	}
 }

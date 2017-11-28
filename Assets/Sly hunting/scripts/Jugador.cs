@@ -12,29 +12,29 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
-	private float estamina = 100;
-	private float vida = 100;
+	public float estamina = 100;
+	public float vida = 100;
 	private Animator animator;
-	public bool izquierda;
-	public bool derecha;
 	private List<Arma> weapons;
-	int currentWeapon;
-
+	private int currentWeapon;
+	private Equipo equipo;
 	public Transform puntoFuego;
-	float fireRate = 0.5f;
-	float nextFire = 0f;
-
-
 	float forceJump = 20.0f;
+
+	public static GameObject create(string type, Equipo equipo){
+		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
+		GameObject pl = Instantiate (player);
+		Jugador jd = pl.GetComponent<Jugador>();
+		jd.setEquipo (equipo);
+		return pl;
+	}
 
 	private void Start()
 	{
 		currentWeapon = 0;
-		izquierda = true;
-		derecha = false;
+		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -76,44 +76,23 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void moveRight(){
-		/*
-        if (toRight) {
-			Vector3 newScale = this.transform.localScale;
-			newScale.x *= -1;
-			this.transform.localScale = newScale;
-			toRight = false;
-		}*/
+		toRight = true;
 		animator.StopPlayback();
 		animator.Play("rightRun");
-		//rb.velocity = new Vector2( speed * Time.deltaTime * FPS, rb.velocity.y);
 		Quaternion aux = this.transform.rotation;
 		aux.y = 0;
 		this.transform.rotation = aux;
-		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
-
-		derecha = true;
-		izquierda = false;
-
+		this.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
 	}
 
 	private void moveLeft(){
-		/*
-		if (!toRight) {
-			Vector3 newScale = this.transform.localScale;
-			newScale.x *= -1;
-			this.transform.localScale = newScale;					
-			toRight = true;
-		}*/
+		toRight = false;
 		animator.StopPlayback();		
 		animator.Play("rightRun");
-		//rb.velocity = new Vector2(speed * Time.deltaTime * FPS, rb.velocity.y);
-		//rb.velocity = new Vector2(-1 * speed * Time.deltaTime * FPS, rb.velocity.y);
 		Quaternion aux = this.transform.rotation;
 		aux.y = 180;
 		this.transform.rotation = aux;
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
-		izquierda = true;
-		derecha = false;
 	}
 
 
@@ -140,7 +119,6 @@ public class Jugador : MonoBehaviour {
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
-		Debug.Log (angle);
 		if ((angle  <= 90.0f && angle >= 0.0f) || (angle <= 361.0f && angle >= 270.0f)) {
 			puntoFuego.transform.Rotate (0, 0, 1);	
 		}
@@ -148,7 +126,6 @@ public class Jugador : MonoBehaviour {
 
 	private void lookDown() {
 		float angle = puntoFuego.transform.localEulerAngles.z;
-		Debug.Log (angle);
 		if ((angle  <= 90.0f && angle >= 0.0f) || (angle <= 361.0f && angle >= 270.0f)) {
 			puntoFuego.transform.Rotate (0, 0, -1);	
 		}
@@ -158,18 +135,8 @@ public class Jugador : MonoBehaviour {
 	private void fire() {	
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-			if (Time.time > nextFire) {
-				nextFire = Time.time + fireRate;
-				if (derecha) {
-					Instantiate (currentW.getPrefab(), puntoFuego.position, puntoFuego.transform.rotation);
-				} else if (izquierda) {
-					Instantiate (currentW.getPrefab(), puntoFuego.position, puntoFuego.transform.rotation);
-				}
-				currentW.decreaseBullet ();
-			}
-		}//else no bullets
-
-
+			currentW.fire (toRight, puntoFuego,this);
+		}
 	}
 	private void idle(){
 		animator.StopPlayback();
@@ -209,10 +176,33 @@ public class Jugador : MonoBehaviour {
 		estamina -= val;
 	}
 
+	public void quitLife(float demage){
+		vida -= demage;
+		if (vida <= 0) {
+			destroy ();
+		}
+	}
+
 	public void setPlayerControl (bool what){
 		if (what == false) {
 			idle ();
+		} else {
+			//restauramos estamina en el turno
+			estamina = 100;
 		}
 		playerControl = what;
+	}
+
+	public void setEquipo(Equipo eq){
+		equipo = eq;
+	}
+	private void destroy(){
+		equipo.removePlayer (this.gameObject);
+		Destroy (this.gameObject);
+	}
+	private void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.tag == "muerteSegura"){
+			destroy ();
+		}
 	}
 }

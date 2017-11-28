@@ -4,18 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class Arma : MonoBehaviour {
+public class Arma  {
 
 	public int bullets;
-	private GameObject bulletPrefab;
+
+	float nextFire = 0f;
+	float fireRate = 0.5f;
+	float demage = 10f; 
+
 
 	public Arma(int bullets)  {
 		this.bullets = bullets;
-		bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 	}
 
-	public GameObject getPrefab () {
-		return bulletPrefab;
+	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual){
+		if (Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Bala.create(puntoFuego,demage,actual);
+			decreaseBullet ();
+		}
 	}
 
 	public void decreaseBullet() {
