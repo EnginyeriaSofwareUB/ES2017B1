@@ -20,6 +20,7 @@ public class Jugador : MonoBehaviour {
 	private int currentWeapon;
 	private Equipo equipo;
 	public Transform puntoFuego;
+
 	public AudioClip monoHerido;
 	private AudioSource source;
 	private float vol = 1.0f;
@@ -174,7 +175,8 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void quitLife(float demage){
-		source.PlayOneShot (monoHerido,vol);
+		//falta saber si es mono o cazador para poder insertar el sonido correcto
+		//source.PlayOneShot (monoHerido,vol);
 		vida -= demage;
 
 		if (vida <= 0) {
