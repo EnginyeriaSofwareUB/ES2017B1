@@ -21,6 +21,7 @@ public class Jugador : MonoBehaviour {
 	private Equipo equipo;
 	public Transform puntoFuego;
 	public AudioClip monoHerido;
+	public AudioClip cazadorHerido;
 
 	private AudioSource source;
 	private float vol = 1.0f;
@@ -176,7 +177,9 @@ public class Jugador : MonoBehaviour {
 
 	public void quitLife(float demage){
 		//falta saber si es mono o cazador
+
 		//source.PlayOneShot (monoHerido,vol);
+
 		vida -= demage;
 
 		if (vida <= 0) {
