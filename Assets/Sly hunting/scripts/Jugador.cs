@@ -149,19 +149,9 @@ public class Jugador : MonoBehaviour {
 		weapons = armas;
 	}
 
-	private void addWeapon(Arma weapon) {
-
-	}
 	//We call this method when we find a box with a new weapon and we have already added to the list
 	public void updateWeaponsTeam(Arma weapon) {
-		ControlladorPartida cp = GetComponent<ControlladorPartida> ();
-		cp.getCurrentTeam ().addWeapon (weapons, weapon);
-	}
-
-	//update weapons of team
-	public void updateWeaponsTeam() {
-		ControlladorPartida cp = (ControlladorPartida) FindObjectOfType (typeof(ControlladorPartida));
-		cp.getCurrentTeam ().updateWeapons(weapons);
+		equipo.addWeapon (weapon);
 	}
 
 	public float getEstamina(){

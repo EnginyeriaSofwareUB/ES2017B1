@@ -41,11 +41,10 @@ public class Equipo   {
 		}
 	}
 
-	public void addWeapon(List<Arma> playerWeapons, Arma weapon) {
-		if (playerWeapons.Count < 6) {
-			playerWeapons.Add (weapon);			
-		}//else full inventory
-		updateWeapons(playerWeapons);
+	public void addWeapon(Arma weapon) {
+		if (weapons.Count < 6) {
+			weapons.Add (weapon);			
+		}
 	}
 
 	//********* GETTERS & SETTERS **************/
@@ -57,10 +56,6 @@ public class Equipo   {
 		if (players.Count == 0) {
 			controlPartida.finish (this);
 		}
-
-	}
-	public void updateWeapons(List<Arma> weapons) {
-		this.weapons = weapons;
 	}
 
 	public int getSizeEquipo(){
