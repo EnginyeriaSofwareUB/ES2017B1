@@ -9,6 +9,7 @@ public class Jugador : MonoBehaviour {
 	public Rigidbody2D rb;
 	float speed = 3.0f; //10 se quito public
 	float FPS = 4.0f; //60 se quito public
+	float estaminaRate = 10;
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
@@ -48,8 +49,7 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float stam = estamina - (estamina/5); //cada acción resta un 1/5 = 20%
-		if (playerControl && stam > 0) {
+		if (playerControl && estamina > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft ();
 
@@ -83,6 +83,7 @@ public class Jugador : MonoBehaviour {
 		aux.y = 0;
 		this.transform.rotation = aux;
 		this.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
+		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 	private void moveLeft(){
@@ -93,6 +94,7 @@ public class Jugador : MonoBehaviour {
 		aux.y = 180;
 		this.transform.rotation = aux;
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
+		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 
@@ -113,6 +115,7 @@ public class Jugador : MonoBehaviour {
 			//Set gravity back to normal at the end of the jump
 			rb.gravityScale = startGravity;
 			jumping = false;
+			estamina -= Time.deltaTime * FPS *estaminaRate;
 		}
 
 	}
