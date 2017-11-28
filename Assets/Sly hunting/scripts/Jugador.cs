@@ -175,7 +175,8 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void quitLife(float demage){
-		source.PlayOneShot (monoHerido,vol);
+		//falta saber si es mono o cazador
+		//source.PlayOneShot (monoHerido,vol);
 		vida -= demage;
 
 		if (vida <= 0) {
