@@ -21,6 +21,7 @@ public class Jugador : MonoBehaviour {
 	private Equipo equipo;
 	public Transform puntoFuego;
 	public AudioClip monoHerido;
+
 	private AudioSource source;
 	private float vol = 1.0f;
 	float forceJump = 20.0f;
