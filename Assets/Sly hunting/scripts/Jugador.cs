@@ -20,6 +20,9 @@ public class Jugador : MonoBehaviour {
 	private int currentWeapon;
 	private Equipo equipo;
 	public Transform puntoFuego;
+	public AudioClip monoHerido;
+	private AudioSource source;
+	private float vol = 1.0f;
 	float forceJump = 20.0f;
 
 	public static GameObject create(string type, Equipo equipo){
@@ -32,6 +35,7 @@ public class Jugador : MonoBehaviour {
 
 	private void Start()
 	{
+		source = GetComponent<AudioSource> ();
 		currentWeapon = 0;
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
@@ -170,7 +174,9 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void quitLife(float demage){
+		source.PlayOneShot (monoHerido,vol);
 		vida -= demage;
+
 		if (vida <= 0) {
 			destroy ();
 		}
