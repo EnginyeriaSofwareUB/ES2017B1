@@ -24,6 +24,9 @@ public class Jugador : MonoBehaviour {
 	public Transform puntoFuego;
 	float forceJump = 20.0f;
 
+	//Variable Antoni
+	public Vector2 ju;
+
     //#xC
     //sonidos:
     
@@ -41,17 +44,22 @@ public class Jugador : MonoBehaviour {
 		return pl;
 	}
 
+	// Hasta aqui correcto
+
 	private void Start()
 	{
 		currentWeapon = 0;
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+		//Antoni
+		ju  = new Vector3(0.0f, 10.0f);
+
 	}
+
 	void Awake () {
 		playerControl = false;
 		//animator.StopPlayback();
@@ -63,10 +71,13 @@ public class Jugador : MonoBehaviour {
 
 		if (playerControl && estamina > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
-				moveLeft ();
+				moveLeft (); 
 
 			} else if (Input.GetKey (KeyCode.RightArrow)) {
 				moveRight ();
+
+			/*} else if (Input.GetKey (KeyCode.Space) && !jumping) {
+				jump ();*/      
 
 			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
 				jump ();
@@ -83,9 +94,19 @@ public class Jugador : MonoBehaviour {
 			} else {
 				idle ();
 			}
-
+            
 		}
-	}
+
+		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+			if (Camera.main.orthographicSize <= 50)
+				Camera.main.orthographicSize += 0.5f;
+		}
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+			if (Camera.main.orthographicSize >= 1)
+				Camera.main.orthographicSize -= 0.5f;
+        }
+    }
 
 	private void moveRight(){
 		toRight = true;
@@ -108,8 +129,7 @@ public class Jugador : MonoBehaviour {
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
 		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
-
-
+		
 	private void jump(){
 		if (!jumping) {
 			jumping = true;
@@ -126,11 +146,21 @@ public class Jugador : MonoBehaviour {
 			}
 			//Set gravity back to normal at the end of the jump
 			rb.gravityScale = startGravity;
+
+			// Antoni
+			rb.AddForce(ju, ForceMode2D.Impulse);
+
 			jumping = false;
 			estamina -= Time.deltaTime * FPS *estaminaRate;
 		}
-
 	}
+
+	/*void jump(){
+		animator.StopPlayback();
+		animator.Play("rightJump");
+		rb.AddForce(ju, ForceMode2D.Impulse);
+        jumping = true;
+    }*/
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
@@ -157,6 +187,7 @@ public class Jugador : MonoBehaviour {
             currentW.fire (toRight, puntoFuego,this);
 		}
 	}
+
 	private void idle(){
 		animator.StopPlayback();
 		animator.Play("rightIdle");
@@ -222,5 +253,11 @@ public class Jugador : MonoBehaviour {
 			destroy ();
 		}
 
+	}
+
+	void OnCollisionStay2D(Collision2D col)
+	{
+		//print("Collision detected with a trigger object");
+		jumping = false;
 	}
 }

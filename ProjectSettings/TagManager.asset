@@ -4,14 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Animal
-  - Hunter
-  - Music
-  - floor
-  - stone
-  - puas
-  - tree
-  - background
   - caja
   layers:
   - Default
