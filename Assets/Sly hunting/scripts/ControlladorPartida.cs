@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +8,23 @@ public class ControlladorPartida : MonoBehaviour
 {
 	Equipo hunters;
 	Equipo animals;
+	Caja cajas;
+
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
-    float startTime = 10.0f; //se cambia a 15 para probar movimientos, inicial 255
+    float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
     public bool estatTimer;
 	public Text txtTimer;
-	private GameObject hunter;
-	private GameObject animal;
+
+
 	public  GameObject actual;
 	private Camera camera;
 	private int numero_jugadores = 3; //son 3 
 	private Equipo actualEquipo;
+
+	private float timeBox = 0.0f;
+	private float startTimeBox = 5.0f;
+
 
 	void Start ()
 	{
@@ -37,27 +42,38 @@ public class ControlladorPartida : MonoBehaviour
 
 		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
 		timer = startTime;
+		timeBox = startTimeBox;
+
 		estatTimer = true;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+		if (!actual || actual.GetComponent<Jugador>().getEstamina() <= 0) {
+			changeTurn ();
+		}
+
 		if (Input.GetKey ("escape")) {
 			Application.Quit ();
 		}
 
 		if (estatTimer) {
 			timer -= Time.deltaTime;
+			timeBox -= Time.deltaTime;
 			txtTimer.text = "Time left: " + Mathf.Round (timer) + " s";
 
 			if (timer <= 0) {
 				changeTurn ();
 			}
+
+			if (timeBox <= 0) {
+				spawnBoxes ();
+			}
 		}
         camera.transform.position = new Vector3(actual.transform.position.x, actual.transform.position.y, -10);
-        /*
-        if (actual.transform.position.x > MIN_X){
+        
+        /*if (actual.transform.position.x > MIN_X){
 			if (actual.transform.position.y > MIN_Y){
 				if (actual.transform.position.x < MAX_X) {
 					if (actual.transform.position.y < MAX_Y){
@@ -92,6 +108,11 @@ public class ControlladorPartida : MonoBehaviour
 		});
 	}
 
+	public void spawnBoxes () {
+		Caja.create ("Caja", this);			
+		timeBox = startTimeBox;
+	}
+
 	public bool checkIfPosEmpty(Vector3 targetPos) {
 		GameObject[] allTerrain = GameObject.FindGameObjectsWithTag ("floor");
 		foreach (GameObject current in allTerrain) {
@@ -101,6 +122,12 @@ public class ControlladorPartida : MonoBehaviour
 		return true;
 	}
 
+	public Equipo getCurrentTeam() {
+		return actualEquipo;
+	}
 
-
+	public void finish(Equipo equipoPerdedor){
+		//Habría que hacer la resolución del fin del juego
+		Application.Quit ();
+	}
 }

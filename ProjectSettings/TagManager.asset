@@ -4,15 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Animal
-  - Hunter
-  - Music
-  - floor
-  - stone
-  - puas
-  - tree
-  - background
-  - Suelo
+  - caja
   layers:
   - Default
   - TransparentFX
