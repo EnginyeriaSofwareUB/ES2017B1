@@ -7,7 +7,7 @@ using System;
 public class Jugador : MonoBehaviour {
 
 	public Rigidbody2D rb;
-	float speed = 3.0f; //10 se quito public
+	float speed = 8.0f; //10 se quito public
 	float FPS = 4.0f; //60 se quito public
 	float estaminaRate = 10;
 	public bool toRight = true;
@@ -24,7 +24,16 @@ public class Jugador : MonoBehaviour {
 	public Transform puntoFuego;
 	float forceJump = 20.0f;
 
-	public static GameObject create(string type, Equipo equipo){
+    //#xC
+    //sonidos:
+    
+    private AudioSource source;
+    public AudioClip jumpSound;
+    //public AudioClip stepSound;
+    public AudioClip deathSound;
+    private Transform pos;
+
+    public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
@@ -104,7 +113,7 @@ public class Jugador : MonoBehaviour {
 		if (!jumping) {
 			jumping = true;
 			animator.StopPlayback();
-			animator.Play("saltar");
+			animator.Play("rightJump");
 
 			float startGravity = rb.gravityScale;
 			rb.gravityScale = 0;
@@ -137,10 +146,14 @@ public class Jugador : MonoBehaviour {
 
 	}
 
-	private void fire() {	
-		Arma currentW = weapons [currentWeapon];
+	private void fire() {
+        //xC
+        animator.StopPlayback();
+        Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-			currentW.fire (toRight, puntoFuego,this);
+            if (toRight) animator.Play("rightShoot");
+            else animator.Play("leftShoot");
+            currentW.fire (toRight, puntoFuego,this);
 		}
 	}
 	private void idle(){

@@ -11,7 +11,11 @@ public class Bala : MonoBehaviour {
 	private Jugador jugador;
 	private float demage;
 
-	public static void create (Transform puntoFuego,float demage, Jugador actual){
+    //xC
+    public AudioClip shootSound;
+    private Transform Posicion;
+
+    public static void create (Transform puntoFuego,float demage, Jugador actual){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 		GameObject b = Instantiate (bulletPrefab, puntoFuego.position, puntoFuego.transform.rotation);
 		Bala bala = b.GetComponent<Bala>();
@@ -31,7 +35,10 @@ public class Bala : MonoBehaviour {
 		if (!jugador.toRight) 
 				rb.AddForce (new Vector2 (-1, inclinacion) * speed, ForceMode2D.Impulse);
 			else rb.AddForce (new Vector2 (1, inclinacion) * speed, ForceMode2D.Impulse);
-	}
+        //xC
+        Posicion = transform;
+        AudioSource.PlayClipAtPoint(shootSound, Posicion.position, 1.0f);
+    }
 
 	void Update() {
 //		rb.velocity = new Vector2 (speed, rb.velocity.y);

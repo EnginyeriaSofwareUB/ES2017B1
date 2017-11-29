@@ -18,7 +18,7 @@ public class ControlladorPartida : MonoBehaviour
 	public int MIN_X, MIN_Y, MAX_X, MAX_Y;
 	public  GameObject actual;
 	private Camera camera;
-	private int numero_jugadores = 1; //son 3 
+	private int numero_jugadores = 3; //son 3 
 	private Equipo actualEquipo;
 
 	private float timeBox = 0.0f;
@@ -74,7 +74,8 @@ public class ControlladorPartida : MonoBehaviour
 			}
 		}
 
-		if(actual.transform.position.x > MIN_X){
+        camera.transform.position = new Vector3(actual.transform.position.x - 10.0f, actual.transform.position.y + 14.0f, -10);
+        /*if (actual.transform.position.x > MIN_X){
 			if (actual.transform.position.y > MIN_Y){
 				if (actual.transform.position.x < MAX_X) {
 					if (actual.transform.position.y < MAX_Y){
@@ -82,7 +83,7 @@ public class ControlladorPartida : MonoBehaviour
 					}
 				}
 			}
-		}
+		}*/
 	}
 
 	public void changeTurn(){
