@@ -55,6 +55,7 @@
      <Compile Include="Assets\Sly hunting\scripts\AspectUtility.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Bala.cs" />
      <Compile Include="Assets\Sly hunting\scripts\BotonesMenu.cs" />
+     <Compile Include="Assets\Sly hunting\scripts\Caja.cs" />
      <Compile Include="Assets\Sly hunting\scripts\ControlladorPartida.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Equipo.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Jugador.cs" />

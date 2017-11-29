@@ -65,5 +65,8 @@ public class Equipo   {
 		return typ;
 	}
 
+	public Jugador getActualPlayer() {
+		return actualplayer;
+	}
 }
 

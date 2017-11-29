@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,8 @@ public class ControlladorPartida : MonoBehaviour
 {
 	Equipo hunters;
 	Equipo animals;
+	Caja cajas;
+
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
     float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
@@ -19,6 +20,10 @@ public class ControlladorPartida : MonoBehaviour
 	private Camera camera;
 	private int numero_jugadores = 1; //son 3 
 	private Equipo actualEquipo;
+
+	private float timeBox = 0.0f;
+	private float startTimeBox = 5.0f;
+
 
 	void Start ()
 	{
@@ -39,6 +44,8 @@ public class ControlladorPartida : MonoBehaviour
 
 		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
 		timer = startTime;
+		timeBox = startTimeBox;
+
 		estatTimer = true;
 	}
 
@@ -55,10 +62,15 @@ public class ControlladorPartida : MonoBehaviour
 
 		if (estatTimer) {
 			timer -= Time.deltaTime;
+			timeBox -= Time.deltaTime;
 			txtTimer.text = "Time left: " + Mathf.Round (timer) + " s";
 
 			if (timer <= 0) {
 				changeTurn ();
+			}
+
+			if (timeBox <= 0) {
+				spawnBoxes ();
 			}
 		}
 
@@ -97,6 +109,11 @@ public class ControlladorPartida : MonoBehaviour
 		});
 	}
 
+	public void spawnBoxes () {
+		cajas = new Caja ("Caja", this);			
+		timeBox = startTimeBox;
+	}
+
 	public bool checkIfPosEmpty(Vector3 targetPos) {
 		GameObject[] allTerrain = GameObject.FindGameObjectsWithTag ("floor");
 		foreach (GameObject current in allTerrain) {
@@ -109,7 +126,6 @@ public class ControlladorPartida : MonoBehaviour
 	public Equipo getCurrentTeam() {
 		return actualEquipo;
 	}
-
 
 	public void finish(Equipo equipoPerdedor){
 		//Habría que hacer la resolución del fin del juego

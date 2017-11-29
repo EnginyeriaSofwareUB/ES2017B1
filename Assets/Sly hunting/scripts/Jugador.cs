@@ -14,7 +14,9 @@ public class Jugador : MonoBehaviour {
 	public bool playerControl;
 	private bool jumping = false;
 	public float estamina = 100;
+
 	public float vida = 100;
+
 	private Animator animator;
 	private List<Arma> weapons;
 	private int currentWeapon;
@@ -145,7 +147,7 @@ public class Jugador : MonoBehaviour {
 		animator.StopPlayback();
 		animator.Play("rightIdle");
 	}
-
+		
 	//****************** GETTERS & SETTERS **********************/
 
 	public void setWeapons(List<Arma> armas) {
@@ -168,7 +170,15 @@ public class Jugador : MonoBehaviour {
 	public void subEstamina(float val){
 		estamina -= val;
 	}
-
+        
+        public float getVida(){
+		return vida;
+	}
+	
+        public void addVida(float val) {
+		vida += val;
+	}
+	
 	public void quitLife(float demage){
 		vida -= demage;
 		if (vida <= 0) {
@@ -197,5 +207,6 @@ public class Jugador : MonoBehaviour {
 		if(other.gameObject.tag == "muerteSegura"){
 			destroy ();
 		}
+
 	}
 }
