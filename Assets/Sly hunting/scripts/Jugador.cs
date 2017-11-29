@@ -13,9 +13,9 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
-	public float estamina = 100;
+	public float estamina = 100.0f;
 
-	public float vida = 100;
+	public float vida = 100.0f;
 
 	private Animator animator;
 	private List<Arma> weapons;
@@ -24,8 +24,6 @@ public class Jugador : MonoBehaviour {
 	public Transform puntoFuego;
 	float forceJump = 20.0f;
 
-	private String tipo;
-
     //#xC
     //sonidos:
     
@@ -33,17 +31,12 @@ public class Jugador : MonoBehaviour {
     public AudioClip jumpSound;
     //public AudioClip stepSound;
     public AudioClip deathSound;
-	public AudioClip hurtMonkey;
-	public AudioClip hurtHunter;
-
     private Transform pos;
 
     public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
-
 		Jugador jd = pl.GetComponent<Jugador>();
-		jd.tipo = type;
 		jd.setEquipo (equipo);
 		return pl;
 	}
@@ -57,7 +50,7 @@ public class Jugador : MonoBehaviour {
 
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		pos = transform;
+
 	}
 	void Awake () {
 		playerControl = false;
@@ -192,7 +185,7 @@ public class Jugador : MonoBehaviour {
 		estamina -= val;
 	}
         
-        public float getVida(){
+	public float getVida(){
 		return vida;
 	}
 	
@@ -201,14 +194,6 @@ public class Jugador : MonoBehaviour {
 	}
 	
 	public void quitLife(float demage){
-		
-
-		if (tipo == "Mono") {
-			AudioSource.PlayClipAtPoint (hurtMonkey, pos.position, 1.0f);	
-		}
-		if (tipo == "Cazador") {
-			AudioSource.PlayClipAtPoint (hurtHunter, pos.position, 1.0f);
-		}
 		vida -= demage;
 		if (vida <= 0) {
 			destroy ();

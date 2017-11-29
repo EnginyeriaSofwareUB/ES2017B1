@@ -12,7 +12,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
-    float startTime = 15.0f; //se cambia a 15 para probar movimientos, inicial 255
+    float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
     public bool estatTimer;
 	public Text txtTimer;
 	public int MIN_X, MIN_Y, MAX_X, MAX_Y;
@@ -52,7 +52,7 @@ public class ControlladorPartida : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!actual || actual.GetComponent<Jugador>().getEstamina() < 0) {
+		if (!actual || actual.GetComponent<Jugador>().getEstamina() <= 0) {
 			changeTurn ();
 		}
 

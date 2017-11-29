@@ -2903,6 +2903,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -4617,7 +4631,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1767180868605716, guid: 0cc4ecd8c8b79fd48978c6038268acd9, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61306445808813428, guid: 0cc4ecd8c8b79fd48978c6038268acd9,
         type: 2}
@@ -10256,10 +10270,6 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 5.597754
-      objectReference: {fileID: 0}
-    - target: {fileID: 1578624103786854, guid: 34dccd34d03be6f448d97bc3c86ed7a6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34dccd34d03be6f448d97bc3c86ed7a6, type: 2}
