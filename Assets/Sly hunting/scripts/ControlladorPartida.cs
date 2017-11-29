@@ -15,8 +15,7 @@ public class ControlladorPartida : MonoBehaviour
     float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
     public bool estatTimer;
 	public Text txtTimer;
-
-
+	public int MIN_X, MIN_Y, MAX_X, MAX_Y;
 	public  GameObject actual;
 	private Camera camera;
 	private int numero_jugadores = 3; //son 3 
@@ -28,7 +27,10 @@ public class ControlladorPartida : MonoBehaviour
 
 	void Start ()
 	{
-		
+		MIN_X = 56;
+		MIN_Y = 18;
+		MAX_X = 660;
+		MAX_Y = 131;
 		camera = Camera.main;
 		actualEquipo = hunters;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
@@ -71,13 +73,13 @@ public class ControlladorPartida : MonoBehaviour
 				spawnBoxes ();
 			}
 		}
-        camera.transform.position = new Vector3(actual.transform.position.x, actual.transform.position.y, -10);
-        
+
+        camera.transform.position = new Vector3(actual.transform.position.x - 10.0f, actual.transform.position.y + 14.0f, -10);
         /*if (actual.transform.position.x > MIN_X){
 			if (actual.transform.position.y > MIN_Y){
 				if (actual.transform.position.x < MAX_X) {
 					if (actual.transform.position.y < MAX_Y){
-						
+						camera.transform.position = new Vector3(actual.transform.position.x, actual.transform.position.y, -10);
 					}
 				}
 			}
