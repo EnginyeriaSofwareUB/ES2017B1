@@ -54,6 +54,7 @@ public class Jugador : MonoBehaviour {
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
+
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		pos = transform;
