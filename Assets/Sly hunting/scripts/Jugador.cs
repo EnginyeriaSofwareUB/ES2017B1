@@ -13,9 +13,9 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
-	public float estamina = 100;
+	public float estamina = 100.0f;
 
-	public float vida = 100;
+	public float vida = 100.0f;
 
 	private Animator animator;
 	private List<Arma> weapons;
@@ -184,7 +184,7 @@ public class Jugador : MonoBehaviour {
 		estamina -= val;
 	}
         
-        public float getVida(){
+	public float getVida(){
 		return vida;
 	}
 	

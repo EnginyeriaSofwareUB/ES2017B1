@@ -52,7 +52,7 @@ public class ControlladorPartida : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!actual || actual.GetComponent<Jugador>().getEstamina() < 0) {
+		if (!actual || actual.GetComponent<Jugador>().getEstamina() <= 0) {
 			changeTurn ();
 		}
 
