@@ -111,7 +111,7 @@ public class ControlladorPartida : MonoBehaviour
 	}
 
 	public void spawnBoxes () {
-		cajas = new Caja ("Caja", this);			
+		Caja.create ("Caja", this);			
 		timeBox = startTimeBox;
 	}
 
