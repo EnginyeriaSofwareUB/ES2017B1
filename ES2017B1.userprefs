@@ -1,5 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sly hunting\scripts\Caja.cs">
     <Files>
       <File FileName="Assets\Sly hunting\scripts\Caja.cs" Line="37" Column="27" />
@@ -7,6 +8,15 @@
       <File FileName="Assets\Sly hunting\scripts\Equipo.cs" Line="61" Column="3" />
       <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="225" Column="3" />
       <File FileName="Assets\Sly hunting\scripts\Bala.cs" Line="22" Column="4" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sly hunting\scripts\ControlladorPartida.cs">
+    <Files>
+      <File FileName="Assets\Sly hunting\scripts\Equipo.cs" Line="45" Column="17" />
+      <File FileName="Assets\Sly hunting\scripts\Jugador.cs" Line="181" Column="16" />
+      <File FileName="Assets\Sly hunting\scripts\Bala.cs" Line="19" Column="25" />
+      <File FileName="Assets\Sly hunting\scripts\ControlladorPartida.cs" Line="10" Column="17" />
+      <File FileName="Assets\Sly hunting\scripts\Arma.cs" Line="13" Column="11" NotebookId="1" />
+>>>>>>> development
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

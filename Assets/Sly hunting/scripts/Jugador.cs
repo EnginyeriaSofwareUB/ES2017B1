@@ -9,32 +9,35 @@ public class Jugador : MonoBehaviour {
 	public Rigidbody2D rb;
 	float speed = 3.0f; //10 se quito public
 	float FPS = 4.0f; //60 se quito public
+	float estaminaRate = 10;
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
 	public float estamina = 100;
-	private float vida = 100;
+
+	public float vida = 100;
+
 	private Animator animator;
-	public bool izquierda;
-	public bool derecha;
 	private List<Arma> weapons;
-	int currentWeapon;
-
+	private int currentWeapon;
+	private Equipo equipo;
 	public Transform puntoFuego;
-	float fireRate = 0.5f;
-	float nextFire = 0f;
-
-
 	float forceJump = 20.0f;
+
+	public static GameObject create(string type, Equipo equipo){
+		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
+		GameObject pl = Instantiate (player);
+		Jugador jd = pl.GetComponent<Jugador>();
+		jd.setEquipo (equipo);
+		return pl;
+	}
 
 	private void Start()
 	{
 		currentWeapon = 0;
-		izquierda = true;
-		derecha = false;
+		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -48,8 +51,7 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float stam = estamina - (estamina/5); //cada acción resta un 1/5 = 20%
-		if (playerControl && stam > 0) {
+		if (playerControl && estamina > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft ();
 
@@ -76,44 +78,25 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void moveRight(){
-		/*
-        if (toRight) {
-			Vector3 newScale = this.transform.localScale;
-			newScale.x *= -1;
-			this.transform.localScale = newScale;
-			toRight = false;
-		}*/
+		toRight = true;
 		animator.StopPlayback();
 		animator.Play("rightRun");
-		//rb.velocity = new Vector2( speed * Time.deltaTime * FPS, rb.velocity.y);
 		Quaternion aux = this.transform.rotation;
 		aux.y = 0;
 		this.transform.rotation = aux;
-		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
-
-		derecha = true;
-		izquierda = false;
-
+		this.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
+		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 	private void moveLeft(){
-		/*
-		if (!toRight) {
-			Vector3 newScale = this.transform.localScale;
-			newScale.x *= -1;
-			this.transform.localScale = newScale;					
-			toRight = true;
-		}*/
+		toRight = false;
 		animator.StopPlayback();		
 		animator.Play("rightRun");
-		//rb.velocity = new Vector2(speed * Time.deltaTime * FPS, rb.velocity.y);
-		//rb.velocity = new Vector2(-1 * speed * Time.deltaTime * FPS, rb.velocity.y);
 		Quaternion aux = this.transform.rotation;
 		aux.y = 180;
 		this.transform.rotation = aux;
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
-		izquierda = true;
-		derecha = false;
+		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 
@@ -134,13 +117,13 @@ public class Jugador : MonoBehaviour {
 			//Set gravity back to normal at the end of the jump
 			rb.gravityScale = startGravity;
 			jumping = false;
+			estamina -= Time.deltaTime * FPS *estaminaRate;
 		}
 
 	}
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
-		Debug.Log (angle);
 		if ((angle  <= 90.0f && angle >= 0.0f) || (angle <= 361.0f && angle >= 270.0f)) {
 			puntoFuego.transform.Rotate (0, 0, 1);	
 		}
@@ -148,7 +131,6 @@ public class Jugador : MonoBehaviour {
 
 	private void lookDown() {
 		float angle = puntoFuego.transform.localEulerAngles.z;
-		Debug.Log (angle);
 		if ((angle  <= 90.0f && angle >= 0.0f) || (angle <= 361.0f && angle >= 270.0f)) {
 			puntoFuego.transform.Rotate (0, 0, -1);	
 		}
@@ -158,18 +140,8 @@ public class Jugador : MonoBehaviour {
 	private void fire() {	
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-			if (Time.time > nextFire) {
-				nextFire = Time.time + fireRate;
-				if (derecha) {
-					Instantiate (currentW.getPrefab(), puntoFuego.position, puntoFuego.transform.rotation);
-				} else if (izquierda) {
-					Instantiate (currentW.getPrefab(), puntoFuego.position, puntoFuego.transform.rotation);
-				}
-				currentW.decreaseBullet ();
-			}
-		}//else no bullets
-
-
+			currentW.fire (toRight, puntoFuego,this);
+		}
 	}
 	private void idle(){
 		animator.StopPlayback();
@@ -182,19 +154,9 @@ public class Jugador : MonoBehaviour {
 		weapons = armas;
 	}
 
-	private void addWeapon(Arma weapon) {
-
-	}
 	//We call this method when we find a box with a new weapon and we have already added to the list
 	public void updateWeaponsTeam(Arma weapon) {
-		ControlladorPartida cp = GetComponent<ControlladorPartida> ();
-		cp.getCurrentTeam ().addWeapon (weapons, weapon);
-	}
-
-	//update weapons of team
-	public void updateWeaponsTeam() {
-		ControlladorPartida cp = (ControlladorPartida) FindObjectOfType (typeof(ControlladorPartida));
-		cp.getCurrentTeam ().updateWeapons(weapons);
+		equipo.addWeapon (weapon);
 	}
 
 	public float getEstamina(){
@@ -208,23 +170,43 @@ public class Jugador : MonoBehaviour {
 	public void subEstamina(float val){
 		estamina -= val;
 	}
+        
+        public float getVida(){
+		return vida;
+	}
+	
+        public void addVida(float val) {
+		vida += val;
+	}
+	
+	public void quitLife(float demage){
+		vida -= demage;
+		if (vida <= 0) {
+			destroy ();
+		}
+	}
 
 	public void setPlayerControl (bool what){
 		if (what == false) {
 			idle ();
+		} else {
+			//restauramos estamina en el turno
+			estamina = 100;
 		}
 		playerControl = what;
 	}
 
-	public float getVida(){
-		return vida;
+	public void setEquipo(Equipo eq){
+		equipo = eq;
 	}
-
-	public void addVida(float val) {
-		vida += val;
+	private void destroy(){
+		equipo.removePlayer (this.gameObject);
+		Destroy (this.gameObject);
 	}
+	private void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.tag == "muerteSegura"){
+			destroy ();
+		}
 
-	public void subVida(float val) {
-		vida -= val;
 	}
 }

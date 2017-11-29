@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 
 
-public class Equipo : MonoBehaviour  {
+public class Equipo   {
 	List<GameObject> players = new List<GameObject>();
 
 	public int puntos;
@@ -14,17 +14,17 @@ public class Equipo : MonoBehaviour  {
 	private String typ;
 	private List<Arma> weapons; 
 	private readonly int inventory = 6;
+	ControlladorPartida controlPartida;
 
-	public Equipo (string type,int number,ControlladorPartida controPartida){
+	public Equipo (string type,int number,ControlladorPartida controlPartida){
 		for (int i = 0; i < number; i++) { // aqui se cambió hasta < porque coge 1 jugador más
-			GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
-			GameObject pl = Instantiate (player);
-			players.Add (pl);
+			players.Add (Jugador.create(type,this));
 			typ = type;
 		}
 		weapons = new List<Arma> ();
 		weapons.Add (new Arma (100000));//arma inicial balas "infinitas"
-		controPartida.setRandomPositions (players);
+		this.controlPartida = controlPartida;
+		controlPartida.setRandomPositions (players);
 	}
 
 	public Jugador pickPlayerToPlay(){
@@ -36,22 +36,31 @@ public class Equipo : MonoBehaviour  {
 	}
 		
 	public void dismissPlayer(){
-		actualplayer.setPlayerControl(false);
+		if (actualplayer) {
+			actualplayer.setPlayerControl (false);
+		}
 	}
 
-	public void addWeapon(List<Arma> playerWeapons, Arma weapon) {
-		if (playerWeapons.Count < 6) {
-			playerWeapons.Add (weapon);			
-		}//else full inventory
-		updateWeapons(playerWeapons);
+	public void addWeapon(Arma weapon) {
+		if (weapons.Count < 6) {
+			weapons.Add (weapon);			
+		}
 	}
 
 	//********* GETTERS & SETTERS **************/
-
-	public void updateWeapons(List<Arma> weapons) {
-		this.weapons = weapons;
+	public void removePlayer(GameObject player){
+		if (player == actualplayer) {
+			actualplayer = null;
+		}
+		players.Remove (player);
+		if (players.Count == 0) {
+			controlPartida.finish (this);
+		}
 	}
 
+	public int getSizeEquipo(){
+		return  players.Count;
+	}
 	public string getTyo(){
 		return typ;
 	}
