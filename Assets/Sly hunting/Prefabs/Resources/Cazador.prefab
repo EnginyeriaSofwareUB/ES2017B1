@@ -452,6 +452,8 @@ MonoBehaviour:
   puntoFuego: {fileID: 4414610134829812}
   jumpSound: {fileID: 8300000, guid: 80aacb2d51590f741ad96bbf1279847c, type: 3}
   deathSound: {fileID: 8300000, guid: e02b5255416376741b7c9e6c67e5d63e, type: 3}
+  hurtMonkey: {fileID: 0}
+  hurtHunter: {fileID: 8300000, guid: 66a03087074484695a628a00945c5fe7, type: 3}
 --- !u!212 &212002328211694408
 SpriteRenderer:
   m_ObjectHideFlags: 1
