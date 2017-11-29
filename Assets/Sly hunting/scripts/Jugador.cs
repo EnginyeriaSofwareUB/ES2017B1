@@ -24,16 +24,19 @@ public class Jugador : MonoBehaviour {
 	public Transform puntoFuego;
 	float forceJump = 20.0f;
 
-    //#xC
-    //sonidos:
-    
-    private AudioSource source;
-    public AudioClip jumpSound;
-    //public AudioClip stepSound;
-    public AudioClip deathSound;
-    private Transform pos;
+	//Variable Antoni
+	public Vector2 ju;
 
-    public static GameObject create(string type, Equipo equipo){
+	//#xC
+	//sonidos:
+
+	private AudioSource source;
+	public AudioClip jumpSound;
+	//public AudioClip stepSound;
+	public AudioClip deathSound;
+	private Transform pos;
+
+	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
@@ -41,17 +44,22 @@ public class Jugador : MonoBehaviour {
 		return pl;
 	}
 
+	// Hasta aqui correcto
+
 	private void Start()
 	{
 		currentWeapon = 0;
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+		//Antoni
+		ju  = new Vector3(0.0f, 10.0f);
+
 	}
+
 	void Awake () {
 		playerControl = false;
 		//animator.StopPlayback();
@@ -63,10 +71,13 @@ public class Jugador : MonoBehaviour {
 
 		if (playerControl && estamina > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
-				moveLeft ();
+				moveLeft (); 
 
 			} else if (Input.GetKey (KeyCode.RightArrow)) {
 				moveRight ();
+
+				/*} else if (Input.GetKey (KeyCode.Space) && !jumping) {
+				jump ();*/      
 
 			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
 				jump ();
@@ -84,6 +95,16 @@ public class Jugador : MonoBehaviour {
 				idle ();
 			}
 
+		}
+
+		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+			if (Camera.main.orthographicSize <= 50)
+				Camera.main.orthographicSize += 0.5f;
+		}
+
+		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
+			if (Camera.main.orthographicSize >= 1)
+				Camera.main.orthographicSize -= 0.5f;
 		}
 	}
 
@@ -109,7 +130,6 @@ public class Jugador : MonoBehaviour {
 		estamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
-
 	private void jump(){
 		if (!jumping) {
 			jumping = true;
@@ -126,11 +146,21 @@ public class Jugador : MonoBehaviour {
 			}
 			//Set gravity back to normal at the end of the jump
 			rb.gravityScale = startGravity;
+
+			// Antoni
+			rb.AddForce(ju, ForceMode2D.Impulse);
+
 			jumping = false;
 			estamina -= Time.deltaTime * FPS *estaminaRate;
 		}
-
 	}
+
+	/*void jump(){
+		animator.StopPlayback();
+		animator.Play("rightJump");
+		rb.AddForce(ju, ForceMode2D.Impulse);
+        jumping = true;
+    }*/
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
@@ -148,20 +178,21 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void fire() {
-        //xC
-        animator.StopPlayback();
-        Arma currentW = weapons [currentWeapon];
+		//xC
+		animator.StopPlayback();
+		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-            if (toRight) animator.Play("rightShoot");
-            else animator.Play("leftShoot");
-            currentW.fire (toRight, puntoFuego,this);
+			if (toRight) animator.Play("rightShoot");
+			else animator.Play("leftShoot");
+			currentW.fire (toRight, puntoFuego,this);
 		}
 	}
+
 	private void idle(){
 		animator.StopPlayback();
 		animator.Play("rightIdle");
 	}
-		
+
 	//****************** GETTERS & SETTERS **********************/
 
 	public void setWeapons(List<Arma> armas) {
@@ -184,15 +215,15 @@ public class Jugador : MonoBehaviour {
 	public void subEstamina(float val){
 		estamina -= val;
 	}
-        
+
 	public float getVida(){
 		return vida;
 	}
-	
-        public void addVida(float val) {
+
+	public void addVida(float val) {
 		vida += val;
 	}
-	
+
 	public void quitLife(float demage){
 		vida -= demage;
 		if (vida <= 0) {
@@ -222,5 +253,11 @@ public class Jugador : MonoBehaviour {
 			destroy ();
 		}
 
+	}
+
+	void OnCollisionStay2D(Collision2D col)
+	{
+		//print("Collision detected with a trigger object");
+		jumping = false;
 	}
 }
