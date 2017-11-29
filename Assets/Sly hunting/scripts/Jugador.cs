@@ -27,7 +27,7 @@ public class Jugador : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-        ju  = new Vector3(0.0f, 5.0f);
+        ju  = new Vector3(0.0f, 10.0f);
        // rb.mass = 1f;
 		//rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -68,15 +68,33 @@ public class Jugador : MonoBehaviour {
 
 			} else if (Input.GetKey (KeyCode.Space) && !jumping) {
 				jump ();
-                jumping = true;
+                
                 
 			
 			} else {
 				idle ();
 			}
-			
-		}
-	}
+            
+
+
+            }
+        
+
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+               
+                if (Camera.main.orthographicSize <= 50) Camera.main.orthographicSize += 0.5f;
+
+            }
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            
+            if (Camera.main.orthographicSize >= 1) Camera.main.orthographicSize -= 0.5f;
+        }
+
+
+
+    }
     void OnCollisionStay2D(Collision2D col)
     {
         
@@ -130,15 +148,16 @@ public class Jugador : MonoBehaviour {
             //rb.gravityScale = 0;
             //rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
             rb.AddForce(ju, ForceMode2D.Impulse);
-            
-            //this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
-			
-			//Set gravity back to normal at the end of the jump
-			//rb.gravityScale = startGravity;
-            
-			
+            jumping = true;
 
-	}
+        //this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
+
+        //Set gravity back to normal at the end of the jump
+        //rb.gravityScale = startGravity;
+
+
+
+    }
 	void idle(){
 		animator.StopPlayback();
 		if (derecha) animator.Play("rightIdle");
