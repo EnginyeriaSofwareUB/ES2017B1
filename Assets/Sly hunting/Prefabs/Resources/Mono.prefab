@@ -473,9 +473,13 @@ MonoBehaviour:
   rb: {fileID: 0}
   toRight: 1
   playerControl: 0
-  izquierda: 1
-  derecha: 0
+  estamina: 100
+  vida: 100
   puntoFuego: {fileID: 4684732345168822}
+  jumpSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  hurtMonkey: {fileID: 8300000, guid: b32efca79bbe946c2858b5f8d5315ca8, type: 3}
+  hurtHunter: {fileID: 0}
 --- !u!212 &212046095939033324
 SpriteRenderer:
   m_ObjectHideFlags: 1
