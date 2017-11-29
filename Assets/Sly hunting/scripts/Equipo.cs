@@ -56,5 +56,8 @@ public class Equipo : MonoBehaviour  {
 		return typ;
 	}
 
+	public Jugador getActualPlayer() {
+		return actualplayer;
+	}
 }
 

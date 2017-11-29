@@ -12,7 +12,7 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
-	private float estamina = 100;
+	public float estamina = 100;
 	private float vida = 100;
 	private Animator animator;
 	public bool izquierda;
@@ -175,7 +175,7 @@ public class Jugador : MonoBehaviour {
 		animator.StopPlayback();
 		animator.Play("rightIdle");
 	}
-
+		
 	//****************** GETTERS & SETTERS **********************/
 
 	public void setWeapons(List<Arma> armas) {
@@ -214,5 +214,17 @@ public class Jugador : MonoBehaviour {
 			idle ();
 		}
 		playerControl = what;
+	}
+
+	public float getVida(){
+		return vida;
+	}
+
+	public void addVida(float val) {
+		vida += val;
+	}
+
+	public void subVida(float val) {
+		vida -= val;
 	}
 }
