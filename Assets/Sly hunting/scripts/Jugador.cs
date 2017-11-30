@@ -13,9 +13,10 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	private bool jumping = false;
-	public float estamina = 100.0f;
-
-	public float vida = 100.0f;
+	public float currentStamina = 0.0f;
+	private float maxStamina = 100.0f;
+	public float currentHealth = 0.0f;
+	private float maxHealth = 100.0f;
 
 	private Animator animator;
 	private List<Arma> weapons;
@@ -23,6 +24,8 @@ public class Jugador : MonoBehaviour {
 	private Equipo equipo;
 	public Transform puntoFuego;
 	float forceJump = 20.0f;
+	public GameObject healthBar;
+	public GameObject staminaBar;
 
 	//Variable Antoni
 	public Vector2 ju;
@@ -49,6 +52,8 @@ public class Jugador : MonoBehaviour {
 	private void Start()
 	{
 		currentWeapon = 0;
+		currentHealth = maxHealth;
+		currentStamina = maxStamina;
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
@@ -69,7 +74,7 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (playerControl && estamina > 0) {
+		if (playerControl && currentStamina > 0) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
@@ -97,6 +102,9 @@ public class Jugador : MonoBehaviour {
 
 		}
 
+		setHealthBar ();
+		setStaminaBar ();
+
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			if (Camera.main.orthographicSize <= 50)
 				Camera.main.orthographicSize += 0.5f;
@@ -116,7 +124,7 @@ public class Jugador : MonoBehaviour {
 		aux.y = 0;
 		this.transform.rotation = aux;
 		this.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
-		estamina -= Time.deltaTime * FPS *estaminaRate;
+		currentStamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 	private void moveLeft(){
@@ -127,7 +135,7 @@ public class Jugador : MonoBehaviour {
 		aux.y = 180;
 		this.transform.rotation = aux;
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
-		estamina -= Time.deltaTime * FPS *estaminaRate;
+		currentStamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
 	private void jump(){
@@ -151,7 +159,7 @@ public class Jugador : MonoBehaviour {
 			rb.AddForce(ju, ForceMode2D.Impulse);
 
 			jumping = false;
-			estamina -= Time.deltaTime * FPS *estaminaRate;
+			currentStamina -= Time.deltaTime * FPS *estaminaRate;
 		}
 	}
 
@@ -182,8 +190,7 @@ public class Jugador : MonoBehaviour {
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-			if (toRight) animator.Play("rightShoot");
-			else animator.Play("leftShoot");
+			animator.Play("rightShoot");
 			currentW.fire (toRight, puntoFuego,this);
 		}
 	}
@@ -205,28 +212,28 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public float getEstamina(){
-		return estamina;
+		return currentStamina;
 	}
 
 	public void addEstamina(float val){
-		estamina += val;
+		currentStamina += val;
 	}
 
 	public void subEstamina(float val){
-		estamina -= val;
+		currentStamina -= val;
 	}
 
 	public float getVida(){
-		return vida;
+		return currentHealth;
 	}
 
 	public void addVida(float val) {
-		vida += val;
+		currentHealth += val;
 	}
 
 	public void quitLife(float demage){
-		vida -= demage;
-		if (vida <= 0) {
+		currentHealth -= demage;
+		if (currentHealth <= 0) {
 			destroy ();
 		}
 	}
@@ -236,7 +243,7 @@ public class Jugador : MonoBehaviour {
 			idle ();
 		} else {
 			//restauramos estamina en el turno
-			estamina = 100;
+			currentStamina = 100;
 		}
 		playerControl = what;
 	}
@@ -244,6 +251,15 @@ public class Jugador : MonoBehaviour {
 	public void setEquipo(Equipo eq){
 		equipo = eq;
 	}
+
+	private void setHealthBar() {
+		healthBar.transform.localScale = new Vector3 (Mathf.Clamp(currentHealth / maxHealth,0f ,1f), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+	}
+
+	private void setStaminaBar() {
+		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
+	}
+
 	private void destroy(){
 		equipo.removePlayer (this.gameObject);
 		Destroy (this.gameObject);
