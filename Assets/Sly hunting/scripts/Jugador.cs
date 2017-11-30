@@ -102,8 +102,8 @@ public class Jugador : MonoBehaviour {
 
 		}
 
-		//setHealthBar ();
-		//setStaminaBar ();
+		setHealthBar ();
+		setStaminaBar ();
 
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			if (Camera.main.orthographicSize <= 50)
@@ -257,13 +257,13 @@ public class Jugador : MonoBehaviour {
 		equipo = eq;
 	}
 
-	/*private void setHealthBar() {
+	private void setHealthBar() {
 		healthBar.transform.localScale = new Vector3 (Mathf.Clamp(currentHealth / maxHealth,0f ,1f), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
 
 	private void setStaminaBar() {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
-	}*/
+	}
 
 	public void destroy(){
 		equipo.removePlayer (this.gameObject);

@@ -45,10 +45,10 @@ public class Bala : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if(other.gameObject.tag == "Player"){
+		if (other.gameObject.tag == "Player") {
 			Jugador jugadoratacado = other.gameObject.GetComponent<Jugador> ();
 			jugadoratacado.quitLife (demage);
-		}else{
+		} else if (other.gameObject.tag == "floor") {
 			Destroy (other.gameObject);
 		}
 		Destroy (this.gameObject);

@@ -23,7 +23,7 @@ public class ControlladorPartida : MonoBehaviour
 	private Equipo actualEquipo;
 
 	private float timeBox = 0.0f;
-	private float startTimeBox = 20.0f;
+	private float startTimeBox = 2.0f;
 
 
 	void Start ()
@@ -100,9 +100,9 @@ public class ControlladorPartida : MonoBehaviour
 		terrain = GameObject.FindGameObjectsWithTag ("floor");
 		objects.ForEach (obj => {
 			Vector3 newPos = terrain[UnityEngine.Random.Range(0,terrain.Length)].transform.position;
-			newPos.y += 5;
+			newPos.y += 9;
 			while (!checkIfPosEmpty (newPos)) {
-				newPos.y += 5;
+				newPos.y += 9;
 			}
 			obj.transform.position = newPos;
 		});
