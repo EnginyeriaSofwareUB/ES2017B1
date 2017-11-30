@@ -9,10 +9,10 @@ public class Jugador : MonoBehaviour {
 	public Rigidbody2D rb;
 	float speed = 8.0f; //10 se quito public
 	float FPS = 4.0f; //60 se quito public
-	float estaminaRate = 10;
+	float estaminaRate = 2.0f;
 	public bool toRight = true;
 	public bool playerControl;
-	private bool jumping = false;
+	public bool jumping = false;
 	public float currentStamina = 0.0f;
 	private float maxStamina = 100.0f;
 	public float currentHealth = 0.0f;
@@ -102,8 +102,8 @@ public class Jugador : MonoBehaviour {
 
 		}
 
-		setHealthBar ();
-		setStaminaBar ();
+		//setHealthBar ();
+		//setStaminaBar ();
 
 		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			if (Camera.main.orthographicSize <= 50)
@@ -190,7 +190,12 @@ public class Jugador : MonoBehaviour {
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
-			animator.Play("rightShoot");
+			// Animación correcta
+			/*if (!toRight) animator.Play("rightShoot");
+			else animator.Play("leftShoot");*/
+
+			// Michael
+				animator.Play("rightShoot");
 			currentW.fire (toRight, puntoFuego,this);
 		}
 	}
@@ -252,28 +257,29 @@ public class Jugador : MonoBehaviour {
 		equipo = eq;
 	}
 
-	private void setHealthBar() {
+	/*private void setHealthBar() {
 		healthBar.transform.localScale = new Vector3 (Mathf.Clamp(currentHealth / maxHealth,0f ,1f), healthBar.transform.localScale.y, healthBar.transform.localScale.z);
 	}
 
 	private void setStaminaBar() {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
-	}
+	}*/
 
-	private void destroy(){
+	public void destroy(){
 		equipo.removePlayer (this.gameObject);
 		Destroy (this.gameObject);
 	}
-	private void OnTriggerEnter2D(Collider2D other) {
+		
+	/*private void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.tag == "muerteSegura"){
 			destroy ();
 		}
 
-	}
+	}*/
 
-	void OnCollisionStay2D(Collision2D col)
+	/*void OnCollisionStay2D(Collision2D col)
 	{
 		//print("Collision detected with a trigger object");
 		jumping = false;
-	}
+	}*/
 }

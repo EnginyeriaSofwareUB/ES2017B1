@@ -12,7 +12,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
-	float startTime = 255.0f; //se cambia a 15 para probar movimientos, inicial 255
+	float startTime = 15.0f; //se cambia a 15 para probar movimientos, inicial 255
 	public bool estatTimer;
 	public Text txtTimer;
 
@@ -23,7 +23,7 @@ public class ControlladorPartida : MonoBehaviour
 	private Equipo actualEquipo;
 
 	private float timeBox = 0.0f;
-	private float startTimeBox = 5.0f;
+	private float startTimeBox = 20.0f;
 
 
 	void Start ()

@@ -10,7 +10,7 @@ public class Arma  {
 
 	float nextFire = 0f;
 	float fireRate = 0.5f;
-	float demage = 10f; 
+	float demage = 20.0f; 
 
 
 	public Arma(int bullets)  {
