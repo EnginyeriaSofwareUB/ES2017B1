@@ -65,7 +65,7 @@ public class Jugador : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		Posicion = transform;
+		//Posicion = transform;
 		//Antoni
 		ju  = new Vector3(0.0f, 10.0f);
 
@@ -248,7 +248,7 @@ public class Jugador : MonoBehaviour {
 		currentHealth -= demage;
 
 
-
+		Posicion = transform;
 		if (tipo == "Cazador") {
 			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, 1.0f);
 		}
