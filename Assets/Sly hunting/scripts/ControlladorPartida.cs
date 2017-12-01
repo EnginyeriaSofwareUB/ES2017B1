@@ -6,6 +6,16 @@ using System;
 
 public class ControlladorPartida : MonoBehaviour
 {
+	// Añadido hasta ...
+	private Vector2 velocity;
+	private float smoothTimeY = 0.2f;
+	private float smoothTimeX = 0.2f;
+	private bool bounds = true;
+	private Vector3 minCameraPos;
+	private Vector3 maxCameraPos;
+	private float size = 60.0f;
+	// ... aqui
+
 	Equipo hunters;
 	Equipo animals;
 	Caja cajas;
@@ -23,13 +33,15 @@ public class ControlladorPartida : MonoBehaviour
 	private Equipo actualEquipo;
 
 	private float timeBox = 0.0f;
-	private float startTimeBox = 2.0f;
+	private float startTimeBox = 10.0f;
 
 
 	void Start ()
 	{
 
 		camera = Camera.main;
+		// Añadido 
+		camera.orthographicSize = size;
 		actualEquipo = hunters;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
@@ -45,6 +57,15 @@ public class ControlladorPartida : MonoBehaviour
 		timeBox = startTimeBox;
 
 		estatTimer = true;
+
+		// Rango de limites de la camara
+		minCameraPos.x = 87.0f;
+		maxCameraPos.x = 636.0f;
+		minCameraPos.y = 53.5f;
+		maxCameraPos.y = 140.0f;
+		minCameraPos.z = -10.0f;
+		maxCameraPos.z = -10.0f;
+
 	}
 
 	// Update is called once per frame
@@ -71,7 +92,19 @@ public class ControlladorPartida : MonoBehaviour
 				spawnBoxes ();
 			}
 		}
-		camera.transform.position = new Vector3(actual.transform.position.x, actual.transform.position.y, -10);
+
+		float posX = Mathf.SmoothDamp (camera.transform.position.x, actual.transform.position.x, ref velocity.x, smoothTimeX);
+		float posy = Mathf.SmoothDamp (camera.transform.position.y, actual.transform.position.y, ref velocity.y, smoothTimeY);
+
+		camera.transform.position = new Vector3 (posX, posy, camera.transform.position.z);
+		if (bounds) {
+			camera.transform.position = new Vector3 (Mathf.Clamp (camera.transform.position.x, minCameraPos.x, maxCameraPos.x),
+				Mathf.Clamp (camera.transform.position.y, minCameraPos.y, maxCameraPos.y),
+				Mathf.Clamp (camera.transform.position.z, minCameraPos.z, maxCameraPos.z));
+		}
+
+
+		//camera.transform.position = new Vector3(actual.transform.position.x + 6, actual.transform.position.y + 6, -10);
 
 		/*if (actual.transform.position.x > MIN_X){
 			if (actual.transform.position.y > MIN_Y){

@@ -105,7 +105,7 @@ public class Jugador : MonoBehaviour {
 		setHealthBar ();
 		setStaminaBar ();
 
-		if (Input.GetAxis("Mouse ScrollWheel") < 0) {
+		/*if (Input.GetAxis("Mouse ScrollWheel") < 0) {
 			if (Camera.main.orthographicSize <= 50)
 				Camera.main.orthographicSize += 0.5f;
 		}
@@ -113,7 +113,7 @@ public class Jugador : MonoBehaviour {
 		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
 			if (Camera.main.orthographicSize >= 1)
 				Camera.main.orthographicSize -= 0.5f;
-		}
+		}*/
 	}
 
 	private void moveRight(){
@@ -142,7 +142,7 @@ public class Jugador : MonoBehaviour {
 		if (!jumping) {
 			jumping = true;
 			animator.StopPlayback();
-			animator.Play("rightJump");
+			//animator.Play("rightJump");
 
 			float startGravity = rb.gravityScale;
 			rb.gravityScale = 0;

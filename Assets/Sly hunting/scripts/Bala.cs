@@ -48,7 +48,7 @@ public class Bala : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			Jugador jugadoratacado = other.gameObject.GetComponent<Jugador> ();
 			jugadoratacado.quitLife (demage);
-		} else if (other.gameObject.tag == "floor") {
+		} else if (other.gameObject.tag == "floor" || other.gameObject.tag == "stone" || other.gameObject.tag == "tree") {
 			Destroy (other.gameObject);
 		}
 		Destroy (this.gameObject);
