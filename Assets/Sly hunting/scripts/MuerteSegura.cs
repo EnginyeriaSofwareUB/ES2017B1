@@ -8,6 +8,8 @@ public class MuerteSegura : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			Jugador player = other.gameObject.GetComponent<Jugador> ();
 			player.destroy ();
+		} else if (other.gameObject.tag == "caja") {
+			Destroy (other.gameObject);
 		}
 	}
 
