@@ -835,8 +835,10 @@ MonoBehaviour:
   healthBar: {fileID: 1464820916262578}
   staminaBar: {fileID: 1417180683028056}
   ju: {x: 0, y: 0}
-  jumpSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 80aacb2d51590f741ad96bbf1279847c, type: 3}
+  hurtMonkey: {fileID: 8300000, guid: 26cdb0899b3c54deaa8464152b17a01f, type: 3}
+  hurtHunter: {fileID: 8300000, guid: 70b299fcc68764c37ac645f316e43e3c, type: 3}
+  deathSound: {fileID: 8300000, guid: e02b5255416376741b7c9e6c67e5d63e, type: 3}
 --- !u!114 &114988713871518322
 MonoBehaviour:
   m_ObjectHideFlags: 1
