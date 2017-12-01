@@ -36,21 +36,27 @@ public class Jugador : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip jumpSound;
 	//public AudioClip stepSound;
+	public AudioClip hurtMonkey;
+	public AudioClip hurtHunter;
 	public AudioClip deathSound;
-	private Transform pos;
+	private Transform Posicion;
+	private String tipo;
 
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
+		jd.tipo = type;
 		jd.setEquipo (equipo);
 		return pl;
+	
 	}
 
 	// Hasta aqui correcto
 
 	private void Start()
 	{
+		
 		currentWeapon = 0;
 		currentHealth = maxHealth;
 		currentStamina = maxStamina;
@@ -59,7 +65,7 @@ public class Jugador : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb.mass = 15000f;
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
+		Posicion = transform;
 		//Antoni
 		ju  = new Vector3(0.0f, 10.0f);
 
@@ -225,6 +231,7 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void subEstamina(float val){
+		
 		currentStamina -= val;
 	}
 
@@ -237,7 +244,17 @@ public class Jugador : MonoBehaviour {
 	}
 
 	public void quitLife(float demage){
+		
 		currentHealth -= demage;
+
+
+
+		if (tipo == "Cazador") {
+			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, 1.0f);
+		}
+		if (tipo == "Mono") {
+			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, 1.0f);
+		}
 		if (currentHealth <= 0) {
 			destroy ();
 		}
