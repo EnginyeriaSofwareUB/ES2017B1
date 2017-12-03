@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\HealthBar.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Arma.cs" />
      <Compile Include="Assets\Sly hunting\scripts\AspectUtility.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Bala.cs" />
@@ -60,11 +59,9 @@
      <Compile Include="Assets\Sly hunting\scripts\ControlladorPartida.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Equipo.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Jugador.cs" />
-     <Compile Include="Assets\Sly hunting\scripts\Jugador2.cs" />
      <Compile Include="Assets\Sly hunting\scripts\MuerteSegura.cs" />
      <Compile Include="Assets\Sly hunting\scripts\OptionsScripts\ControladorAudio.cs" />
      <Compile Include="Assets\Sly hunting\scripts\OptionsScripts\ControladorBotons.cs" />
-     <Compile Include="Assets\Sly hunting\scripts\TurnController.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
