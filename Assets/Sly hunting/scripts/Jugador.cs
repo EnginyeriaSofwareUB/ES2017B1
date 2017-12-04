@@ -287,16 +287,6 @@ public class Jugador : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 		
-	/*private void OnTriggerEnter2D(Collider2D other) {
-		if(other.gameObject.tag == "muerteSegura"){
-			destroy ();
-		}
 
-	}*/
 
-	/*void OnCollisionStay2D(Collision2D col)
-	{
-		//print("Collision detected with a trigger object");
-		jumping = false;
-	}*/
 }

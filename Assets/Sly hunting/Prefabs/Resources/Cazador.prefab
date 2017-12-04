@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4631881829538380}
   - component: {fileID: 212002328211694408}
   - component: {fileID: 61149277437250764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4597177621846514}
   - component: {fileID: 212859626981435182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 224658012517387726}
   - component: {fileID: 222688546810933070}
   - component: {fileID: 114616978314099250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 223884514082282770}
   - component: {fileID: 114169117485566158}
   - component: {fileID: 114533692328736256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StaminaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4312519273691824}
   - component: {fileID: 212461293036840434}
   - component: {fileID: 61903266531693062}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 224470886251970932}
   - component: {fileID: 222966250998168822}
   - component: {fileID: 114747116686616576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4501441501209754}
   - component: {fileID: 212186608045752018}
   - component: {fileID: 61300354489286334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 224664661386571480}
   - component: {fileID: 222494275528751542}
   - component: {fileID: 114653794089579572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4078231759439804}
   - component: {fileID: 212459550091971326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4717318940196920}
   - component: {fileID: 212424523052894800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 95725423612815312}
   - component: {fileID: 114732029633008924}
   - component: {fileID: 61850013137411702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cazador
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4414610134829812}
   - component: {fileID: 33071051662935600}
   - component: {fileID: 23635958976576468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: puntoFuego
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 223510660173863084}
   - component: {fileID: 114372940652728666}
   - component: {fileID: 114791445455191646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 224016456241261546}
   - component: {fileID: 222466069157443404}
   - component: {fileID: 114905490768928924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 224794673532845206}
   - component: {fileID: 222706994317565560}
   - component: {fileID: 114366049202818792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 224371503135003642}
   - component: {fileID: 222404799500823300}
   - component: {fileID: 114170747687353910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
