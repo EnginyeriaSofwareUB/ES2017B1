@@ -15,6 +15,7 @@ public class Equipo   {
 	private List<Arma> weapons; 
 	private readonly int inventory = 6;
 	ControlladorPartida controlPartida;
+	private int order;
 
 	public Equipo (string type,int number,ControlladorPartida controlPartida){
 		for (int i = 0; i < number; i++) { // aqui se cambió hasta < porque coge 1 jugador más
@@ -28,10 +29,14 @@ public class Equipo   {
 	}
 
 	public Jugador pickPlayerToPlay(){
-		GameObject playerGo = players[rnd.Next(players.Count)];
+		if (order == players.Count) {
+			order = 0;
+		}
+		GameObject playerGo = players[order];
 		actualplayer = playerGo.GetComponent<Jugador> ();
 		actualplayer.setPlayerControl(true);
 		actualplayer.setWeapons (weapons);
+		order++;
 		return actualplayer;
 	}
 		
