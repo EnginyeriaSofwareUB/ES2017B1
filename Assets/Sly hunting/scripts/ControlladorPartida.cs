@@ -104,19 +104,6 @@ public class ControlladorPartida : MonoBehaviour
 				Mathf.Clamp (camera.transform.position.y, minCameraPos.y, maxCameraPos.y),
 				Mathf.Clamp (camera.transform.position.z, minCameraPos.z, maxCameraPos.z));
 		}
-
-
-		//camera.transform.position = new Vector3(actual.transform.position.x + 6, actual.transform.position.y + 6, -10);
-
-		/*if (actual.transform.position.x > MIN_X){
-			if (actual.transform.position.y > MIN_Y){
-				if (actual.transform.position.x < MAX_X) {
-					if (actual.transform.position.y < MAX_Y){
-						
-					}
-				}
-			}
-		}*/
 	}
 
 	public void changeTurn(){
@@ -163,6 +150,8 @@ public class ControlladorPartida : MonoBehaviour
 
 	public void finish(Equipo equipoPerdedor){
 		//Habría que hacer la resolución del fin del juego
+
+		Debug.Log ("finishh");
 		Application.Quit ();
 	}
 }

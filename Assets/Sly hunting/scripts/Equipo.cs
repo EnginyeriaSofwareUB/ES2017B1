@@ -22,6 +22,7 @@ public class Equipo   {
 			players.Add (Jugador.create(type,this));
 			typ = type;
 		}
+		order = 0;
 		weapons = new List<Arma> ();
 		weapons.Add (new Arma (100000));//arma inicial balas "infinitas"
 		this.controlPartida = controlPartida;
@@ -29,8 +30,11 @@ public class Equipo   {
 	}
 
 	public Jugador pickPlayerToPlay(){
-		if (order == players.Count) {
+		if (order >= players.Count) {
 			order = 0;
+		}else if (players.Count == 0){
+			controlPartida.finish (this);
+			return null;
 		}
 		GameObject playerGo = players[order];
 		actualplayer = playerGo.GetComponent<Jugador> ();
