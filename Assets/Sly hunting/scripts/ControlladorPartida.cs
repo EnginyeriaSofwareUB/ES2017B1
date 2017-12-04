@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+
 public class ControlladorPartida : MonoBehaviour
 {
 	// Añadido hasta ...
@@ -42,7 +43,8 @@ public class ControlladorPartida : MonoBehaviour
 		camera = Camera.main;
 		// Añadido 
 		camera.orthographicSize = size;
-		actualEquipo = hunters;
+
+		actualEquipo = (UnityEngine.Random.value > 0.5f) ? hunters : animals;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
 	}
