@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 50339381914606452}
   - component: {fileID: 95725423612815312}
   - component: {fileID: 114732029633008924}
-  - component: {fileID: 61850013137411702}
+  - component: {fileID: 70544212568401688}
   m_Layer: 8
   m_Name: Cazador
   m_TagString: Player
@@ -387,7 +387,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578624103786854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 354.68, y: 74.2, z: 0}
+  m_LocalPosition: {x: 25.53494, y: 13.47, z: 0}
   m_LocalScale: {x: 1.1368667, y: 1.0109406, z: 1}
   m_Children:
   - {fileID: 4312519273691824}
@@ -506,31 +506,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0027866, y: 1.1482613}
   m_EdgeRadius: 0
---- !u!61 &61850013137411702
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1578624103786854}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.66112304, y: -1.0300002}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.597754, y: 11.53}
-  m_EdgeRadius: 0
 --- !u!61 &61903266531693062
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -556,6 +531,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.302336, y: 11.116183}
   m_EdgeRadius: 0
+--- !u!70 &70544212568401688
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578624103786854}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.3962691, y: -1.0750268}
+  m_Size: {x: 4.255832, y: 11.273489}
+  m_Direction: 0
 --- !u!95 &95725423612815312
 Animator:
   serializedVersion: 3
