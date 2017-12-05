@@ -27,7 +27,6 @@ public class ControlladorPartida : MonoBehaviour
 	public bool estatTimer;
 	public Text txtTimer;
 
-
 	public  GameObject actual;
 	private Camera camera;
 	private int numero_jugadores = 3; //son 3 
@@ -67,7 +66,6 @@ public class ControlladorPartida : MonoBehaviour
 		maxCameraPos.y = 140.0f;
 		minCameraPos.z = -10.0f;
 		maxCameraPos.z = -10.0f;
-
 	}
 
 	// Update is called once per frame

@@ -42,6 +42,9 @@ public class Jugador : MonoBehaviour {
 	private Transform Posicion;
 	private String tipo;
 
+	//Modificación SonidoFX
+	private int controlSonido;
+
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
@@ -68,6 +71,9 @@ public class Jugador : MonoBehaviour {
 		//Posicion = transform;
 		//Antoni
 		ju  = new Vector3(0.0f, 10.0f);
+
+		//Modificación SonidoFX
+		controlSonido = PlayerPrefs.GetInt("Sonido");
 
 	}
 
@@ -249,10 +255,10 @@ public class Jugador : MonoBehaviour {
 
 
 		Posicion = transform;
-		if (tipo == "Cazador") {
+		if (tipo == "Cazador" && controlSonido != 0) {
 			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, 1.0f);
 		}
-		if (tipo == "Mono") {
+		if (tipo == "Mono" && controlSonido != 0) {
 			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, 1.0f);
 		}
 		if (currentHealth <= 0) {
