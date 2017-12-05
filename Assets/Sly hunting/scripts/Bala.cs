@@ -15,6 +15,9 @@ public class Bala : MonoBehaviour {
     public AudioClip shootSound;
     private Transform Posicion;
 
+	// Modificación SonidoFX
+	private int controlSonido;
+
     public static void create (Transform puntoFuego,float demage, Jugador actual){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 		GameObject b = Instantiate (bulletPrefab, puntoFuego.position, puntoFuego.transform.rotation);
@@ -37,7 +40,13 @@ public class Bala : MonoBehaviour {
 			else rb.AddForce (new Vector2 (1, inclinacion) * speed, ForceMode2D.Impulse);
         //xC
         Posicion = transform;
-        AudioSource.PlayClipAtPoint(shootSound, Posicion.position, 1.0f);
+
+		// Modificación SonidoFX
+		controlSonido = PlayerPrefs.GetInt("Sonido");
+		if (controlSonido != 0)
+		{
+			AudioSource.PlayClipAtPoint(shootSound, Posicion.position, 1.0f);
+		}
     }
 
 	void Update() {
