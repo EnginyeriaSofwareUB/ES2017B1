@@ -136,6 +136,7 @@ public class Jugador : MonoBehaviour {
 		aux.y = 0;
 		this.transform.rotation = aux;
 		this.transform.Translate (Vector3.right * speed * Time.deltaTime * FPS);
+		barPosition ("right");
 		currentStamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
@@ -147,9 +148,36 @@ public class Jugador : MonoBehaviour {
 		aux.y = 180;
 		this.transform.rotation = aux;
 		this.transform.Translate(Vector3.right * speed * Time.deltaTime * FPS);
+		barPosition ("left");
 		currentStamina -= Time.deltaTime * FPS *estaminaRate;
 	}
 
+	private void barPosition(String dir) {
+		GameObject healthBar = transform.FindChild("HealthBar").gameObject;
+		GameObject staminaBar = transform.FindChild("StaminaBar").gameObject;
+		switch(dir) {
+		case "left":
+			if (healthBar.transform.localPosition.z < 0) {
+				Vector3 pos = healthBar.transform.localPosition;
+				pos.z *= -1;
+				healthBar.transform.localPosition = pos;
+				pos = staminaBar.transform.localPosition;
+				pos.z *= -1;
+				staminaBar.transform.localPosition = pos;
+			}
+			break;
+		case "right":
+			if (healthBar.transform.localPosition.z > 0) {
+				Vector3 pos = healthBar.transform.localPosition;
+				pos.z *= -1;
+				healthBar.transform.localPosition = pos;
+				pos = staminaBar.transform.localPosition;
+				pos.z *= -1;
+				staminaBar.transform.localPosition = pos;
+			}
+			break;
+		}
+	}
 	private void jump(){
 		if (!jumping) {
 			jumping = true;
