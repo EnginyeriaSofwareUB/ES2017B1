@@ -153,8 +153,8 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void barPosition(String dir) {
-		GameObject healthBar = transform.FindChild("HealthBar").gameObject;
-		GameObject staminaBar = transform.FindChild("StaminaBar").gameObject;
+		GameObject healthBar = transform.Find("HealthBar").gameObject;
+		GameObject staminaBar = transform.Find("StaminaBar").gameObject;
 		switch(dir) {
 		case "left":
 			if (healthBar.transform.localPosition.z < 0) {
