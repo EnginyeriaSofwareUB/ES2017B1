@@ -10,7 +10,7 @@ public class Arma  {
 
 	float nextFire = 0f;
 	float fireRate = 0.5f;
-	float demage = 20.0f; 
+	float damage = 20.0f; 
 
 
 	public Arma(int bullets)  {
@@ -20,7 +20,7 @@ public class Arma  {
 	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual){
 		if (Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			Bala.create(puntoFuego,demage,actual);
+			Bala.create(puntoFuego, damage, actual);
 			decreaseBullet ();
 		}
 	}
