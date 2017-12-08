@@ -4313,6 +4313,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114732029633008924, guid: 34dccd34d03be6f448d97bc3c86ed7a6,
+        type: 2}
+      propertyPath: jumping
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34dccd34d03be6f448d97bc3c86ed7a6, type: 2}
   m_IsPrefabParent: 0

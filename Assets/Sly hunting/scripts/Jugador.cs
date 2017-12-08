@@ -23,13 +23,12 @@ public class Jugador : MonoBehaviour {
 	private int currentWeapon;
 	private Equipo equipo;
 	public Transform puntoFuego;
-	float forceJump = 20.0f;
+	float forceJump = 50.0f;
 	public GameObject healthBar;
 	public GameObject staminaBar;
 
 	//Variable Antoni
 	public Vector2 ju;
-
 	//#xC
 	//sonidos:
 
@@ -66,12 +65,8 @@ public class Jugador : MonoBehaviour {
 		toRight = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
-		rb.mass = 15000f;
-		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-		//Posicion = transform;
-		//Antoni
 		ju  = new Vector3(0.0f, 10.0f);
-
+		rb.mass = 1f;
 		//Modificación SonidoFX
 		controlSonido = PlayerPrefs.GetInt("Sonido");
 
@@ -181,25 +176,7 @@ public class Jugador : MonoBehaviour {
 	private void jump(){
 		if (!jumping) {
 			jumping = true;
-			animator.StopPlayback();
-			//animator.Play("rightJump");
-
-			float startGravity = rb.gravityScale;
-			rb.gravityScale = 0;
-			//rb.velocity = new Vector2 (rb.velocity.x, speed * Time.deltaTime * FPS);
-			this.transform.Translate(Vector2.up * forceJump * Time.deltaTime * FPS);
-			float timer = 0f;
-			while (timer < 2f) {
-				timer += Time.deltaTime;
-			}
-			//Set gravity back to normal at the end of the jump
-			rb.gravityScale = startGravity;
-
-			// Antoni
-			rb.AddForce(ju, ForceMode2D.Impulse);
-
-			jumping = false;
-			currentStamina -= Time.deltaTime * FPS *estaminaRate;
+			rb.velocity = new Vector2 (rb.velocity.x, forceJump);
 		}
 	}
 
@@ -235,7 +212,7 @@ public class Jugador : MonoBehaviour {
 			else animator.Play("leftShoot");*/
 
 			// Michael
-				animator.Play("rightShoot");
+			animator.Play("rightShoot");
 			currentW.fire (toRight, puntoFuego,this);
 		}
 	}
@@ -320,7 +297,12 @@ public class Jugador : MonoBehaviour {
 		equipo.removePlayer (this.gameObject);
 		Destroy (this.gameObject);
 	}
-		
+
+	void OnCollisionStay2D(Collision2D other) {
+		if (other.gameObject.tag == "floor") {
+			jumping = false;
+		}
+	}	
 
 
 }

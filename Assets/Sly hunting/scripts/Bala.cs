@@ -9,7 +9,7 @@ public class Bala : MonoBehaviour {
 	public float speed;
 	private Rigidbody2D rb;
 	private Jugador jugador;
-	private float demage;
+	private float damage;
 
     //xC
     public AudioClip shootSound;
@@ -18,12 +18,12 @@ public class Bala : MonoBehaviour {
 	// Modificación SonidoFX
 	private int controlSonido;
 
-    public static void create (Transform puntoFuego,float demage, Jugador actual){
+    public static void create (Transform puntoFuego,float damage, Jugador actual){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 		GameObject b = Instantiate (bulletPrefab, puntoFuego.position, puntoFuego.transform.rotation);
 		Bala bala = b.GetComponent<Bala>();
 		bala.jugador = actual;
-		bala.demage = demage; 
+		bala.damage = damage; 
 	}
 
 	void Start() {
@@ -56,7 +56,7 @@ public class Bala : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Player") {
 			Jugador jugadoratacado = other.gameObject.GetComponent<Jugador> ();
-			jugadoratacado.quitLife (demage);
+			jugadoratacado.quitLife (damage);
 		} else if (other.gameObject.tag == "floor" || other.gameObject.tag == "stone" || other.gameObject.tag == "tree") {
 			Destroy (other.gameObject);
 		}
