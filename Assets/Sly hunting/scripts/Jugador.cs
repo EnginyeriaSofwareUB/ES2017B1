@@ -126,7 +126,7 @@ public class Jugador : MonoBehaviour {
 	private void moveRight(){
 		toRight = true;
 		animator.StopPlayback();
-		animator.Play("rightRun");
+		if(!jumping) animator.Play("rightRun");
 		Quaternion aux = this.transform.rotation;
 		aux.y = 0;
 		this.transform.rotation = aux;
@@ -138,7 +138,7 @@ public class Jugador : MonoBehaviour {
 	private void moveLeft(){
 		toRight = false;
 		animator.StopPlayback();		
-		animator.Play("rightRun");
+		if(!jumping) animator.Play("rightRun");
 		Quaternion aux = this.transform.rotation;
 		aux.y = 180;
 		this.transform.rotation = aux;
@@ -174,10 +174,13 @@ public class Jugador : MonoBehaviour {
 		}
 	}
 	private void jump(){
+		Debug.Log (jumping);
 		if (!jumping) {
 			jumping = true;
+			Debug.Log ("we are in "+jumping);
 			rb.velocity = new Vector2 (rb.velocity.x, forceJump);
 		}
+		jumping = true;
 	}
 
 	/*void jump(){
@@ -299,7 +302,7 @@ public class Jugador : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D other) {
-		if (other.gameObject.tag == "floor") {
+		if (other.gameObject.tag == "floor" || other.gameObject.tag == "tree" || other.gameObject.tag == "stone") {
 			jumping = false;
 		}
 	}	
