@@ -15,9 +15,13 @@ public class ControlladorPartida : MonoBehaviour
 	private Vector3 minCameraPos;
 	private Vector3 maxCameraPos;
 	private float size = 60.0f;
-	// ... aqui
+    //pantalla pausa
+    private bool pausado;
+    private GameObject pauseScreen;
+    private GameObject buttonMenu;
+    // ... aqui
 
-	Equipo hunters;
+    Equipo hunters;
 	Equipo animals;
 	Caja cajas;
 
@@ -46,7 +50,12 @@ public class ControlladorPartida : MonoBehaviour
 		actualEquipo = (UnityEngine.Random.value > 0.5f) ? hunters : animals;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
-	}
+        pauseScreen = GameObject.Find("Image");
+        pauseScreen.SetActive(false);
+        buttonMenu = GameObject.Find("ButtonMenu");
+        buttonMenu.SetActive(false);
+
+    }
 	void Awake ()
 	{
 
@@ -76,8 +85,20 @@ public class ControlladorPartida : MonoBehaviour
 		}
 
 		if (Input.GetKey ("escape")) {
-			Application.Quit ();
-		}
+            // Application.Quit ();
+            if (pausado == false) {
+                pausado = true;
+                pauseScreen.SetActive(true);
+                buttonMenu.SetActive(true);
+                Time.timeScale = 0;                
+            }
+            else {
+                pausado = false;
+                pauseScreen.SetActive(false);
+                buttonMenu.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
 
 		if (estatTimer) {
 			timer -= Time.deltaTime;
