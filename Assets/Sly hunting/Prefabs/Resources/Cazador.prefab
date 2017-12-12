@@ -747,7 +747,6 @@ MonoBehaviour:
   currentStamina: 0
   currentHealth: 0
   puntoFuego: {fileID: 4414610134829812}
-  forceJump: 50
   healthBar: {fileID: 1812992478702324}
   staminaBar: {fileID: 1416171975986864}
   ju: {x: 0, y: 0}

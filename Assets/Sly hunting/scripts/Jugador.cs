@@ -29,9 +29,9 @@ public class Jugador : MonoBehaviour {
 
 	//Variable Antoni
 	public Vector2 ju;
-	//#xC
-	//sonidos:
-
+    //#xC
+    //sonidos:
+    private bool death;
 	private AudioSource source;
 	public AudioClip jumpSound;
 	//public AudioClip stepSound;
@@ -63,6 +63,7 @@ public class Jugador : MonoBehaviour {
 		currentHealth = maxHealth;
 		currentStamina = maxStamina;
 		toRight = true;
+        death = true;
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
 		ju  = new Vector3(0.0f, 10.0f);
@@ -104,7 +105,7 @@ public class Jugador : MonoBehaviour {
 				fire ();
 
 			} else {
-				idle ();
+				if (death) idle ();
 			}
 
 		}
@@ -296,9 +297,27 @@ public class Jugador : MonoBehaviour {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
 	}
 
-	public void destroy(){
-		equipo.removePlayer (this.gameObject);
-		Destroy (this.gameObject);
+    public void animDeath() {
+        animator.StopPlayback();
+        animator.Play("death");
+        Posicion = transform;
+        if (controlSonido != 0) AudioSource.PlayClipAtPoint(deathSound, Posicion.position, 1.0f);
+
+    }
+
+    private IEnumerator morir()
+    {
+        yield return new WaitForSeconds(2.5f);
+        
+        equipo.removePlayer(this.gameObject);
+        Destroy(this.gameObject);
+    }
+
+    public void destroy(){
+        death = false;
+        animDeath();
+        StartCoroutine(morir());
+        
 	}
 
 	void OnCollisionStay2D(Collision2D other) {
