@@ -747,7 +747,6 @@ MonoBehaviour:
   currentStamina: 0
   currentHealth: 0
   puntoFuego: {fileID: 4414610134829812}
-  forceJump: 50
   healthBar: {fileID: 1812992478702324}
   staminaBar: {fileID: 1416171975986864}
   ju: {x: 0, y: 0}
@@ -755,6 +754,7 @@ MonoBehaviour:
   hurtMonkey: {fileID: 8300000, guid: 26cdb0899b3c54deaa8464152b17a01f, type: 3}
   hurtHunter: {fileID: 8300000, guid: 70b299fcc68764c37ac645f316e43e3c, type: 3}
   deathSound: {fileID: 8300000, guid: e02b5255416376741b7c9e6c67e5d63e, type: 3}
+  controlSonido: 0
 --- !u!114 &114747116686616576
 MonoBehaviour:
   m_ObjectHideFlags: 1

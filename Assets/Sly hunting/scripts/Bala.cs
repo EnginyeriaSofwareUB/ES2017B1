@@ -16,7 +16,7 @@ public class Bala : MonoBehaviour {
     private Transform Posicion;
 
 	// Modificación SonidoFX
-	private int controlSonido;
+	public int controlSonido;
 
     public static void create (Transform puntoFuego,float damage, Jugador actual){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));

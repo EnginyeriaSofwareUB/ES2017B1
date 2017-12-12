@@ -17,8 +17,8 @@ public class ControlladorPartida : MonoBehaviour
 	private float size = 60.0f;
     //pantalla pausa
     private bool pausado;
-    private GameObject pauseScreen;
-    private GameObject buttonMenu;
+    public GameObject pauseScreen;
+    public GameObject buttonMenu;
     // ... aqui
 
     Equipo hunters;

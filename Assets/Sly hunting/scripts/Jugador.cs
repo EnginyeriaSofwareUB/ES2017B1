@@ -41,8 +41,9 @@ public class Jugador : MonoBehaviour {
 	private Transform Posicion;
 	private String tipo;
 
+    private bool death;
 	//Modificación SonidoFX
-	private int controlSonido;
+	public int controlSonido;
 
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
@@ -67,6 +68,7 @@ public class Jugador : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		ju  = new Vector3(0.0f, 10.0f);
 		rb.mass = 1f;
+        death = true;
 		//Modificación SonidoFX
 		controlSonido = PlayerPrefs.GetInt("Sonido");
 
@@ -104,7 +106,7 @@ public class Jugador : MonoBehaviour {
 				fire ();
 
 			} else {
-				idle ();
+				if (death) idle ();
 			}
 
 		}
@@ -296,10 +298,28 @@ public class Jugador : MonoBehaviour {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
 	}
 
-	public void destroy(){
-		equipo.removePlayer (this.gameObject);
-		Destroy (this.gameObject);
-	}
+    public void animMuerte() {
+        animator.StopPlayback();
+        
+        animator.Play("death");
+        //Debug.Log("dentro de animacion");
+        Posicion = transform;
+        if (controlSonido != 0) AudioSource.PlayClipAtPoint(deathSound, Posicion.position, 1.0f);
+    }
+
+   
+    private IEnumerator morir()
+    {
+        yield return new WaitForSeconds(2.5f);
+        equipo.removePlayer(this.gameObject);
+        Destroy(gameObject);
+    }
+
+    public void destroy(){
+        death = false;
+        animMuerte();
+        StartCoroutine(morir());
+    }
 
 	void OnCollisionStay2D(Collision2D other) {
 		if (other.gameObject.tag == "floor" || other.gameObject.tag == "tree" || other.gameObject.tag == "stone") {
