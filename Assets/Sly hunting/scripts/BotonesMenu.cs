@@ -14,8 +14,16 @@ public class BotonesMenu : MonoBehaviour {
 		SceneManager.LoadScene ("options");
 	}
 
-	public void QuitGame(){
-		Application.Quit ();
+    public void MenuScene()
+    {
+        SceneManager.LoadScene("menu");
+    }
+
+    public void QuitGame()
+    {
+		Application.Quit();
+        Debug.Log("dentro de salir");
 	}
+
 
 }
