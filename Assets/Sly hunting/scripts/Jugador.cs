@@ -7,12 +7,17 @@ using System;
 public class Jugador : MonoBehaviour {
 
 	public Rigidbody2D rb;
-	float speed = 8.0f; //10 se quito public
-	float FPS = 4.0f; //60 se quito public
+	public bool playerControl;
+	private bool agile = false;
+	private bool destructor = false;
+
+	float speed = 8.0f; 
+	float FPS = 4.0f; 
 	float estaminaRate = 2.0f;
 	public bool toRight = true;
-	public bool playerControl;
 	public bool jumping = false;
+	float forceJump = 50.0f;
+
 	public float currentStamina = 0.0f;
 	private float maxStamina = 100.0f;
 	public float currentHealth = 0.0f;
@@ -21,9 +26,9 @@ public class Jugador : MonoBehaviour {
 	private Animator animator;
 	private List<Arma> weapons;
 	private int currentWeapon;
-	private Equipo equipo;
 	public Transform puntoFuego;
-	float forceJump = 50.0f;
+	private Equipo equipo;
+
 	public GameObject healthBar;
 	public GameObject staminaBar;
 
@@ -82,7 +87,7 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (playerControl && currentStamina > 0) {
+		if (playerControl && currentStamina > 0 && death) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
@@ -113,16 +118,9 @@ public class Jugador : MonoBehaviour {
 		setHealthBar ();
 		setStaminaBar ();
 
-		/*if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-			if (Camera.main.orthographicSize <= 50)
-				Camera.main.orthographicSize += 0.5f;
-		}
-
-		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-			if (Camera.main.orthographicSize >= 1)
-				Camera.main.orthographicSize -= 0.5f;
-		}*/
 	}
+
+
 
 	private void moveRight(){
 		toRight = true;
@@ -183,13 +181,7 @@ public class Jugador : MonoBehaviour {
 		}
 		jumping = true;
 	}
-
-	/*void jump(){
-		animator.StopPlayback();
-		animator.Play("rightJump");
-		rb.AddForce(ju, ForceMode2D.Impulse);
-        jumping = true;
-    }*/
+		
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
@@ -207,7 +199,6 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void fire() {
-		//xC
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets () > 0) {
@@ -227,7 +218,21 @@ public class Jugador : MonoBehaviour {
 	}
 
 	//****************** GETTERS & SETTERS **********************/
+	public void makeAgile(){
+		//TODO icon ágil
+		speed *= 2;
+		estaminaRate /= 2;
+		agile = true;
+	}
 
+	public void makeDestructor(){
+		//TODO icon destructor
+		destructor = true;
+	}
+
+	public bool isDestructor(){
+		return destructor;
+	}
 	public void setWeapons(List<Arma> armas) {
 		weapons = armas;
 	}

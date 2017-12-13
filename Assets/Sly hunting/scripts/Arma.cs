@@ -20,7 +20,11 @@ public class Arma  {
 	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual){
 		if (Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			Bala.create(puntoFuego, damage, actual);
+			if (actual.isDestructor ()) {
+				Bala.create (puntoFuego, damage, actual);
+			} else {
+				Bala.create (puntoFuego, damage*1.5f, actual);
+			}
 			decreaseBullet ();
 		}
 	}
