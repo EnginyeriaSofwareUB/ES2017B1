@@ -10,6 +10,12 @@ public class Caja : MonoBehaviour {
 
 	public ControlladorPartida control;
 
+	public AudioClip goodItem;
+	public AudioClip badItem;
+	Transform posicion;
+	private int controlSonido;
+
+
 	public static void create(string type, ControlladorPartida controla) {
 		GameObject obj = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject box = Instantiate(obj);
@@ -17,6 +23,10 @@ public class Caja : MonoBehaviour {
 		caja.setControl (controla);
 		caja.spawn();
 
+	}
+
+	public void Start() {
+		controlSonido = PlayerPrefs.GetInt("Sonido");
 	}
 
 	public ControlladorPartida getControl() {
@@ -34,10 +44,14 @@ public class Caja : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Player") {
+			posicion = transform;
 			Jugador player = other.gameObject.GetComponent<Jugador> ();
 			float rndCajas = UnityEngine.Random.Range (0, 10);
 			Debug.Log (rndCajas);
 			if (rndCajas >= 3.0f) { // Cajas buenas
+				if (controlSonido != 0) {
+					AudioSource.PlayClipAtPoint (goodItem, posicion.position, 1.0f);
+				}
 				Debug.Log ("Cajas Buenas");
 				float rndCajasBuenas = UnityEngine.Random.Range (0, 10);
 				Debug.Log (rndCajasBuenas);
@@ -48,7 +62,11 @@ public class Caja : MonoBehaviour {
 					if (player.getVida () <= 80.0f)
 						player.addVida (valVida);
 				}
+
 			} else { // Cajas malas
+				if (controlSonido != 0) {
+					AudioSource.PlayClipAtPoint (badItem, posicion.position, 1.0f);
+				}
 				Debug.Log ("Cajas Malas");
 				float rndCajasMalas = UnityEngine.Random.Range (0, 10);
 				Debug.Log (rndCajasMalas);
