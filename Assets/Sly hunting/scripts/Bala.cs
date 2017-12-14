@@ -57,7 +57,7 @@ public class Bala : MonoBehaviour {
 //		rb.velocity = new Vector2 (speed, rb.velocity.y);
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	/*void OnTriggerEnter2D(Collider2D other) {
         
         if (other.gameObject.tag == "Player") {
 			Jugador jugadoratacado = other.gameObject.GetComponent<Jugador> ();
@@ -70,7 +70,29 @@ public class Bala : MonoBehaviour {
               
 		}
 		Destroy (this.gameObject);
-	}
+	}*/
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Jugador jugadoratacado = other.gameObject.GetComponent<Jugador>();
+            jugadoratacado.quitLife(damage);
+        }
+        else if (other.gameObject.tag == "floor")
+        {
+            Suelo ground = other.gameObject.GetComponent<Suelo>();
+            ground.destroy();
+
+        }
+        else if (other.gameObject.tag == "stone" || other.gameObject.tag == "tree" || other.gameObject.tag == "bridge")
+        {
+            Destroy(other.gameObject);
+
+        }
+
+        Destroy(this.gameObject);
+    }
 
 
 }
