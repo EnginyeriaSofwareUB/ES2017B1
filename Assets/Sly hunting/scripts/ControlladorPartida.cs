@@ -36,8 +36,9 @@ public class ControlladorPartida : MonoBehaviour
 	private int numero_jugadores = 3; //son 3 
 	private Equipo actualEquipo;
 
+	// Tiempo caida caja
 	private float timeBox = 0.0f;
-	private float startTimeBox = 10.0f;
+	private float startTimeBox = 7.0f;
 
 
 	void Start ()
