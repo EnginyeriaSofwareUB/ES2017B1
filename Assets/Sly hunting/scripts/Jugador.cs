@@ -63,7 +63,9 @@ public class Jugador : MonoBehaviour {
 		currentHealth = maxHealth;
 		currentStamina = maxStamina;
 		toRight = true;
+
 		death = false;
+
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
 		ju  = new Vector3(0.0f, 10.0f);
@@ -82,8 +84,9 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (playerControl && currentStamina > 0) {
-			if (Input.GetKey (KeyCode.LeftArrow) && !death) {
+
+		if (playerControl && currentStamina > 0 && !death) {
+			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
 			} else if (Input.GetKey (KeyCode.RightArrow) && !death) {
@@ -105,7 +108,9 @@ public class Jugador : MonoBehaviour {
 				fire ();
 
 			} else {
-				if (!death) idle ();
+
+				idle ();
+
 			}
 
 		}
@@ -307,7 +312,7 @@ public class Jugador : MonoBehaviour {
 
     private IEnumerator morir()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
         
         equipo.removePlayer(this.gameObject);
         Destroy(this.gameObject);
