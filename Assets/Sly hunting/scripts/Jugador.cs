@@ -219,14 +219,19 @@ public class Jugador : MonoBehaviour {
 
 	//****************** GETTERS & SETTERS **********************/
 	public void makeAgile(){
-		//TODO icon ágil
-		speed *= 2;
-		estaminaRate /= 2;
+		
+		if (agile == false) {
+			speed *= 2;
+			estaminaRate /= 2;
+			//TODO icon ágil
+		}
 		agile = true;
 	}
 
 	public void makeDestructor(){
-		//TODO icon destructor
+		if (destructor == false) {
+			//TODO icon destructor
+		}
 		destructor = true;
 	}
 
