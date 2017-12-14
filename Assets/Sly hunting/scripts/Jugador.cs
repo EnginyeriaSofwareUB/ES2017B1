@@ -63,7 +63,9 @@ public class Jugador : MonoBehaviour {
 		currentHealth = maxHealth;
 		currentStamina = maxStamina;
 		toRight = true;
-        death = false;
+
+		death = false;
+
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
 		ju  = new Vector3(0.0f, 10.0f);
@@ -82,17 +84,18 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 		if (playerControl && currentStamina > 0 && !death) {
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
-			} else if (Input.GetKey (KeyCode.RightArrow)) {
+			} else if (Input.GetKey (KeyCode.RightArrow) && !death) {
 				moveRight ();
 
 				/*} else if (Input.GetKey (KeyCode.Space) && !jumping) {
 				jump ();*/      
 
-			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
+			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0 && !death) {
 				jump ();
 
 			} else if (Input.GetKey(KeyCode.UpArrow)) {
@@ -101,11 +104,13 @@ public class Jugador : MonoBehaviour {
 			} else if (Input.GetKey(KeyCode.DownArrow)) {
 				lookDown();
 
-			} else if (Input.GetKey (KeyCode.Return)) {
+			} else if (Input.GetKey (KeyCode.Return) && !death) {
 				fire ();
 
 			} else {
+
 				idle ();
+
 			}
 
 		}
@@ -311,6 +316,7 @@ public class Jugador : MonoBehaviour {
         
         equipo.removePlayer(this.gameObject);
         Destroy(this.gameObject);
+		death = false;
     }
 
     public void destroy(){
