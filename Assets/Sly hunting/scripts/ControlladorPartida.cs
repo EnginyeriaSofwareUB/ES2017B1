@@ -56,6 +56,8 @@ public class ControlladorPartida : MonoBehaviour
         buttonMenu = GameObject.Find("ButtonMenu");
         buttonMenu.SetActive(false);
 
+        pausado = false;
+
     }
 	void Awake ()
 	{

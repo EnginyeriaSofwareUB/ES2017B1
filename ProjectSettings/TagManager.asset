@@ -14,6 +14,7 @@ TagManager:
   - background
   - caja
   - muerteSegura
+  - bridge
   layers:
   - Default
   - TransparentFX
