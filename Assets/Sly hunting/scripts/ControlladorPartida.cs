@@ -36,6 +36,7 @@ public class ControlladorPartida : MonoBehaviour
 	float startTime = 15.0f; //se cambia a 15 para probar movimientos, inicial 255
 	public bool estatTimer;
 	public Text txtTimer;
+	public Text txtBullets;
 
 	public  GameObject actual;
 	private Camera camera;
@@ -83,6 +84,7 @@ public class ControlladorPartida : MonoBehaviour
 		animals = new Equipo ("Mono",numero_jugadores,this);
 
 		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
+		txtBullets =  GameObject.Find("textBullets").GetComponent<Text>();
 		timer = startTime;
 		timeBox = startTimeBox;
 
@@ -123,6 +125,8 @@ public class ControlladorPartida : MonoBehaviour
 			}
 		}
 
+		updateBulletsText ();
+
 		float posX = Mathf.SmoothDamp (camera.transform.position.x, actual.transform.position.x, ref velocity.x, smoothTimeX);
 		float posy = Mathf.SmoothDamp (camera.transform.position.y, actual.transform.position.y, ref velocity.y, smoothTimeY);
 
@@ -134,6 +138,15 @@ public class ControlladorPartida : MonoBehaviour
 		}
 	}
 
+	private void updateBulletsText() {
+		int bullets = actualEquipo.getActualPlayer ().getBullets ();
+		Debug.Log (bullets);
+		if (bullets > 10000)
+			txtBullets.text = "Bullets left: unlimited";
+		else 
+			txtBullets.text = "Bullets left: " + bullets;
+	}
+
 	public void changeTurn(){
 		actualEquipo.dismissPlayer ();
 		if (actualEquipo.getTyo() == "Mono") {
@@ -141,7 +154,7 @@ public class ControlladorPartida : MonoBehaviour
 		}else{
 			actualEquipo = animals;
 		}
-		actual = actualEquipo.pickPlayerToPlay ().gameObject;
+		actual = actualEquipo.pickPlayerToPlay().gameObject;
 		timer = startTime;
 	}
 
