@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BotonesMenu : MonoBehaviour {
 	
 	public void MapaScene(){
-		SceneManager.LoadScene ("scenary");
+		SceneManager.LoadScene ("selectPlayers");
 
 	}
 
