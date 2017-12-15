@@ -63,6 +63,7 @@
      <Compile Include="Assets\Sly hunting\scripts\MuerteSegura.cs" />
      <Compile Include="Assets\Sly hunting\scripts\OptionsScripts\ControladorAudio.cs" />
      <Compile Include="Assets\Sly hunting\scripts\OptionsScripts\ControladorBotons.cs" />
+     <Compile Include="Assets\Sly hunting\scripts\Suelo.cs" />
      <Compile Include="Assets\Sly hunting\scripts\Terreno.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

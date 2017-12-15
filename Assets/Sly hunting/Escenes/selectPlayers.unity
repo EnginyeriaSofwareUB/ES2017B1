@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 8128648}
   - component: {fileID: 8128647}
   m_Layer: 5
-  m_Name: ButtonChangeJ2Left (1)
+  m_Name: 'ButtonChangeJ1Left '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 694230769}
   - component: {fileID: 694230768}
   m_Layer: 5
-  m_Name: ButtonChangeJ2Right (1)
+  m_Name: ButtonChangeJ1Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -852,8 +852,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 964f15c2bd4e94b50968e846bd59f3d0, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 1844811545}
+        m_MethodName: MapaScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
