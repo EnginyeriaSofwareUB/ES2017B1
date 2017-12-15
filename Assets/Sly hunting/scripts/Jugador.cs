@@ -26,6 +26,10 @@ public class Jugador : MonoBehaviour {
 	float forceJump = 50.0f;
 	public GameObject healthBar;
 	public GameObject staminaBar;
+	public GameObject arrowIndicator;
+	private float timeArrow;
+	private float totalTimeArrow;
+	private bool arrowActive;
 
 	//Variable Antoni
 	public Vector2 ju;
@@ -65,6 +69,10 @@ public class Jugador : MonoBehaviour {
 		toRight = true;
 
 		death = false;
+		//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+		arrowActive = false;
+		arrowIndicator.SetActive (arrowActive);
+		timeArrow = 3.0f;
 
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
@@ -86,6 +94,12 @@ public class Jugador : MonoBehaviour {
 
 
 		if (playerControl && currentStamina > 0 && !death) {
+			if ((totalTimeArrow < Time.time) && arrowActive) {
+				//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+				arrowIndicator.SetActive (false);
+				arrowActive = false;
+			}
+				
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
@@ -154,36 +168,27 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void barPosition(String dir) {
-		GameObject healthBar = transform.Find("HealthBar").gameObject;
-		GameObject staminaBar = transform.Find("StaminaBar").gameObject;
+		GameObject infoIcon = transform.Find ("infoIcons").gameObject;
 		switch(dir) {
 		case "left":
-			if (healthBar.transform.localPosition.z < 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z < 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		case "right":
-			if (healthBar.transform.localPosition.z > 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z > 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		}
 	}
 	private void jump(){
-		Debug.Log (jumping);
 		if (!jumping) {
 			jumping = true;
-			Debug.Log ("we are in "+jumping);
 			rb.velocity = new Vector2 (rb.velocity.x, forceJump);
 		}
 		jumping = true;
@@ -215,7 +220,7 @@ public class Jugador : MonoBehaviour {
 		//xC
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
-		if (currentW.getBullets () > 0) {
+		if (currentW.getBullets() > 0) {
 			// Animación correcta
 			/*if (!toRight) animator.Play("rightShoot");
 			else animator.Play("leftShoot");*/
@@ -288,6 +293,16 @@ public class Jugador : MonoBehaviour {
 			currentStamina = 100;
 		}
 		playerControl = what;
+		showArrowIndicator (what);
+	}
+
+	public void showArrowIndicator(bool show) {
+		Debug.Log ("we started this with "+ show);
+		//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+		arrowIndicator.SetActive (show);
+		totalTimeArrow = Time.time + timeArrow;
+		arrowActive = show;
+
 	}
 
 	public void setEquipo(Equipo eq){
@@ -300,6 +315,11 @@ public class Jugador : MonoBehaviour {
 
 	private void setStaminaBar() {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
+	}
+
+	public int getBullets() {
+		Arma currentW = weapons [currentWeapon];
+		return currentW.getBullets ();
 	}
 
     public void animDeath() {
