@@ -18,7 +18,13 @@ public class ControlladorPartida : MonoBehaviour
     //pantalla pausa
     private bool pausado;
     private GameObject pauseScreen;
-    private GameObject buttonMenu;
+    private GameObject buttonContinue;
+	private GameObject buttonQuit;
+	private GameObject sliderMusica;
+	private GameObject sliderFX;
+	private GameObject textFX;
+	private GameObject textMusica;
+
     // ... aqui
 
     Equipo hunters;
@@ -51,13 +57,24 @@ public class ControlladorPartida : MonoBehaviour
 		actualEquipo = (UnityEngine.Random.value > 0.5f) ? hunters : animals;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
+		// Menu pausa
         pauseScreen = GameObject.Find("Image");
-        pauseScreen.SetActive(false);
-        buttonMenu = GameObject.Find("ButtonMenu");
-        buttonMenu.SetActive(false);
+        buttonContinue = GameObject.Find("ButtonContinue");
+		buttonQuit = GameObject.Find ("ButtonQuit");
+		sliderMusica = GameObject.Find ("VolumenMusica");
+		sliderFX = GameObject.Find ("VolumenFX");
+		textMusica = GameObject.Find ("TextMusica");
+		textFX = GameObject.Find ("TextFX");
+
+		pauseScreen.SetActive(false);
+		buttonContinue.SetActive(false);
+		buttonQuit.SetActive(false);
+		sliderMusica.SetActive(false);
+		sliderFX.SetActive(false);
+		textMusica.SetActive(false);
+		textFX.SetActive(false);
 
         pausado = false;
-
     }
 	void Awake ()
 	{
@@ -72,8 +89,8 @@ public class ControlladorPartida : MonoBehaviour
 		estatTimer = true;
 
 		// Rango de limites de la camara
-		minCameraPos.x = 87.0f;
-		maxCameraPos.x = 636.0f;
+		minCameraPos.x = 106.0f;
+		maxCameraPos.x = 615.0f;
 		minCameraPos.y = 53.5f;
 		maxCameraPos.y = 140.0f;
 		minCameraPos.z = -10.0f;
@@ -88,19 +105,8 @@ public class ControlladorPartida : MonoBehaviour
 		}
 
 		if (Input.GetKey ("escape")) {
-            // Application.Quit ();
-            if (pausado == false) {
-                pausado = true;
-                pauseScreen.SetActive(true);
-                buttonMenu.SetActive(true);
-                Time.timeScale = 0;                
-            }
-            else {
-                pausado = false;
-                pauseScreen.SetActive(false);
-                buttonMenu.SetActive(false);
-                Time.timeScale = 1;
-            }
+            // PauseMenu
+			controlPauseMenu();
         }
 
 		if (estatTimer) {
@@ -175,5 +181,31 @@ public class ControlladorPartida : MonoBehaviour
 
 		Debug.Log ("finishh");
 		Application.Quit ();
+	}
+
+	public void controlPauseMenu() {
+		if (!pausado) {
+			pausado = true;
+			pauseScreen.SetActive(true);
+			buttonContinue.SetActive(true);
+			buttonQuit.SetActive(true);
+			sliderMusica.SetActive(true);
+			sliderFX.SetActive(true);
+			textMusica.SetActive(true);
+			textFX.SetActive(true);
+			Time.timeScale = 0;
+		}
+	}
+
+	public void continueGame() {
+		pausado = false;
+		pauseScreen.SetActive(false);
+		buttonContinue.SetActive(false);
+		buttonQuit.SetActive(false);
+		sliderMusica.SetActive(false);
+		sliderFX.SetActive(false);
+		textMusica.SetActive(false);
+		textFX.SetActive(false);
+		Time.timeScale = 1;
 	}
 }
