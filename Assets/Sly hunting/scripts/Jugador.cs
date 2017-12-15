@@ -100,14 +100,17 @@ public class Jugador : MonoBehaviour {
 			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
 				jump ();
 
-			} else if (Input.GetKey(KeyCode.UpArrow)) {
-				lookUp();
+			} else if (Input.GetKey (KeyCode.UpArrow)) {
+				lookUp ();
 
-			} else if (Input.GetKey(KeyCode.DownArrow)) {
-				lookDown();
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				lookDown ();
 
 			} else if (Input.GetKey (KeyCode.Return)) {
 				fire ();
+
+			} else if(Input.GetKey(KeyCode.C)){
+				changeWeapon ();
 
 			} else {
 				if (death) idle ();
@@ -238,12 +241,23 @@ public class Jugador : MonoBehaviour {
 	public bool isDestructor(){
 		return destructor;
 	}
+
 	public void setWeapons(List<Arma> armas) {
 		weapons = armas;
 	}
-
+	public void changeWeapon(){
+		if (currentWeapon == (weapons.Count - 1)) {
+			currentWeapon = 0;
+		} else {
+			currentWeapon += 1;
+		}
+		Debug.Log ("TIPOOO: "+weapons[currentWeapon].getTipus());
+		//TODO Aquí caldría cambia el visual del arma
+		//weapons[currentWeapon].getSprite()
+	}
 	//We call this method when we find a box with a new weapon and we have already added to the list
 	public void updateWeaponsTeam(Arma weapon) {
+		weapons.Add(weapon);
 		equipo.addWeapon (weapon);
 	}
 
@@ -297,6 +311,10 @@ public class Jugador : MonoBehaviour {
 
 	public void setEquipo(Equipo eq){
 		equipo = eq;
+	}
+
+	public Equipo getEquipo(){
+		return equipo;	
 	}
 
 	private void setHealthBar() {

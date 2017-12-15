@@ -35,33 +35,40 @@ public class Caja : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.tag == "Player") {
 			Jugador player = other.gameObject.GetComponent<Jugador> ();
-			float rndCajas = UnityEngine.Random.Range (0, 10);
-			Debug.Log (rndCajas);
-			if (rndCajas >= 3.0f) { // Cajas buenas
-				Debug.Log ("Cajas Buenas");
-				float rndCajasBuenas = UnityEngine.Random.Range (0, 10);
-				Debug.Log (rndCajasBuenas);
-				if (rndCajasBuenas >= 3.0f) {
-					if (player.getEstamina () <= 80.0f)
-						player.addEstamina (valEstamina);
-				} else {
-					if (player.getVida () <= 80.0f)
-						player.addVida (valVida);
+			if (player.playerControl == true) {
+				float rndCajas = UnityEngine.Random.Range (0, 10);
+									
+				if (rndCajas >= 3.0f) { // Cajas buenas
+					float rndCajasBuenas = UnityEngine.Random.Range (0, 10);
+				
+					if (5.0f <= rndCajasBuenas) { //la mitad de las veces te dan estamina
+						if (player.getEstamina () <= 80.0f)
+							player.addEstamina (valEstamina);
+					} else if(3.0f <= rndCajasBuenas && rndCajasBuenas < 5.0f ){
+						if (player.getVida () <= 80.0f)
+							player.addVida (valVida);
+					}else if(2.0f <= rndCajasBuenas && rndCajasBuenas < 3.0f){
+						player.makeAgile ();
+					}else if(1.0f <= rndCajasBuenas && rndCajasBuenas < 2.0f ){
+						player.makeDestructor();
+					}else if(0.0f <= rndCajasBuenas && rndCajasBuenas <1.0f) {
+						player.updateWeaponsTeam(new Arma(10,"Bazoca")); 
+					}
+
+				} else { // Cajas malas
+					float rndCajasMalas = UnityEngine.Random.Range (0, 10);
+					if (rndCajasMalas >= 5.0f) {
+						if (player.getEstamina () >= 20.0f)
+							player.subEstamina (valEstamina);
+					} else if (rndCajasMalas < 5.0f && rndCajasMalas >=2.0f)
+						this.control.changeTurn ();
+					else {
+						player.quitLife (valVida);
+					}
 				}
-			} else { // Cajas malas
-				Debug.Log ("Cajas Malas");
-				float rndCajasMalas = UnityEngine.Random.Range (0, 10);
-				Debug.Log (rndCajasMalas);
-				if (rndCajasMalas >= 5.0f) {
-					if (player.getEstamina () >= 20.0f)
-						player.subEstamina (valEstamina);
-				} else if (rndCajasMalas < 5.0f && rndCajasMalas >=2.0f)
-					this.control.changeTurn ();
-				else {
-					player.quitLife (valVida);
-				}
+
+				Destroy (gameObject);
 			}
-			Destroy (gameObject);
 		}
 	}
 }
