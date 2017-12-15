@@ -154,36 +154,27 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void barPosition(String dir) {
-		GameObject healthBar = transform.Find("HealthBar").gameObject;
-		GameObject staminaBar = transform.Find("StaminaBar").gameObject;
+		GameObject infoIcon = transform.Find ("infoIcons").gameObject;
 		switch(dir) {
 		case "left":
-			if (healthBar.transform.localPosition.z < 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z < 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		case "right":
-			if (healthBar.transform.localPosition.z > 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z > 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		}
 	}
 	private void jump(){
-		Debug.Log (jumping);
 		if (!jumping) {
 			jumping = true;
-			Debug.Log ("we are in "+jumping);
 			rb.velocity = new Vector2 (rb.velocity.x, forceJump);
 		}
 		jumping = true;
