@@ -24,7 +24,9 @@ public class ControlladorPartida : MonoBehaviour
 	private GameObject sliderFX;
 	private GameObject textFX;
 	private GameObject textMusica;
-
+	private GameObject obj;
+	private int music; 
+	private int so;
     // ... aqui
 
     Equipo hunters;
@@ -50,7 +52,6 @@ public class ControlladorPartida : MonoBehaviour
 
 	void Start ()
 	{
-
 		camera = Camera.main;
 		// Añadido 
 		camera.orthographicSize = size;
@@ -59,6 +60,7 @@ public class ControlladorPartida : MonoBehaviour
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
 		// Menu pausa
+		obj = GameObject.Find("AudioController");
         pauseScreen = GameObject.Find("Image");
         buttonContinue = GameObject.Find("ButtonContinue");
 		buttonQuit = GameObject.Find ("ButtonQuit");
@@ -75,8 +77,21 @@ public class ControlladorPartida : MonoBehaviour
 		textMusica.SetActive(false);
 		textFX.SetActive(false);
 
+		music = PlayerPrefs.GetInt ("Musica");
+		so = PlayerPrefs.GetInt ("Sonido");
+		if (music == 0) {
+			sliderMusica.GetComponent<Slider> ().value = 0.0f;
+		} else {
+			sliderMusica.GetComponent<Slider> ().value = 0.1f;
+		}
+		if (so == 0) {
+			sliderFX.GetComponent<Slider> ().value = 0.0f;
+		} else {
+			sliderFX.GetComponent<Slider> ().value = 1.0f;
+		}
         pausado = false;
     }
+
 	void Awake ()
 	{
 
@@ -207,6 +222,11 @@ public class ControlladorPartida : MonoBehaviour
 			textMusica.SetActive(true);
 			textFX.SetActive(true);
 			Time.timeScale = 0;
+
+			if (music == 0) {
+				obj.GetComponent<AudioSource> ().Play ();
+				obj.GetComponent<AudioSource> ().volume = 0.0f;
+			}
 		}
 	}
 
@@ -220,5 +240,31 @@ public class ControlladorPartida : MonoBehaviour
 		textMusica.SetActive(false);
 		textFX.SetActive(false);
 		Time.timeScale = 1;
+	}
+
+	public void changeMusicaSlider() {
+		if (music == 1) {
+			obj.GetComponent<AudioSource> ().volume = sliderMusica.GetComponent<Slider> ().value;
+		} else {
+			obj.GetComponent<AudioSource> ().volume = sliderMusica.GetComponent<Slider> ().value;
+		}
+
+	}
+
+	public void searchPlayers() {
+		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
+		foreach (GameObject player in players) {
+			player.GetComponent <Jugador> ().setVol(sliderFX.GetComponent<Slider> ().value);
+		}
+
+		/*GameObject[] suelo = GameObject.FindGameObjectsWithTag ("floor");
+		foreach (GameObject floor in suelo) {
+			floor.GetComponent <Suelo> ().setVol(sliderFX.GetComponent<Slider> ().value);
+		}
+
+		GameObject[] caja = GameObject.FindGameObjectsWithTag ("caja");
+		foreach (GameObject box in caja) {
+			box.GetComponent <Caja> ().setVol(sliderFX.GetComponent<Slider> ().value);
+		}*/
 	}
 }
