@@ -14,9 +14,10 @@ public class Caja : MonoBehaviour {
 	public AudioClip badItem;
 	Transform posicion;
 	private int controlSonido;
+    private Animator animator;
 
 
-	public static void create(string type, ControlladorPartida controla) {
+    public static void create(string type, ControlladorPartida controla) {
 		GameObject obj = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject box = Instantiate(obj);
 		Caja caja = obj.GetComponent<Caja>();
@@ -27,10 +28,12 @@ public class Caja : MonoBehaviour {
 
 	public void Start() {
 		controlSonido = PlayerPrefs.GetInt("Sonido");
-	}
+        animator = GetComponent<Animator>();
+    }
 
 	public ControlladorPartida getControl() {
-		return control;
+        
+        return control;
 	}
 
 	public void setControl(ControlladorPartida ctrl) {
@@ -42,44 +45,100 @@ public class Caja : MonoBehaviour {
 		this.transform.position = pos;
 	}
 
-	void OnCollisionEnter2D(Collision2D other) {
-		if (other.gameObject.tag == "Player") {
-			posicion = transform;
-			Jugador player = other.gameObject.GetComponent<Jugador> ();
-			float rndCajas = UnityEngine.Random.Range (0, 10);
-			Debug.Log (rndCajas);
-			if (rndCajas >= 3.0f) { // Cajas buenas
-				if (controlSonido != 0) {
-					AudioSource.PlayClipAtPoint (goodItem, posicion.position, 1.0f);
-				}
-				Debug.Log ("Cajas Buenas");
-				float rndCajasBuenas = UnityEngine.Random.Range (0, 10);
-				Debug.Log (rndCajasBuenas);
-				if (rndCajasBuenas >= 3.0f) {
-					if (player.getEstamina () <= 80.0f)
-						player.addEstamina (valEstamina);
-				} else {
-					if (player.getVida () <= 80.0f)
-						player.addVida (valVida);
-				}
+    void animx(string name)
+    {
+        animator.StopPlayback();
+        //Debug.Log("dentro de animwinEnergy antes");
+        animator.Play(name);
+        //Debug.Log("dentro de animwinEnergy despues");
+    }
 
-			} else { // Cajas malas
-				if (controlSonido != 0) {
-					AudioSource.PlayClipAtPoint (badItem, posicion.position, 1.0f);
-				}
-				Debug.Log ("Cajas Malas");
-				float rndCajasMalas = UnityEngine.Random.Range (0, 10);
-				Debug.Log (rndCajasMalas);
-				if (rndCajasMalas >= 5.0f) {
-					if (player.getEstamina () >= 20.0f)
-						player.subEstamina (valEstamina);
-				} else if (rndCajasMalas < 5.0f && rndCajasMalas >=2.0f)
-					this.control.changeTurn ();
-				else {
-					player.quitLife (valVida);
-				}
-			}
-			Destroy (gameObject);
-		}
-	}
+    private IEnumerator timeAnimTurn()
+    {
+        Debug.Log("dentro de tiempo perdida de turno");
+        yield return new WaitForSeconds(2.0f);
+        Debug.Log("dentro de tiempo perdida de turno");
+        Destroy(this.gameObject);
+    }
+    private IEnumerator timeAnim()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            posicion = transform;
+            Jugador player = other.gameObject.GetComponent<Jugador>();
+            
+            float rndCajas = UnityEngine.Random.Range(0, 10);
+            //Debug.Log (rndCajas);
+            if (rndCajas >= 3.0f)
+            { // Cajas buenas				
+              //Debug.Log ("Cajas Buenas");
+                float rndCajasBuenas = UnityEngine.Random.Range(0, 10);
+                //Debug.Log (rndCajasBuenas);
+                if (controlSonido != 0)
+                {
+                    AudioSource.PlayClipAtPoint(goodItem, posicion.position, 1.0f);
+                }
+                if (rndCajasBuenas >= 3.0f)
+                {
+                    animx("winEnergy");
+                    StartCoroutine(timeAnim());
+                    if (player.getEstamina() <= 80.0f)
+                    {
+                        player.addEstamina(valEstamina);
+                    }
+                }
+                else
+                {
+                    animx("winLife");
+                    StartCoroutine(timeAnim());
+                    if (player.getVida() <= 80.0f)
+                    {
+                        player.addVida(valVida);
+                    }
+
+                }
+
+            }
+            else
+            { // Cajas malas
+
+                //Debug.Log ("Cajas Malas");
+                float rndCajasMalas = UnityEngine.Random.Range(0, 10);
+                //Debug.Log (rndCajasMalas);
+                if (rndCajasMalas >= 5.0f)
+                {
+                    if (controlSonido != 0) AudioSource.PlayClipAtPoint(badItem, posicion.position, 1.0f);
+                    animx("loseEnergy");
+                    StartCoroutine(timeAnim());
+                    if (player.getEstamina() >= 20.0f)
+                    {
+
+                        player.subEstamina(valEstamina);
+                    }
+                }
+                else if (rndCajasMalas < 5.0f && rndCajasMalas >= 2.0f)
+                {
+                    if (controlSonido != 0) AudioSource.PlayClipAtPoint(badItem, posicion.position, 1.0f);
+                    Debug.Log("cambiar turno");
+                    animx("loseTurn");
+                    StartCoroutine(timeAnimTurn());
+                    this.control.changeTurn();
+                }
+                else
+                {
+                    animx("loseLife");
+                    StartCoroutine(timeAnim());
+                    player.quitLife(valVida);
+                }
+
+            }
+            
+        }
+    }
 }
