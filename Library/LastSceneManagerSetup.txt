@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Sly hunting/Escenes/selectPlayers.unity
+- path: Assets/Sly hunting/Escenes/winners.unity
   isLoaded: 1
   isActive: 1
