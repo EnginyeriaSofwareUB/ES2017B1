@@ -47,6 +47,7 @@ public class Jugador : MonoBehaviour {
 
 	//Modificación SonidoFX
 	private int controlSonido;
+	public float volumen = 1.0f;
 
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
@@ -131,16 +132,6 @@ public class Jugador : MonoBehaviour {
 
 		setHealthBar ();
 		setStaminaBar ();
-
-		/*if (Input.GetAxis("Mouse ScrollWheel") < 0) {
-			if (Camera.main.orthographicSize <= 50)
-				Camera.main.orthographicSize += 0.5f;
-		}
-
-		if (Input.GetAxis("Mouse ScrollWheel") > 0) {
-			if (Camera.main.orthographicSize >= 1)
-				Camera.main.orthographicSize -= 0.5f;
-		}*/
 	}
 
 	private void moveRight(){
@@ -268,17 +259,25 @@ public class Jugador : MonoBehaviour {
 		currentHealth += val;
 	}
 
+	public float getVol () {
+		return this.volumen;
+	}
+
+	public void setVol(float vol) {
+		this.volumen = vol;
+	}
+
 	public void quitLife(float demage){
 		
 		currentHealth -= demage;
 
 
 		Posicion = transform;
-		if (tipo == "Cazador" && controlSonido != 0) {
-			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, 1.0f);
+		if (tipo == "Cazador") {
+			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, getVol());
 		}
-		if (tipo == "Mono" && controlSonido != 0) {
-			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, 1.0f);
+		if (tipo == "Mono") {
+			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, getVol());
 		}
 		if (currentHealth <= 0) {
 			destroy ();
@@ -326,8 +325,7 @@ public class Jugador : MonoBehaviour {
         animator.StopPlayback();
         animator.Play("death");
         Posicion = transform;
-        if (controlSonido != 0) AudioSource.PlayClipAtPoint(deathSound, Posicion.position, 1.0f);
-
+		AudioSource.PlayClipAtPoint(deathSound, Posicion.position, getVol());
     }
 
     private IEnumerator morir()
