@@ -47,7 +47,9 @@ public class ControlladorPartida : MonoBehaviour
 
 	// Tiempo caida caja
 	private float timeBox = 0.0f;
-	private float startTimeBox = 7.0f;
+	private float startTimeBox = 15.0f;
+	private int numCajas = 0;
+	private int maxCajas = 20;
 
 
 	void Start ()
@@ -135,7 +137,8 @@ public class ControlladorPartida : MonoBehaviour
 				changeTurn ();
 			}
 
-			if (timeBox <= 0) {
+			if (timeBox <= 0 && this.getNumCajas() < this.maxCajas) {
+				Debug.Log ("entro");
 				spawnBoxes ();
 			}
 		}
@@ -155,7 +158,6 @@ public class ControlladorPartida : MonoBehaviour
 
 	private void updateBulletsText() {
 		int bullets = actualEquipo.getActualPlayer ().getBullets ();
-		Debug.Log (bullets);
 		if (bullets > 10000)
 			txtBullets.text = "Bullets left: unlimited";
 		else 
@@ -187,8 +189,26 @@ public class ControlladorPartida : MonoBehaviour
 	}
 
 	public void spawnBoxes () {
-		Caja.create ("Caja", this);			
+		addNumCajas ();
+		Caja.create ("Caja", this);	
 		timeBox = startTimeBox;
+	}
+
+	public int getNumCajas() {
+		return numCajas;
+	}
+
+	public void addNumCajas() {
+		Debug.Log ("entroadd");
+		numCajas += 1;
+	}
+
+	public void subNumCajas() {
+		Debug.Log ("entrosub");
+		if (numCajas == maxCajas) {
+			timeBox = startTimeBox;
+		}
+		numCajas -= 1;	
 	}
 
 	public bool checkIfPosEmpty(Vector3 targetPos) {
