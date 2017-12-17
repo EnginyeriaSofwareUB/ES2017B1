@@ -14,8 +14,7 @@ public class Caja : MonoBehaviour {
 	public AudioClip badItem;
 	Transform posicion;
 	private int controlSonido;
-    private Animator animator;
-
+	private Animator animator;
 
     public static void create(string type, ControlladorPartida controla) {
 		GameObject obj = (GameObject)Resources.Load(type, typeof(GameObject));
@@ -23,7 +22,6 @@ public class Caja : MonoBehaviour {
 		Caja caja = obj.GetComponent<Caja>();
 		caja.setControl (controla);
 		caja.spawn();
-
 	}
 
 	public void Start() {
@@ -41,8 +39,9 @@ public class Caja : MonoBehaviour {
 	}
 
 	void spawn() {
-		Vector3 pos = new Vector3(UnityEngine.Random.Range(0,702),160,0);
-		this.transform.position = pos;
+			Vector3 pos = new Vector3 (UnityEngine.Random.Range (0, 702), 160, 0);
+			this.transform.position = pos;
+			Debug.Log (pos);
 	}
 
     void animx(string name)
@@ -138,7 +137,8 @@ public class Caja : MonoBehaviour {
                 }
 
             }
-            
+
+			this.control.subNumCajas ();
         }
     }
 }

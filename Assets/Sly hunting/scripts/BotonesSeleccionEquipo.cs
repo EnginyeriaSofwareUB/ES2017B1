@@ -8,8 +8,8 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 	GameObject obj;
 
 	void Awake() {
-		obj = GameObject.FindGameObjectWithTag ("controlOptions");
-		if (obj != null) {
+		if (GameObject.FindGameObjectWithTag ("controlOptions") != null) {
+			obj = GameObject.FindGameObjectWithTag ("controlOptions");
 			Destroy (obj);
 		} else {
 			PlayerPrefs.SetInt ("Musica", 1);
