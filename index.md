@@ -20,7 +20,8 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 >
 > When something is important enough, you do it even if the odds are not in your favor.
 
-[Test1](http://www.github.com/MichaelShakke.png)
+![GitHub Logo](http://www.github.com/MichaelShakke.png)
+Format: ![Alt Text](http://www.github.com/MichaelShakke)
 ```
 The final element.
 ```
