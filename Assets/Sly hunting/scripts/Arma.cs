@@ -17,10 +17,12 @@ public class Arma  {
 		this.bullets = bullets;
 	}
 
-	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual){
+	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual, float volumen){
 		if (Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
-			Bala.create(puntoFuego, damage, actual);
+			Debug.Log ("Arma------------------");
+			Debug.Log (volumen);
+			Bala.create(puntoFuego, damage, actual, volumen);
 			decreaseBullet ();
 		}
 	}

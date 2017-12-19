@@ -15,15 +15,17 @@ public class Caja : MonoBehaviour {
 	Transform posicion;
 	private int controlSonido;
 	private Animator animator;
+	public float volumen;
 
-    public static void create(string type, ControlladorPartida controla) {
+	public static void create(string type, ControlladorPartida controla, float volAnim) {
 		GameObject obj = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject box = Instantiate(obj);
 		Caja caja = obj.GetComponent<Caja>();
 		caja.setControl (controla);
+		caja.setVolumenAnim (volAnim);
 		caja.spawn();
 	}
-
+		
 	public void Start() {
 		controlSonido = PlayerPrefs.GetInt("Sonido");
         animator = GetComponent<Animator>();
@@ -36,6 +38,10 @@ public class Caja : MonoBehaviour {
 
 	public void setControl(ControlladorPartida ctrl) {
 		control = ctrl;
+	}
+
+	public void setVolumenAnim(float valor) {
+		this.volumen = valor;
 	}
 
 	void spawn() {
@@ -79,10 +85,8 @@ public class Caja : MonoBehaviour {
               //Debug.Log ("Cajas Buenas");
                 float rndCajasBuenas = UnityEngine.Random.Range(0, 10);
                 //Debug.Log (rndCajasBuenas);
-                if (controlSonido != 0)
-                {
-                    AudioSource.PlayClipAtPoint(goodItem, posicion.position, 1.0f);
-                }
+				AudioSource.PlayClipAtPoint(goodItem, posicion.position, this.volumen);
+ 
                 if (rndCajasBuenas >= 3.0f)
                 {
                     animx("winEnergy");
@@ -112,7 +116,7 @@ public class Caja : MonoBehaviour {
                 //Debug.Log (rndCajasMalas);
                 if (rndCajasMalas >= 5.0f)
                 {
-                    if (controlSonido != 0) AudioSource.PlayClipAtPoint(badItem, posicion.position, 1.0f);
+					AudioSource.PlayClipAtPoint(badItem, posicion.position, this.volumen);
                     animx("loseEnergy");
                     StartCoroutine(timeAnim());
                     if (player.getEstamina() >= 20.0f)
@@ -123,7 +127,7 @@ public class Caja : MonoBehaviour {
                 }
                 else if (rndCajasMalas < 5.0f && rndCajasMalas >= 2.0f)
                 {
-                    if (controlSonido != 0) AudioSource.PlayClipAtPoint(badItem, posicion.position, 1.0f);
+					AudioSource.PlayClipAtPoint(badItem, posicion.position, this.volumen);
                     Debug.Log("cambiar turno");
                     animx("loseTurn");
                     StartCoroutine(timeAnimTurn());
