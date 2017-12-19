@@ -50,7 +50,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	public  GameObject actual;
 	private Camera camera;
-	private int numero_jugadores = 3; //son 3 
+	private int numero_jugadores; //son 3 
 	private Equipo actualEquipo;
 
 	// Tiempo caida caja
@@ -73,7 +73,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	void Awake ()
 	{
-
+		numero_jugadores = PlayerPrefs.GetInt ("nPlayers");
 		hunters = new Equipo ("Cazador",numero_jugadores,this);
 		animals = new Equipo ("Mono",numero_jugadores,this);
 
