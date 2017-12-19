@@ -96,7 +96,16 @@ img.icon-download {
 	border-radius: 20px;
 	cursor: pointer;
 }
+ .navbar-header p{
+ 	margin-top: 26px;
+    margin-left: -90px;
+    font-size: 30px;
+    color: white;
+ }
 
+ .navbar-header a{
+ 	text-decoration: none;
+ }
 
 .header {
     position: fixed;
@@ -124,7 +133,7 @@ img.icon-download {
 
 .navbar-nav>li>a {
 	color: #fff!important;
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: 300;
 	text-transform: uppercase;
 	text-shadow: none;
