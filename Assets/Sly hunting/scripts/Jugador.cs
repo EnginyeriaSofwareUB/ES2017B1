@@ -47,13 +47,14 @@ public class Jugador : MonoBehaviour {
 
 	//Modificación SonidoFX
 	private int controlSonido;
-	public float volumen = 1.0f;
+	public float volumen;
 
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
 		jd.tipo = type;
+		//jd.setVol (volumen);
 		jd.setEquipo (equipo);
 		return pl;
 	
@@ -218,7 +219,8 @@ public class Jugador : MonoBehaviour {
 
 			// Michael
 			animator.Play("rightShoot");
-			currentW.fire (toRight, puntoFuego,this);
+			Debug.Log (getVol ());
+			currentW.fire (toRight, puntoFuego,this, getVol());
 		}
 	}
 
