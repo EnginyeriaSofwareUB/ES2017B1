@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Sly hunting/Escenes/scenary.unity
-  isLoaded: 1
-  isActive: 1
