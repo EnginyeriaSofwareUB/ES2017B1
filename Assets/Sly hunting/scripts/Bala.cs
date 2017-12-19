@@ -18,12 +18,15 @@ public class Bala : MonoBehaviour {
     private Transform Posicion;
 
 	// Modificación SonidoFX
-	private int controlSonido;
+	public float vol;
 
-    public static void create (Transform puntoFuego,float damage, Jugador actual){
+	public static void create (Transform puntoFuego,float damage, Jugador actual, float volumen){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 		GameObject b = Instantiate (bulletPrefab, puntoFuego.position, puntoFuego.transform.rotation);
 		Bala bala = b.GetComponent<Bala>();
+		Debug.Log ("Bala------------------");
+		Debug.Log (volumen);
+		bala.setVolAnim (volumen);
 		bala.jugador = actual;
 		bala.damage = damage; 
 	}
@@ -46,11 +49,7 @@ public class Bala : MonoBehaviour {
         Posicion = transform;
 
 		// Modificación SonidoFX
-		controlSonido = PlayerPrefs.GetInt("Sonido");
-		if (controlSonido != 0)
-		{
-			AudioSource.PlayClipAtPoint(shootSound, Posicion.position, 1.0f);
-		}
+		AudioSource.PlayClipAtPoint(shootSound, Posicion.position, this.vol);
     }
 
 	void Update() {
@@ -71,6 +70,10 @@ public class Bala : MonoBehaviour {
 		}
 		Destroy (this.gameObject);
 	}*/
+
+	public void setVolAnim(float valor) {
+		this.vol = valor;
+	}
 
     void OnTriggerEnter2D(Collider2D other)
     {

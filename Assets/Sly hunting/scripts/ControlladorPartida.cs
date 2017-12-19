@@ -34,6 +34,7 @@ public class ControlladorPartida : MonoBehaviour
     private GameObject obj;
 	private int music; 
 	private int so;
+	public float valorSlider;
     // ... aqui
 
     Equipo hunters;
@@ -54,7 +55,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	// Tiempo caida caja
 	private float timeBox = 0.0f;
-	private float startTimeBox = 15.0f;
+	private float startTimeBox = 25.0f;
 	private int numCajas = 0;
 	private int maxCajas = 20;
 
@@ -68,10 +69,33 @@ public class ControlladorPartida : MonoBehaviour
 		actualEquipo = (UnityEngine.Random.value > 0.5f) ? hunters : animals;
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 
+    }
+
+	void Awake ()
+	{
+
+		hunters = new Equipo ("Cazador",numero_jugadores,this);
+		animals = new Equipo ("Mono",numero_jugadores,this);
+
+		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
+		txtBullets =  GameObject.Find("textBullets").GetComponent<Text>();
+		timer = startTime;
+		timeBox = startTimeBox;
+
+		estatTimer = true;
+
+		// Rango de limites de la camara
+		minCameraPos.x = 106.0f;
+		maxCameraPos.x = 615.0f;
+		minCameraPos.y = 53.5f;
+		maxCameraPos.y = 140.0f;
+		minCameraPos.z = -10.0f;
+		maxCameraPos.z = -10.0f;
+
 		// Menu pausa
 		obj = GameObject.Find("AudioController");
-        pauseScreen = GameObject.Find("Image");
-        buttonContinue = GameObject.Find("ButtonContinue");
+		pauseScreen = GameObject.Find("Image");
+		buttonContinue = GameObject.Find("ButtonContinue");
 		buttonQuit = GameObject.Find ("ButtonQuit");
 		sliderMusica = GameObject.Find ("VolumenMusica");
 		sliderFX = GameObject.Find ("VolumenFX");
@@ -96,7 +120,9 @@ public class ControlladorPartida : MonoBehaviour
         imgMas1.SetActive(false);
 
 
-        music = PlayerPrefs.GetInt ("Musica");
+		// SonidoFX
+		music = PlayerPrefs.GetInt ("Musica");
+
 		so = PlayerPrefs.GetInt ("Sonido");
 		if (music == 0) {
 			sliderMusica.GetComponent<Slider> ().value = 0.0f;
@@ -105,32 +131,12 @@ public class ControlladorPartida : MonoBehaviour
 		}
 		if (so == 0) {
 			sliderFX.GetComponent<Slider> ().value = 0.0f;
+			setValorSlider (0.0f);
 		} else {
+			setValorSlider (1.0f);
 			sliderFX.GetComponent<Slider> ().value = 1.0f;
 		}
-        pausado = false;
-    }
-
-	void Awake ()
-	{
-
-		hunters = new Equipo ("Cazador",numero_jugadores,this);
-		animals = new Equipo ("Mono",numero_jugadores,this);
-
-		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
-		txtBullets =  GameObject.Find("textBullets").GetComponent<Text>();
-		timer = startTime;
-		timeBox = startTimeBox;
-
-		estatTimer = true;
-
-		// Rango de limites de la camara
-		minCameraPos.x = 106.0f;
-		maxCameraPos.x = 615.0f;
-		minCameraPos.y = 53.5f;
-		maxCameraPos.y = 140.0f;
-		minCameraPos.z = -10.0f;
-		maxCameraPos.z = -10.0f;
+		pausado = false;
 	}
 
 	// Update is called once per frame
@@ -155,7 +161,6 @@ public class ControlladorPartida : MonoBehaviour
 			}
 
 			if (timeBox <= 0 && this.getNumCajas() < this.maxCajas) {
-				Debug.Log ("entro");
 				spawnBoxes ();
 			}
 		}
@@ -207,7 +212,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	public void spawnBoxes () {
 		addNumCajas ();
-		Caja.create ("Caja", this);	
+		Caja.create ("Caja", this, getValorSlider());	
 		timeBox = startTimeBox;
 	}
 
@@ -301,19 +306,29 @@ public class ControlladorPartida : MonoBehaviour
 	}
 
 	public void searchPlayers() {
+		setValorSlider(sliderFX.GetComponent<Slider> ().value);
 		GameObject[] players = GameObject.FindGameObjectsWithTag ("Player");
 		foreach (GameObject player in players) {
 			player.GetComponent <Jugador> ().setVol(sliderFX.GetComponent<Slider> ().value);
 		}
 
-		/*GameObject[] suelo = GameObject.FindGameObjectsWithTag ("floor");
+		// Si falla a lo mejor es porque esta mal puesto los tags en los suelos
+		GameObject[] suelo = GameObject.FindGameObjectsWithTag ("floor");
 		foreach (GameObject floor in suelo) {
 			floor.GetComponent <Suelo> ().setVol(sliderFX.GetComponent<Slider> ().value);
 		}
 
 		GameObject[] caja = GameObject.FindGameObjectsWithTag ("caja");
 		foreach (GameObject box in caja) {
-			box.GetComponent <Caja> ().setVol(sliderFX.GetComponent<Slider> ().value);
-		}*/
+			box.GetComponent <Caja> ().setVolumenAnim(sliderFX.GetComponent<Slider> ().value);
+		}
+	}
+
+	public float getValorSlider() {
+		return this.valorSlider;
+	}
+
+	public void setValorSlider(float valor) {
+		this.valorSlider = valor;
 	}
 }
