@@ -10,7 +10,8 @@ public class Arma  {
 
 	float nextFire = 0f;
 	float fireRate = 0.5f;
-	float damage = 20.0f; 
+	float damage = 20.0f;
+    Jugador jug;
 
 
 	public Arma(int bullets)  {
@@ -24,6 +25,7 @@ public class Arma  {
 			Debug.Log (volumen);
 			Bala.create(puntoFuego, damage, actual, volumen);
 			decreaseBullet ();
+            jug.GetComponent<Jugador>().subEstamina(50);
 		}
 	}
 

@@ -10,6 +10,7 @@ public class Bala : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Jugador jugador;
 	private float damage;
+    
 
 
 
@@ -28,11 +29,13 @@ public class Bala : MonoBehaviour {
 		Debug.Log (volumen);
 		bala.setVolAnim (volumen);
 		bala.jugador = actual;
-		bala.damage = damage; 
-	}
+		bala.damage = damage;
+        
+    }
 
 	void Start() {
-		rb = GetComponent<Rigidbody2D> ();
+        jugador.GetComponent<Jugador>().subEstamina(50);
+        rb = GetComponent<Rigidbody2D> ();
 		float inclinacion = 0f;
         
         
