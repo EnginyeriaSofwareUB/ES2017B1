@@ -15,7 +15,8 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 	Text txt;
 
 	void Awake() {
-		
+
+	
 		txt = GameObject.Find ("txtNumPlayers").GetComponent<Text> ();
 		txt.text = "3 Jugadores";
 
