@@ -30,6 +30,10 @@ public class ControlladorPartida : MonoBehaviour
     private GameObject imgMas1;
     private GameObject imgMenos;
     private GameObject imgMenos1;
+    //Victoria
+    private GameObject imgWinHunter;
+    private GameObject imgWinMonkey;
+    private GameObject buttonExit;
 
     private GameObject obj;
 	private int music; 
@@ -105,6 +109,11 @@ public class ControlladorPartida : MonoBehaviour
         imgMenos = GameObject.Find("imgMenos");
         imgMenos1 = GameObject.Find("imgMenos1");
 
+        //Menu victoria
+        imgWinHunter = GameObject.Find("hunterWin");
+        imgWinMonkey = GameObject.Find("monkeyWin");
+        buttonExit = GameObject.Find("ButtonExit");
+
         imgVolumen = GameObject.Find("imgVolumen");
         imgFx = GameObject.Find("imgFx");
         pauseScreen.SetActive(false);
@@ -118,6 +127,11 @@ public class ControlladorPartida : MonoBehaviour
         imgMenos1.SetActive(false);
         imgMas.SetActive(false);
         imgMas1.SetActive(false);
+
+        //Menu Victoria
+        imgWinHunter.SetActive(false);
+        imgWinMonkey.SetActive(false);
+        buttonExit.SetActive(false);
 
 
 		// SonidoFX
@@ -196,7 +210,7 @@ public class ControlladorPartida : MonoBehaviour
 		actual = actualEquipo.pickPlayerToPlay().gameObject;
 		timer = startTime;
 	}
-
+    
 	public void setRandomPositions (List<GameObject> objects) {
 		GameObject[] terrain;
 		terrain = GameObject.FindGameObjectsWithTag ("floor");
@@ -250,6 +264,17 @@ public class ControlladorPartida : MonoBehaviour
 		//Habría que hacer la resolución del fin del juego
 
 		Debug.Log ("finishh");
+        if (equipoPerdedor.getTyo() == "Mono")
+        {
+            imgWinHunter.SetActive(true);
+            buttonExit.SetActive(true);
+        }else if (equipoPerdedor.getTyo() == "Cazador")
+        {
+            imgWinMonkey.SetActive(true);
+            buttonExit.SetActive(true);
+        }
+
+        Debug.Log("equipo" + equipoPerdedor);
 		Application.Quit ();
 	}
 
