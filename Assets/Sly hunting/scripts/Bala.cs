@@ -85,7 +85,9 @@ public class Bala : MonoBehaviour {
         else if (other.gameObject.tag == "floor")
         {
             Suelo ground = other.gameObject.GetComponent<Suelo>();
-            ground.destroy();
+            Debug.Log("daño de bala:" + damage);
+            ground.destroy(damage);
+            
 
         }
         else if (other.gameObject.tag == "stone" || other.gameObject.tag == "tree" || other.gameObject.tag == "bridge")
