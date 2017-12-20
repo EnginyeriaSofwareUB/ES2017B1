@@ -22,6 +22,9 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 		SceneManager.LoadScene ("scenary");
 
 	}
+	public void Help(){
+		SceneManager.LoadScene ("controls");
+	}
 	//public void ChangePlayer1(){
 		//GameObject.Find("PlayerJ1").GetComponent<Button>().image.overrideSprite = "completeMonkey.psd";
 
