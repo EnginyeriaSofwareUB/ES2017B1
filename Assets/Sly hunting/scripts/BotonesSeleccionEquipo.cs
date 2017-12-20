@@ -7,15 +7,15 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 
 	GameObject obj;
 	GameObject slider;
-	Image monoI;
+	/*Image monoI;
 	Image cazadorD;
 	Image monoD;
 	Image cazadorI;
-	Text txt;
+	Text txt;*/
 
 	void Awake() {
 	
-		txt = GameObject.Find ("txtNumPlayers").GetComponent<Text> ();
+		/*txt = GameObject.Find ("txtNumPlayers").GetComponent<Text> ();
 		txt.text = "3 Jugadores";
 
 		monoI = GameObject.Find ("MonoI").GetComponent<Image> ();
@@ -37,7 +37,7 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 		} else {
 			PlayerPrefs.SetInt ("Musica", 1);
 			PlayerPrefs.SetInt("Sonido", 1);
-		}
+		}*/
 
 	}
 
@@ -52,16 +52,16 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 
 	public void changeNumPlayers()
 	{
-		txt.text = ((int)slider.GetComponent<Slider>().value).ToString();
+		/*txt.text = ((int)slider.GetComponent<Slider>().value).ToString();
 		txt.text += " Jugadores";
-		PlayerPrefs.SetInt("nPlayers", (int)slider.GetComponent<Slider>().value);
+		PlayerPrefs.SetInt("nPlayers", (int)slider.GetComponent<Slider>().value);*/
 	}
 
 	public void changePlayer()
 	{
-		monoI.enabled = !monoI.enabled;
+		/*monoI.enabled = !monoI.enabled;
 		monoD.enabled = !monoD.enabled;
 		cazadorI.enabled = !cazadorI.enabled;
-		cazadorD.enabled = !cazadorD.enabled;
+		cazadorD.enabled = !cazadorD.enabled;*/
 	}
 }
