@@ -15,7 +15,6 @@ TagManager:
   - caja
   - muerteSegura
   - bridge
-  - controlOptions
   layers:
   - Default
   - TransparentFX

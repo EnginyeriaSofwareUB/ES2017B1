@@ -22,9 +22,16 @@ public class ControlladorPartida : MonoBehaviour
 	private GameObject buttonQuit;
 	private GameObject sliderMusica;
 	private GameObject sliderFX;
-	private GameObject textFX;
-	private GameObject textMusica;
-	private GameObject obj;
+    //private GameObject textFX;
+    //private GameObject textMusica;
+    private GameObject imgVolumen;
+    private GameObject imgFx;
+    private GameObject imgMas;
+    private GameObject imgMas1;
+    private GameObject imgMenos;
+    private GameObject imgMenos1;
+
+    private GameObject obj;
 	private int music; 
 	private int so;
 	public float valorSlider;
@@ -43,7 +50,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	public  GameObject actual;
 	private Camera camera;
-	private int numero_jugadores; //son 3 
+	private int numero_jugadores = 3; //son 3 
 	private Equipo actualEquipo;
 
 	// Tiempo caida caja
@@ -66,7 +73,7 @@ public class ControlladorPartida : MonoBehaviour
 
 	void Awake ()
 	{
-		numero_jugadores = PlayerPrefs.GetInt ("nPlayers");
+
 		hunters = new Equipo ("Cazador",numero_jugadores,this);
 		animals = new Equipo ("Mono",numero_jugadores,this);
 
@@ -92,19 +99,30 @@ public class ControlladorPartida : MonoBehaviour
 		buttonQuit = GameObject.Find ("ButtonQuit");
 		sliderMusica = GameObject.Find ("VolumenMusica");
 		sliderFX = GameObject.Find ("VolumenFX");
-		textMusica = GameObject.Find ("TextMusica");
-		textFX = GameObject.Find ("TextFX");
+        imgVolumen = GameObject.Find("imgVolumen");
+        imgMas = GameObject.Find("imgMas");
+        imgMas1 = GameObject.Find("imgMas1");
+        imgMenos = GameObject.Find("imgMenos");
+        imgMenos1 = GameObject.Find("imgMenos1");
 
-		pauseScreen.SetActive(false);
+        imgVolumen = GameObject.Find("imgVolumen");
+        imgFx = GameObject.Find("imgFx");
+        pauseScreen.SetActive(false);
 		buttonContinue.SetActive(false);
 		buttonQuit.SetActive(false);
 		sliderMusica.SetActive(false);
 		sliderFX.SetActive(false);
-		textMusica.SetActive(false);
-		textFX.SetActive(false);
+        imgVolumen.SetActive(false);
+        imgFx.SetActive(false);
+        imgMenos.SetActive(false);
+        imgMenos1.SetActive(false);
+        imgMas.SetActive(false);
+        imgMas1.SetActive(false);
+
 
 		// SonidoFX
 		music = PlayerPrefs.GetInt ("Musica");
+
 		so = PlayerPrefs.GetInt ("Sonido");
 		if (music == 0) {
 			sliderMusica.GetComponent<Slider> ().value = 0.0f;
@@ -243,13 +261,19 @@ public class ControlladorPartida : MonoBehaviour
 			buttonQuit.SetActive(true);
 			sliderMusica.SetActive(true);
 			sliderFX.SetActive(true);
-			textMusica.SetActive(true);
-			textFX.SetActive(true);
-			Time.timeScale = 0;
+            //textMusica.SetActive(true);
+            //textFX.SetActive(true);
+            imgVolumen.SetActive(true);
+            imgFx.SetActive(true);
+            imgMenos.SetActive(true);
+            imgMenos1.SetActive(true);
+            imgMas.SetActive(true);
+            imgMas1.SetActive(true);
+            Time.timeScale = 0;
 
 			if (music == 0) {
-				obj.GetComponent<AudioSource> ().Play ();
-				obj.GetComponent<AudioSource> ().volume = 0.0f;
+				obj.GetComponent<AudioSource>().Play ();
+				obj.GetComponent<AudioSource>().volume = 0.0f;
 			}
 		}
 	}
@@ -261,9 +285,15 @@ public class ControlladorPartida : MonoBehaviour
 		buttonQuit.SetActive(false);
 		sliderMusica.SetActive(false);
 		sliderFX.SetActive(false);
-		textMusica.SetActive(false);
-		textFX.SetActive(false);
-		Time.timeScale = 1;
+		//textMusica.SetActive(false);
+		//textFX.SetActive(false);
+        imgVolumen.SetActive(false);
+        imgFx.SetActive(false);
+        imgMenos.SetActive(false);
+        imgMenos1.SetActive(false);
+        imgMas.SetActive(false);
+        imgMas1.SetActive(false);
+        Time.timeScale = 1;
 	}
 
 	public void changeMusicaSlider() {

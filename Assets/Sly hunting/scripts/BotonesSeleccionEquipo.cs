@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BotonesSeleccionEquipo : MonoBehaviour {
 
@@ -15,7 +14,6 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 	Text txt;
 
 	void Awake() {
-
 	
 		txt = GameObject.Find ("txtNumPlayers").GetComponent<Text> ();
 		txt.text = "3 Jugadores";
@@ -47,14 +45,20 @@ public class BotonesSeleccionEquipo : MonoBehaviour {
 		SceneManager.LoadScene ("scenary");
 
 	}
-		
-	public void changeNumPlayers() {
-		txt.text = ((int)slider.GetComponent<Slider> ().value).ToString ();
-		txt.text += " Jugadores";
-		PlayerPrefs.SetInt ("nPlayers", (int)slider.GetComponent<Slider> ().value);
+	public void Help(){
+		SceneManager.LoadScene ("controls");
 	}
 
-	public void changePlayer() {
+
+	public void changeNumPlayers()
+	{
+		txt.text = ((int)slider.GetComponent<Slider>().value).ToString();
+		txt.text += " Jugadores";
+		PlayerPrefs.SetInt("nPlayers", (int)slider.GetComponent<Slider>().value);
+	}
+
+	public void changePlayer()
+	{
 		monoI.enabled = !monoI.enabled;
 		monoD.enabled = !monoD.enabled;
 		cazadorI.enabled = !cazadorI.enabled;
