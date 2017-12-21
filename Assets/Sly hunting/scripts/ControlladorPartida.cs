@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class ControlladorPartida : MonoBehaviour
@@ -31,9 +32,9 @@ public class ControlladorPartida : MonoBehaviour
     private GameObject imgMenos;
     private GameObject imgMenos1;
     //Victoria
-    private GameObject imgWinHunter;
+    /*private GameObject imgWinHunter;
     private GameObject imgWinMonkey;
-    private GameObject buttonExit;
+    private GameObject buttonExit;*/
 
     private GameObject obj;
 	private int music; 
@@ -110,9 +111,9 @@ public class ControlladorPartida : MonoBehaviour
         imgMenos1 = GameObject.Find("imgMenos1");
 
         //Menu victoria
-        imgWinHunter = GameObject.Find("hunterWin");
+        /*imgWinHunter = GameObject.Find("hunterWin");
         imgWinMonkey = GameObject.Find("monkeyWin");
-        buttonExit = GameObject.Find("ButtonExit");
+        buttonExit = GameObject.Find("ButtonExit");*/
 
         imgVolumen = GameObject.Find("imgVolumen");
         imgFx = GameObject.Find("imgFx");
@@ -129,9 +130,9 @@ public class ControlladorPartida : MonoBehaviour
         imgMas1.SetActive(false);
 
         //Menu Victoria
-        imgWinHunter.SetActive(false);
+        /*imgWinHunter.SetActive(false);
         imgWinMonkey.SetActive(false);
-        buttonExit.SetActive(false);
+        buttonExit.SetActive(false);*/
 
 
 		// SonidoFX
@@ -262,20 +263,18 @@ public class ControlladorPartida : MonoBehaviour
 
 	public void finish(Equipo equipoPerdedor){
 		//Habría que hacer la resolución del fin del juego
-
-		Debug.Log ("finishh");
         if (equipoPerdedor.getTyo() == "Mono")
         {
-            imgWinHunter.SetActive(true);
-            buttonExit.SetActive(true);
+			PlayerPrefs.SetString ("Winner", "Cazador");
+			SceneManager.LoadScene ("winners");
+			Debug.Log ("mono pierde");
+
         }else if (equipoPerdedor.getTyo() == "Cazador")
         {
-            imgWinMonkey.SetActive(true);
-            buttonExit.SetActive(true);
+			PlayerPrefs.SetString ("Winner", "Mono");
+			SceneManager.LoadScene ("winners");
+			Debug.Log ("caza pierde");
         }
-
-        Debug.Log("equipo" + equipoPerdedor);
-		Application.Quit ();
 	}
 
 	public void controlPauseMenu() {
