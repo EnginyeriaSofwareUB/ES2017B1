@@ -7,16 +7,16 @@ using System;
 public class Jugador : MonoBehaviour {
 
 	public Rigidbody2D rb;
-	public bool playerControl;
-	private bool agile = false;
-	private bool destructor = false;
-
-	float speed = 8.0f; 
-	float FPS = 4.0f; 
-	float estaminaRate = 2.0f;
+	float speed = 8.0f; //10 se quito public
+	float FPS = 4.0f; //60 se quito public
+	float estaminaRate = 5.0f;
 	public bool toRight = true;
+	public bool playerControl;
 	public bool jumping = false;
 	float forceJump = 50.0f;
+
+	private bool agile = false;
+	private bool destructor = false;
 
 	public float currentStamina = 0.0f;
 	private float maxStamina = 100.0f;
@@ -31,6 +31,10 @@ public class Jugador : MonoBehaviour {
 
 	public GameObject healthBar;
 	public GameObject staminaBar;
+	public GameObject arrowIndicator;
+	private float timeArrow;
+	private float totalTimeArrow;
+	private bool arrowActive;
 
 	//Variable Antoni
 	public Vector2 ju;
@@ -48,12 +52,14 @@ public class Jugador : MonoBehaviour {
 
 	//Modificación SonidoFX
 	private int controlSonido;
+	public float volumen;
 
 	public static GameObject create(string type, Equipo equipo){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
 		jd.tipo = type;
+		//jd.setVol (volumen);
 		jd.setEquipo (equipo);
 		return pl;
 	
@@ -68,7 +74,13 @@ public class Jugador : MonoBehaviour {
 		currentHealth = maxHealth;
 		currentStamina = maxStamina;
 		toRight = true;
-        death = true;
+
+		death = false;
+		//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+		arrowActive = false;
+		arrowIndicator.SetActive (arrowActive);
+		timeArrow = 3.0f;
+
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
 		ju  = new Vector3(0.0f, 10.0f);
@@ -87,17 +99,22 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (playerControl && currentStamina > 0 && death) {
+		if (playerControl && currentStamina > 0 && !death) {
+			if ((totalTimeArrow < Time.time) && arrowActive) {
+				//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+				arrowIndicator.SetActive (false);
+				arrowActive = false;
+			}
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
-			} else if (Input.GetKey (KeyCode.RightArrow)) {
+			} else if (Input.GetKey (KeyCode.RightArrow) && !death) {
 				moveRight ();
 
 				/*} else if (Input.GetKey (KeyCode.Space) && !jumping) {
 				jump ();*/      
 
-			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0) {
+			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0 && !death) {
 				jump ();
 
 			} else if (Input.GetKey (KeyCode.UpArrow)) {
@@ -106,21 +123,22 @@ public class Jugador : MonoBehaviour {
 			} else if (Input.GetKey (KeyCode.DownArrow)) {
 				lookDown ();
 
-			} else if (Input.GetKey (KeyCode.Return)) {
+			} else if (Input.GetKey (KeyCode.Return) && !death) {
 				fire ();
 
 			} else if(Input.GetKey(KeyCode.C)){
 				changeWeapon ();
 
 			} else {
-				if (death) idle ();
+
+				idle ();
+
 			}
 
 		}
 
 		setHealthBar ();
 		setStaminaBar ();
-
 	}
 
 
@@ -150,36 +168,27 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void barPosition(String dir) {
-		GameObject healthBar = transform.Find("HealthBar").gameObject;
-		GameObject staminaBar = transform.Find("StaminaBar").gameObject;
+		GameObject infoIcon = transform.Find ("infoIcons").gameObject;
 		switch(dir) {
 		case "left":
-			if (healthBar.transform.localPosition.z < 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z < 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		case "right":
-			if (healthBar.transform.localPosition.z > 0) {
-				Vector3 pos = healthBar.transform.localPosition;
+			if (infoIcon.transform.localPosition.z > 0) {
+				Vector3 pos = infoIcon.transform.localPosition;
 				pos.z *= -1;
-				healthBar.transform.localPosition = pos;
-				pos = staminaBar.transform.localPosition;
-				pos.z *= -1;
-				staminaBar.transform.localPosition = pos;
+				infoIcon.transform.localPosition = pos;
 			}
 			break;
 		}
 	}
 	private void jump(){
-		Debug.Log (jumping);
 		if (!jumping) {
 			jumping = true;
-			Debug.Log ("we are in "+jumping);
 			rb.velocity = new Vector2 (rb.velocity.x, forceJump);
 		}
 		jumping = true;
@@ -204,14 +213,15 @@ public class Jugador : MonoBehaviour {
 	private void fire() {
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
-		if (currentW.getBullets () > 0) {
+		if (currentW.getBullets() > 0) {
 			// Animación correcta
 			/*if (!toRight) animator.Play("rightShoot");
 			else animator.Play("leftShoot");*/
 
 			// Michael
 			animator.Play("rightShoot");
-			currentW.fire (toRight, puntoFuego,this);
+			if (currentStamina >= currentW.getEstaminaPistola())
+				currentW.fire (toRight, puntoFuego,this, getVol());
 		}
 	}
 
@@ -282,17 +292,25 @@ public class Jugador : MonoBehaviour {
 		currentHealth += val;
 	}
 
+	public float getVol () {
+		return this.volumen;
+	}
+
+	public void setVol(float vol) {
+		this.volumen = vol;
+	}
+
 	public void quitLife(float demage){
 		
 		currentHealth -= demage;
 
 
 		Posicion = transform;
-		if (tipo == "Cazador" && controlSonido != 0) {
-			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, 1.0f);
+		if (tipo == "Cazador") {
+			AudioSource.PlayClipAtPoint(hurtHunter, Posicion.position, getVol());
 		}
-		if (tipo == "Mono" && controlSonido != 0) {
-			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, 1.0f);
+		if (tipo == "Mono") {
+			AudioSource.PlayClipAtPoint(hurtMonkey, Posicion.position, getVol());
 		}
 		if (currentHealth <= 0) {
 			destroy ();
@@ -307,6 +325,16 @@ public class Jugador : MonoBehaviour {
 			currentStamina = 100;
 		}
 		playerControl = what;
+		showArrowIndicator (what);
+	}
+
+	public void showArrowIndicator(bool show) {
+		Debug.Log ("we started this with "+ show);
+		//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
+		arrowIndicator.SetActive (show);
+		totalTimeArrow = Time.time + timeArrow;
+		arrowActive = show;
+
 	}
 
 	public void setEquipo(Equipo eq){
@@ -325,24 +353,29 @@ public class Jugador : MonoBehaviour {
 		staminaBar.transform.localScale = new Vector3 (Mathf.Clamp(currentStamina / maxStamina,0f ,1f), staminaBar.transform.localScale.y, staminaBar.transform.localScale.z);
 	}
 
+	public int getBullets() {
+		Arma currentW = weapons [currentWeapon];
+		return currentW.getBullets ();
+	}
+
     public void animDeath() {
         animator.StopPlayback();
         animator.Play("death");
         Posicion = transform;
-        if (controlSonido != 0) AudioSource.PlayClipAtPoint(deathSound, Posicion.position, 1.0f);
-
+		AudioSource.PlayClipAtPoint(deathSound, Posicion.position, getVol());
     }
 
     private IEnumerator morir()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
         
         equipo.removePlayer(this.gameObject);
         Destroy(this.gameObject);
+		death = false;
     }
 
     public void destroy(){
-        death = false;
+        death = true;
         animDeath();
         StartCoroutine(morir());
         

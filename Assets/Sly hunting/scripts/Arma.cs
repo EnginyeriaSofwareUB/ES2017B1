@@ -10,8 +10,9 @@ public class Arma  {
 
 	float nextFire = 0f;
 	float fireRate = 0.5f;
-	float damage = 20.0f; 
 	String type;
+	float damage = 20.0f;
+	float estaminaPistola = 30.0f;
 
 	public Arma(int bullets,String type="regular")  {
 		this.bullets = bullets;
@@ -25,15 +26,16 @@ public class Arma  {
 		return type;
 	}
 
-	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual){
+
+	public void fire(Boolean toRight,Transform puntoFuego,Jugador actual, float volumen){
 		if (Time.time > nextFire && getBullets() > 0) {
 			nextFire = Time.time + fireRate;
 			if (actual.isDestructor ()) {
-				Bala.create (puntoFuego, damage*1.5f, actual);//incrementem un 50% si dispara un destructor
+				Bala.create (puntoFuego, damage*1.5f, actual, volumen, estaminaPistola);//incrementem un 50% si dispara un destructor
 			} else {
-				Bala.create (puntoFuego, damage, actual);
+				Bala.create(puntoFuego, damage, actual, volumen, estaminaPistola);
 			}
-			decreaseBullet ();
+			decreaseBullet ();            
 		}
 	}
 
@@ -47,6 +49,10 @@ public class Arma  {
 
 	public int getBullets() {
 		return bullets;
+	}
+
+	public float getEstaminaPistola() {
+		return estaminaPistola;
 	}
 		
 }
