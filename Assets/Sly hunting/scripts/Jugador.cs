@@ -219,8 +219,8 @@ public class Jugador : MonoBehaviour {
 
 			// Michael
 			animator.Play("rightShoot");
-			Debug.Log (getVol ());
-			currentW.fire (toRight, puntoFuego,this, getVol());
+			if (currentStamina >= currentW.getEstaminaPistola())
+				currentW.fire (toRight, puntoFuego,this, getVol());
 		}
 	}
 

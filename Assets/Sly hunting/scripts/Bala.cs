@@ -10,6 +10,7 @@ public class Bala : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Jugador jugador;
 	private float damage;
+	private float gastoEstamina;
     
 
 
@@ -21,7 +22,7 @@ public class Bala : MonoBehaviour {
 	// Modificación SonidoFX
 	public float vol;
 
-	public static void create (Transform puntoFuego,float damage, Jugador actual, float volumen){
+	public static void create (Transform puntoFuego,float damage, Jugador actual, float volumen, float estaminaArma){
 		GameObject bulletPrefab =(GameObject)Resources.Load("Bala", typeof(GameObject));
 		GameObject b = Instantiate (bulletPrefab, puntoFuego.position, puntoFuego.transform.rotation);
 		Bala bala = b.GetComponent<Bala>();
@@ -30,11 +31,12 @@ public class Bala : MonoBehaviour {
 		bala.setVolAnim (volumen);
 		bala.jugador = actual;
 		bala.damage = damage;
+		bala.gastoEstamina = estaminaArma;
         
     }
 
 	void Start() {
-        jugador.GetComponent<Jugador>().subEstamina(50);
+		jugador.GetComponent<Jugador>().subEstamina(gastoEstamina);
         rb = GetComponent<Rigidbody2D> ();
 		float inclinacion = 0f;
         
