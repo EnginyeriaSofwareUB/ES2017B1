@@ -29,6 +29,7 @@ public class Equipo   {
 		order = 0;
 		weapons = new List<Arma> ();
 		weapons.Add (new Arma (100000));//arma inicial balas "infinitas"
+		weapons.Add (new Arma(3,"Bazoca"));
 		this.controlPartida = controlPartida;
 		controlPartida.setRandomPositions (players);
 	}
