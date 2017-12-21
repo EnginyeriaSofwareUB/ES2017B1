@@ -36,6 +36,8 @@ public class Jugador : MonoBehaviour {
 	private float timeArrow;
 	private float totalTimeArrow;
 	private bool arrowActive;
+	private float nextChange;
+	private float changeRate = 0.35f;
 
 	//Variable Antoni
 	public Vector2 ju;
@@ -90,6 +92,7 @@ public class Jugador : MonoBehaviour {
 		arrowActive = false;
 		arrowIndicator.SetActive (arrowActive);
 		timeArrow = 3.0f;
+		nextChange = 0.0f;
 
 		rb = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator>();
@@ -137,7 +140,10 @@ public class Jugador : MonoBehaviour {
 				fire ();
 
 			} else if(Input.GetKey(KeyCode.C)){
-				changeWeapon ();
+				if (Time.time > nextChange) {
+					nextChange = Time.time + changeRate;
+					changeWeapon ();
+				}
 
 			} else {
 
@@ -247,7 +253,6 @@ public class Jugador : MonoBehaviour {
 			speed *= 1.2f;
 			estaminaRate /= 2;
 			Image roleIcon = transform.Find ("infoIcons").gameObject.transform.Find("Role").gameObject.GetComponent<Image>();
-			Debug.Log(roleIcon.name+" "+roleIcon.sprite.name+" "+ AssetDatabase.GetAssetPath(roleIcon.sprite));
 			roleIcon.sprite = Resources.Load <Sprite> ("agile");
 			//TODO icon ágil
 		}
@@ -276,7 +281,16 @@ public class Jugador : MonoBehaviour {
 		} else {
 			currentWeapon += 1;
 		}
-		Debug.Log ("TIPOOO: "+weapons[currentWeapon].getTipus());
+		String typeW = weapons[currentWeapon].getTipus();
+		Image weaponIcon = transform.Find("puntoFuego").gameObject.GetComponent<Image>();
+		switch (typeW) {
+			case "Bazoca":			
+				weaponIcon.sprite = Resources.Load <Sprite>("bazooka");
+				break;
+			case "regular":
+				weaponIcon.sprite = Resources.Load <Sprite>("escopeta");
+				break;
+		}
 		//TODO Aquí caldría cambia el visual del arma
 		//weapons[currentWeapon].getSprite()
 	}
