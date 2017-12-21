@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 using System;
 
 public class Jugador : MonoBehaviour {
@@ -54,13 +55,22 @@ public class Jugador : MonoBehaviour {
 	private int controlSonido;
 	public float volumen;
 
-	public static GameObject create(string type, Equipo equipo){
+	public static GameObject create(string type, Equipo equipo, String role){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
 		jd.tipo = type;
 		//jd.setVol (volumen);
 		jd.setEquipo (equipo);
+
+		switch (role) {
+			case "agile":
+				jd.makeAgile();
+				break;
+			case "destructor":
+				jd.makeDestructor();
+				break;
+		}
 		return pl;
 	
 	}
@@ -234,8 +244,11 @@ public class Jugador : MonoBehaviour {
 	public void makeAgile(){
 		
 		if (agile == false) {
-			speed *= 2;
+			speed *= 1.2f;
 			estaminaRate /= 2;
+			Image roleIcon = transform.Find ("infoIcons").gameObject.transform.Find("Role").gameObject.GetComponent<Image>();
+			Debug.Log(roleIcon.name+" "+roleIcon.sprite.name+" "+ AssetDatabase.GetAssetPath(roleIcon.sprite));
+			roleIcon.sprite = Resources.Load <Sprite> ("agile");
 			//TODO icon ágil
 		}
 		agile = true;
@@ -243,6 +256,8 @@ public class Jugador : MonoBehaviour {
 
 	public void makeDestructor(){
 		if (destructor == false) {
+			Image roleIcon = transform.Find ("infoIcons").gameObject.transform.Find("Role").gameObject.GetComponent<Image>();
+			roleIcon.sprite = Resources.Load <Sprite>("destructor");
 			//TODO icon destructor
 		}
 		destructor = true;
