@@ -16,12 +16,16 @@ public class Equipo   {
 	private readonly int inventory = 6;
 	ControlladorPartida controlPartida;
 	private int order;
+	private readonly List<String> roles = new List<String>{"agile","destructor"};
 
 	public Equipo (string type,int number,ControlladorPartida controlPartida){
+		int roleSize = roles.Count;
 		for (int i = 0; i < number; i++) { // aqui se cambió hasta < porque coge 1 jugador más
-			players.Add (Jugador.create(type,this));
+			String rol = roles[i%roleSize];
+			players.Add (Jugador.create(type,this,rol));
 			typ = type;
 		}
+
 		order = 0;
 		weapons = new List<Arma> ();
 		weapons.Add (new Arma (100000));//arma inicial balas "infinitas"

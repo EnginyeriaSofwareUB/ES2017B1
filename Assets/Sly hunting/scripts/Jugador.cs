@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 using System;
 
 public class Jugador : MonoBehaviour {
@@ -13,6 +14,11 @@ public class Jugador : MonoBehaviour {
 	public bool toRight = true;
 	public bool playerControl;
 	public bool jumping = false;
+	float forceJump = 50.0f;
+
+	private bool agile = false;
+	private bool destructor = false;
+
 	public float currentStamina = 0.0f;
 	private float maxStamina = 100.0f;
 	public float currentHealth = 0.0f;
@@ -21,9 +27,9 @@ public class Jugador : MonoBehaviour {
 	private Animator animator;
 	private List<Arma> weapons;
 	private int currentWeapon;
-	private Equipo equipo;
 	public Transform puntoFuego;
-	float forceJump = 50.0f;
+	private Equipo equipo;
+
 	public GameObject healthBar;
 	public GameObject staminaBar;
 	public GameObject arrowIndicator;
@@ -49,13 +55,22 @@ public class Jugador : MonoBehaviour {
 	private int controlSonido;
 	public float volumen;
 
-	public static GameObject create(string type, Equipo equipo){
+	public static GameObject create(string type, Equipo equipo, String role){
 		GameObject player = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject pl = Instantiate (player);
 		Jugador jd = pl.GetComponent<Jugador>();
 		jd.tipo = type;
 		//jd.setVol (volumen);
 		jd.setEquipo (equipo);
+
+		switch (role) {
+			case "agile":
+				jd.makeAgile();
+				break;
+			case "destructor":
+				jd.makeDestructor();
+				break;
+		}
 		return pl;
 	
 	}
@@ -94,14 +109,12 @@ public class Jugador : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
 		if (playerControl && currentStamina > 0 && !death) {
 			if ((totalTimeArrow < Time.time) && arrowActive) {
 				//GameObject arrowIndicator = transform.Find ("infoIcons").gameObject.transform.Find("ArrowIndicator").gameObject;
 				arrowIndicator.SetActive (false);
 				arrowActive = false;
 			}
-				
 			if (Input.GetKey (KeyCode.LeftArrow)) {
 				moveLeft (); 
 
@@ -114,14 +127,17 @@ public class Jugador : MonoBehaviour {
 			} else if (Input.GetKey (KeyCode.Space) && rb.velocity.y <= 0 && !death) {
 				jump ();
 
-			} else if (Input.GetKey(KeyCode.UpArrow)) {
-				lookUp();
+			} else if (Input.GetKey (KeyCode.UpArrow)) {
+				lookUp ();
 
-			} else if (Input.GetKey(KeyCode.DownArrow)) {
-				lookDown();
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				lookDown ();
 
 			} else if (Input.GetKey (KeyCode.Return) && !death) {
 				fire ();
+
+			} else if(Input.GetKey(KeyCode.C)){
+				changeWeapon ();
 
 			} else {
 
@@ -134,6 +150,8 @@ public class Jugador : MonoBehaviour {
 		setHealthBar ();
 		setStaminaBar ();
 	}
+
+
 
 	private void moveRight(){
 		toRight = true;
@@ -185,13 +203,7 @@ public class Jugador : MonoBehaviour {
 		}
 		jumping = true;
 	}
-
-	/*void jump(){
-		animator.StopPlayback();
-		animator.Play("rightJump");
-		rb.AddForce(ju, ForceMode2D.Impulse);
-        jumping = true;
-    }*/
+		
 
 	private void lookUp() {
 		float angle  = puntoFuego.transform.localEulerAngles.z + 1;
@@ -209,7 +221,6 @@ public class Jugador : MonoBehaviour {
 	}
 
 	private void fire() {
-		//xC
 		animator.StopPlayback();
 		Arma currentW = weapons [currentWeapon];
 		if (currentW.getBullets() > 0) {
@@ -230,13 +241,48 @@ public class Jugador : MonoBehaviour {
 	}
 
 	//****************** GETTERS & SETTERS **********************/
+	public void makeAgile(){
+		
+		if (agile == false) {
+			speed *= 1.2f;
+			estaminaRate /= 2;
+			Image roleIcon = transform.Find ("infoIcons").gameObject.transform.Find("Role").gameObject.GetComponent<Image>();
+			Debug.Log(roleIcon.name+" "+roleIcon.sprite.name+" "+ AssetDatabase.GetAssetPath(roleIcon.sprite));
+			roleIcon.sprite = Resources.Load <Sprite> ("agile");
+			//TODO icon ágil
+		}
+		agile = true;
+	}
+
+	public void makeDestructor(){
+		if (destructor == false) {
+			Image roleIcon = transform.Find ("infoIcons").gameObject.transform.Find("Role").gameObject.GetComponent<Image>();
+			roleIcon.sprite = Resources.Load <Sprite>("destructor");
+			//TODO icon destructor
+		}
+		destructor = true;
+	}
+
+	public bool isDestructor(){
+		return destructor;
+	}
 
 	public void setWeapons(List<Arma> armas) {
 		weapons = armas;
 	}
-
+	public void changeWeapon(){
+		if (currentWeapon == (weapons.Count - 1)) {
+			currentWeapon = 0;
+		} else {
+			currentWeapon += 1;
+		}
+		Debug.Log ("TIPOOO: "+weapons[currentWeapon].getTipus());
+		//TODO Aquí caldría cambia el visual del arma
+		//weapons[currentWeapon].getSprite()
+	}
 	//We call this method when we find a box with a new weapon and we have already added to the list
 	public void updateWeaponsTeam(Arma weapon) {
+		weapons.Add(weapon);
 		equipo.addWeapon (weapon);
 	}
 
@@ -308,6 +354,10 @@ public class Jugador : MonoBehaviour {
 
 	public void setEquipo(Equipo eq){
 		equipo = eq;
+	}
+
+	public Equipo getEquipo(){
+		return equipo;	
 	}
 
 	private void setHealthBar() {

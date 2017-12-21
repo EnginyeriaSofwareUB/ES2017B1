@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sly hunting/Escenes/controls.unity
     guid: d660419abdbb544058177467c2e34324
+  - enabled: 1
+    path: Assets/Sly hunting/Escenes/winners.unity
+    guid: 4afbae3904cbc4e75be9be2cf193c138
