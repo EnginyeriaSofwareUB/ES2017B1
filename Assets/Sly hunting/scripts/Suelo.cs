@@ -14,8 +14,7 @@ public class Suelo : MonoBehaviour {
 
 
     private void Start()
-    {
-		
+    {	
 		
 		animator = GetComponent<Animator>();
         Posicion = transform;
@@ -74,7 +73,7 @@ public class Suelo : MonoBehaviour {
 
         this.lifeGround -= damage;
         animDestroy();
-        if (this.lifeGround == 0.0) StartCoroutine(timeDestroy2());
+        if (this.lifeGround <= 0.0) StartCoroutine(timeDestroy2());
         else StartCoroutine(timeDestroy1());
 
 

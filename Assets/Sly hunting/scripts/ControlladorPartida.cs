@@ -49,18 +49,19 @@ public class ControlladorPartida : MonoBehaviour
 	public float timer = 0.0f;
 	//public float startTime = 255.0f;
 	float startTime = 25.0f; //se cambia a 15 para probar movimientos, inicial 255
-	public bool estatTimer;
+    public bool estatTimer;
 	public Text txtTimer;
 	public Text txtBullets;
+    public Text txtResultBox;
 
-	public  GameObject actual;
+    public  GameObject actual;
 	private Camera camera;
 	private int numero_jugadores; //son 3 
 	private Equipo actualEquipo;
 
 	// Tiempo caida caja
 	private float timeBox = 0.0f;
-	private float startTimeBox = 25.0f;
+	private float startTimeBox = 18.0f;
 	private int numCajas = 0;
 	private int maxCajas = 20;
 
@@ -84,7 +85,10 @@ public class ControlladorPartida : MonoBehaviour
 
 		txtTimer =  GameObject.Find("textTimer").GetComponent<Text>();
 		txtBullets =  GameObject.Find("textBullets").GetComponent<Text>();
-		timer = startTime;
+        txtResultBox = GameObject.Find("textResultBox").GetComponent<Text>();
+        txtResultBox.text = "";
+
+        timer = startTime;
 		timeBox = startTimeBox;
 
 		estatTimer = true;
@@ -355,4 +359,10 @@ public class ControlladorPartida : MonoBehaviour
 	public void setValorSlider(float valor) {
 		this.valorSlider = valor;
 	}
+
+    public Text getTextResultBox()
+    {
+        return this.txtResultBox;
+
+    }
 }
