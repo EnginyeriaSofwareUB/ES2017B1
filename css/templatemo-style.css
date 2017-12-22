@@ -10,7 +10,6 @@ http://www.templatemo.com/tm-506-tinker
     margin: 0;
     padding: 0;
     font-family: 'Roboto', arial, sans-serif;
-    zoom: 97%;
 }
 
 body {
@@ -134,7 +133,7 @@ img.icon-download {
 
 .navbar-nav>li>a {
 	color: #fff!important;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 300;
 	text-transform: uppercase;
 	text-shadow: none;
@@ -149,7 +148,7 @@ img.icon-download {
 
 .header.active .navbar-nav>li>a {
 	font-family: 'Open Sans', arial, sans-serif;
-	font-size: 13px;
+	font-size: 15px;
 	font-weight: 300;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
@@ -470,7 +469,6 @@ bootstrap.min.css:5
 	padding-top: 60px;
 	padding-bottom: 60px;
 	background-color: rgba(0, 0, 0, 0.5);
-	height: 582px;
 	margin-left: -100vh;
 	padding-left: 100vh;
 	overflow: hidden!important;
