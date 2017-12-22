@@ -10,8 +10,8 @@ public class Jugador : MonoBehaviour {
 	public Rigidbody2D rb;
 	float speed = 8.0f; //10 se quito public
 	float FPS = 4.0f; //60 se quito public
-	float estaminaRate = 5.0f;
-	public bool toRight = true;
+	float estaminaRate = 3.0f;
+    public bool toRight = true;
 	public bool playerControl;
 	public bool jumping = false;
 	float forceJump = 50.0f;

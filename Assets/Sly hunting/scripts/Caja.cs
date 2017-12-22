@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Caja : MonoBehaviour {
 
@@ -16,8 +17,14 @@ public class Caja : MonoBehaviour {
 	private int controlSonido;
 	private Animator animator;
 	public float volumen;
+    public Text textResultBox;
+    private Color verde;
+    private Color amarillo;
+    private Color rojo;
+    private Color azul;
 
-	public static void create(string type, ControlladorPartida controla, float volAnim) {
+
+    public static void create(string type, ControlladorPartida controla, float volAnim) {
 		GameObject obj = (GameObject)Resources.Load(type, typeof(GameObject));
 		GameObject box = Instantiate(obj);
 		Caja caja = obj.GetComponent<Caja>();
@@ -29,6 +36,12 @@ public class Caja : MonoBehaviour {
 	public void Start() {
 		controlSonido = PlayerPrefs.GetInt("Sonido");
         animator = GetComponent<Animator>();
+        textResultBox = control.getTextResultBox();
+        //amarillo = new Color(255.0f, 0.92f, 0.016f, 1.0f);
+        amarillo = new Color(255.0f, 0.92f, 0.016f, 1.0f);
+        azul = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+        verde = new Color(0.0f, 255.0f, 0.0f, 1.0f);
+        rojo = new Color(255.0f, 0.0f, 0.0f, 6.0f);
     }
 
 	public ControlladorPartida getControl() {
@@ -63,11 +76,13 @@ public class Caja : MonoBehaviour {
         Debug.Log("dentro de tiempo perdida de turno");
         yield return new WaitForSeconds(2.0f);
         Debug.Log("dentro de tiempo perdida de turno");
+        this.textResultBox.text = "";
         Destroy(this.gameObject);
     }
     private IEnumerator timeAnim()
     {
         yield return new WaitForSeconds(0.8f);
+        this.textResultBox.text = "";
         Destroy(this.gameObject);
     }
 
@@ -89,6 +104,9 @@ public class Caja : MonoBehaviour {
  
                 if (rndCajasBuenas >= 3.0f)
                 {
+                    this.textResultBox.color = azul;
+                    //this.textResultBox.
+                    this.textResultBox.text = "+ Energy";
                     animx("winEnergy");
                     StartCoroutine(timeAnim());
                     if (player.getEstamina() <= 80.0f)
@@ -98,6 +116,8 @@ public class Caja : MonoBehaviour {
                 }
                 else
                 {
+                    this.textResultBox.color = verde;
+                    this.textResultBox.text = "+ Life";
                     animx("winLife");
                     StartCoroutine(timeAnim());
                     if (player.getVida() <= 80.0f)
@@ -113,10 +133,12 @@ public class Caja : MonoBehaviour {
 
                 //Debug.Log ("Cajas Malas");
                 float rndCajasMalas = UnityEngine.Random.Range(0, 10);
-                //Debug.Log (rndCajasMalas);
+                
+                this.textResultBox.color = rojo;
                 if (rndCajasMalas >= 5.0f)
                 {
 					AudioSource.PlayClipAtPoint(badItem, posicion.position, this.volumen);
+                    this.textResultBox.text = "- Energy";
                     animx("loseEnergy");
                     StartCoroutine(timeAnim());
                     if (player.getEstamina() >= 20.0f)
@@ -129,12 +151,14 @@ public class Caja : MonoBehaviour {
                 {
 					AudioSource.PlayClipAtPoint(badItem, posicion.position, this.volumen);
                     Debug.Log("cambiar turno");
+                    this.textResultBox.text = "x Turn";
                     animx("loseTurn");
                     StartCoroutine(timeAnimTurn());
                     this.control.changeTurn();
                 }
                 else
                 {
+                    this.textResultBox.text = "- Life";
                     animx("loseLife");
                     StartCoroutine(timeAnim());
                     player.quitLife(valVida);
